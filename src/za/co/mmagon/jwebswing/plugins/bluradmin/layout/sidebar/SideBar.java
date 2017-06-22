@@ -50,6 +50,7 @@ public class SideBar extends Div
         addAttribute(AngularAttributes.ngMouseleave, "hoverElemTop=selectElemTop");
 
         this.menuList = new List(false);
+        menuList.addAttribute("style", "padding-left: 0px;");
 
         add(menuList);
 
@@ -92,10 +93,15 @@ public class SideBar extends Div
     {
         Div li = new Div();
         li.setTag("li");
-        li.setID(screen.getSimpleName());
+        if (screen != null)
+        {
+            li.setID(screen.getSimpleName());
+        }
 
         li.addClass("al-sidebar-list-item");
+
         li.addClass("slide-right");
+
         if (selected)
         {
             li.addClass("selected");
@@ -127,6 +133,11 @@ public class SideBar extends Div
         }
 
         return li;
+    }
+
+    public List getMenuList()
+    {
+        return menuList;
     }
 
     public List buildSubList(boolean selected, boolean slideRight, ListItem... children)

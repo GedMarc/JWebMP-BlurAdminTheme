@@ -5,6 +5,7 @@ import za.co.mmagon.jwebswing.Page;
 import za.co.mmagon.jwebswing.base.ajax.AjaxCall;
 import za.co.mmagon.jwebswing.base.ajax.AjaxResponse;
 import za.co.mmagon.jwebswing.generics.WebReference;
+import za.co.mmagon.jwebswing.plugins.bluradmin.layout.display.DisplayScreen;
 import za.co.mmagon.jwebswing.plugins.bluradmin.layout.footer.Footer;
 import za.co.mmagon.jwebswing.plugins.bluradmin.layout.sidebar.SideBar;
 import za.co.mmagon.jwebswing.plugins.bluradmin.layout.top.PageTop;
@@ -46,6 +47,7 @@ public class BlurAdminHome extends Page
         response.addComponent(GuiceContext.getInstance(SideBar.class));
         response.addComponent(GuiceContext.getInstance(Footer.class));
         response.addComponent(GuiceContext.getInstance(PageTop.class));
+        response.addComponent(GuiceContext.getInstance(DisplayScreen.class));
 
         return super.onConnect(call, response);
     }

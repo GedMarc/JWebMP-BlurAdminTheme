@@ -1,12 +1,7 @@
 package za.co.mmagon.jwebswing.plugins.bluradmin.layout.display;
 
-import com.armineasy.injection.GuiceContext;
-import com.google.inject.Key;
-import com.google.inject.TypeLiteral;
-import com.google.inject.name.Names;
 import java.util.ArrayList;
-import java.util.Map;
-import za.co.mmagon.jwebswing.base.html.*;
+import za.co.mmagon.jwebswing.base.html.Div;
 import za.co.mmagon.jwebswing.plugins.bootstrap.containers.BSRow;
 
 /**
@@ -19,7 +14,7 @@ public class DisplayScreen extends Div
 
     private static final long serialVersionUID = 1L;
 
-    private String title;
+    private final ContentTop contentTop;
     private Div contentDiv;
 
     private java.util.List<BSRow> rows;
@@ -29,17 +24,12 @@ public class DisplayScreen extends Div
      */
     public DisplayScreen()
     {
-        //Nothing needed
-        addAttribute("style", "width:100%");
+        addAttribute("style", "width:100%;height:100%;");
         setID("DisplayScreen");
         addClass("al-content");
         addAttribute("style", "overflow-y:auto;");
-
-        //setTitle("Display Screen Title");
-
-        /*
-         * breadcrumbs.clear(); breadcrumbs.put("Home", new ListItem("Home")); breadcrumbs.put("Login Screen", new ListItem("Login"));
-         */
+        contentTop = new ContentTop();
+        add(contentTop);
     }
 
     public java.util.List<BSRow> getRows()
@@ -71,19 +61,14 @@ public class DisplayScreen extends Div
         }
     }
 
+    public ContentTop getContentTop()
+    {
+        return contentTop;
+    }
+
     public void setRows(java.util.List<BSRow> rows)
     {
         this.rows = rows;
-    }
-
-    public String getTitle()
-    {
-        return this.title;
-    }
-
-    public void setTitle(String title)
-    {
-        this.title = title;
     }
 
     @Override
@@ -91,43 +76,7 @@ public class DisplayScreen extends Div
     {
         if (!isInitialized())
         {
-            Div contentTopTag = new Div();
-            contentTopTag.setTag("content-top");
 
-            Div contentTop = new Div();
-            contentTop.addClass("content-top clearfix");
-            if (getTitle() != null)
-            {
-
-                contentTopTag.add(contentTop);
-
-                H1 heading = new H1(getTitle());
-                contentTop.add(heading);
-                heading.addClass("al-title");
-                add(contentTopTag);
-            }
-
-            List breadcrumbList = new List();
-            breadcrumbList.addClass("breadcrumb al-breadcrumb");
-
-            Map<String, ListItem> breadcrumbs = GuiceContext.getInstance(Key.get(new TypeLiteral<Map<String, ListItem>>()
-            {
-            }, Names.named("Breadcrumbs")));
-
-            for (Map.Entry<String, ListItem> entry : breadcrumbs.entrySet())
-            {
-                String key = entry.getKey();
-                ListItem value = entry.getValue();
-                breadcrumbList.add(value);
-            }
-
-            contentTop.add(breadcrumbList);
-
-            for (BSRow row : getRows())
-            {
-                getContentDiv().add(row);
-            }
-            add(getContentDiv());
         }
         super.init();
     }
