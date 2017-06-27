@@ -45,7 +45,7 @@ public class BlurAdminLayout extends JQLayout
         getWest().getOptions().setSpacing_open(0);
         //getWest().getOptions().setResizable(false);
         //getWest().getOptions().setClosable(false);
-        getWest().getOptions().setResponsiveWhen(LayoutResponsiveBootstrapSize.Small);
+        getWest().getOptions().setResponsiveWhen(LayoutResponsiveBootstrapSize.Medium);
 
         getSouth().getOptions().setMaxSize(80);
         getSouth().getOptions().setMinSize(80);

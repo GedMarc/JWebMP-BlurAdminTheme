@@ -25,6 +25,7 @@ public class ContentTop extends Div
     public ContentTop()
     {
         this.header = new H1();
+        header.addAttribute("style", "display:inline;");
         this.breadCrumblist = new List(false);
 
         addClass("content-top clearfix");
