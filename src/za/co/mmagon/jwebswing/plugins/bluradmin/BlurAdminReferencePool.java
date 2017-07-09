@@ -14,7 +14,10 @@ import za.co.mmagon.jwebswing.base.servlets.interfaces.ReferencePool;
 public enum BlurAdminReferencePool implements ReferencePool
 {
     BootstrapDefaultTheme(null, new CSSReference("Blur Admin Mint Default", 2.3, "bluradmintheme/mint/default/main.css")),
+    BootstrapTransparentRed(null, new CSSReference("Blur Transparent Red", 2.3, "bluradmintheme/transparent/red/main.css"), true),
     BootstrapDefaultAuthTheme(null, new CSSReference("Blur Admin Mint Default Auth", 2.3, "bluradmintheme/mint/default/auth.css")),;
+
+    private boolean transparent;
     /**
      * Any sub data
      */
@@ -38,6 +41,12 @@ public enum BlurAdminReferencePool implements ReferencePool
 
     private JavascriptReference javaScriptReference;
     private CSSReference cssReference;
+
+    private BlurAdminReferencePool(JavascriptReference javaScriptReference, CSSReference cssReference, boolean transparent)
+    {
+        this(javaScriptReference, cssReference);
+        this.transparent = transparent;
+    }
 
     private BlurAdminReferencePool(JavascriptReference javaScriptReference, CSSReference cssReference)
     {
@@ -94,4 +103,15 @@ public enum BlurAdminReferencePool implements ReferencePool
             return name();
         }
     }
+
+    public boolean isTransparent()
+    {
+        return transparent;
+    }
+
+    public void setTransparent(boolean transparent)
+    {
+        this.transparent = transparent;
+    }
+
 }

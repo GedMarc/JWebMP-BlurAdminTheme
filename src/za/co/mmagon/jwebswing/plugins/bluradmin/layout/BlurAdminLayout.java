@@ -11,6 +11,7 @@ import za.co.mmagon.jwebswing.plugins.jquerylayout.layout.LayoutResponsiveBootst
  * @author Marc Magon
  * @since 07 Jun 2017
  */
+@com.google.inject.Singleton
 public class BlurAdminLayout extends JQLayout
 {
 
@@ -60,5 +61,7 @@ public class BlurAdminLayout extends JQLayout
         mainContent.addClass("al-main");
         mainContent.add(new PlaceHolder("DisplayScreen"));
         getCenter().getContentDiv().add(mainContent);
+
+        getCenter().getContentDiv().addAttribute("style", "height:100%;width:100%;");
     }
 }

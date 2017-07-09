@@ -83,8 +83,10 @@ public class MessageCenterDropDown extends BSDropDown<MessageCenterDropDown>
                 messageList.add(buildMessage(message));
             }
             getDropdownMenu().add(messageList);
-
-            getDropdownMenu().add(showAllLink);
+            if (showAllLink != null)
+            {
+                getDropdownMenu().add(showAllLink);
+            }
         }
         super.preConfigure();
     }

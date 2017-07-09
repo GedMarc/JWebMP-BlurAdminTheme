@@ -24,6 +24,7 @@ public class DisplayScreen extends Div
         setID("DisplayScreen");
         addClass("al-content");
         addAttribute("style", "overflow-y:auto;");
+
         contentTop = new ContentTop();
 
         contentDiv = new Div();

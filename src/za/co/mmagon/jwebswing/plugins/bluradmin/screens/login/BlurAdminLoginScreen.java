@@ -81,7 +81,7 @@ public class BlurAdminLoginScreen extends DisplayScreen
         BSFormEmailInput emailLogin = new BSFormEmailInput();
         emailLogin.setPlaceholder("Email Input");
         emailLogin.setRequired();
-        emailLogin.addClass("col-xs-12 col-sm-10");
+        emailLogin.addClass("col-xs-12");
         BSFormGroup loginGroup = new BSFormGroup(null, emailLogin, null);
         loginGroup.setAngularValidation(true);
         return loginGroup;
@@ -93,7 +93,7 @@ public class BlurAdminLoginScreen extends DisplayScreen
         passwordInput.setMinimumLength(4);
         passwordInput.setRequired();
         passwordInput.setPlaceholder("Password");
-        passwordInput.addClass("col-xs-12 col-sm-10");
+        passwordInput.addClass("col-xs-12");
         BSFormGroup passwordGroup = new BSFormGroup(null, passwordInput, null);
         passwordGroup.setAngularValidation(true);
         return passwordGroup;
@@ -129,7 +129,7 @@ public class BlurAdminLoginScreen extends DisplayScreen
     {
         BSFormTextInput textInput = new BSFormTextInput();
         textInput.setRequired();
-        textInput.addClass("col-xs-12 col-sm-10");
+        textInput.addClass("col-xs-12");
         BSFormGroup<BSFormTextInput, ? extends BSFormGroup> enterpriseName = new BSFormGroup(null, textInput, null);
         enterpriseName.setAngularValidation(true);
         return enterpriseName;

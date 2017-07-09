@@ -2,13 +2,16 @@ package za.co.mmagon.jwebswing.plugins.bluradmin;
 
 import za.co.mmagon.jwebswing.Page;
 import za.co.mmagon.jwebswing.PageConfigurator;
+import za.co.mmagon.jwebswing.base.angular.AngularAttributes;
 import za.co.mmagon.jwebswing.base.angular.AngularPageConfigurator;
 import za.co.mmagon.jwebswing.base.dto.RegularExpressionsDTO;
+import za.co.mmagon.jwebswing.base.html.Div;
 import za.co.mmagon.jwebswing.base.references.CSSReference;
 import za.co.mmagon.jwebswing.plugins.PluginInformation;
 import za.co.mmagon.jwebswing.plugins.bluradmin.console.WebLogAppender;
 import za.co.mmagon.jwebswing.plugins.bootstrap.BootstrapPageConfigurator;
 import za.co.mmagon.jwebswing.plugins.jquery.JQueryPageConfigurator;
+import za.co.mmagon.jwebswing.plugins.plusastab.PlusAsTabFeature;
 import za.co.mmagon.logger.LogFactory;
 
 /**
@@ -59,9 +62,20 @@ public class BlurAdminPageConfigurator extends PageConfigurator
             AngularPageConfigurator.setRequired(page.getBody(), true);
             BootstrapPageConfigurator.setRequired(page.getBody(), true);
 
-            page.getBody().getCssReferences().add(theme.getCssReference());
+            PlusAsTabFeature pat = new PlusAsTabFeature().setKey(13);
+            PlusAsTabFeature.setFromComponent(page.getBody());
+            page.getBody().addFeature(pat);
 
-            page.getBody().addDto("regex", new RegularExpressionsDTO());
+            page.getBody().getChildren().add(0, new Div().addClass("body-bg"));
+            page.getBody().getChildren().add(0, buildPageLoader());
+
+            page.getBody().getCssReferences().add(theme.getCssReference());
+            if (theme.isTransparent())
+            {
+                page.getBody().addClass("blur-theme badmin-transparent");
+            }
+
+            page.getBody().addDto("regex", new RegularExpressionsDTO().addDefaults());
 
             page.getBody().addCssReference(new CSSReference("Blur Override CSS", 1.0, "bluradmintheme/overrides/bluroverrides.css"));
         }
@@ -78,4 +92,12 @@ public class BlurAdminPageConfigurator extends PageConfigurator
         BlurAdminPageConfigurator.theme = theme;
     }
 
+    private Div buildPageLoader()
+    {
+        Div d = new Div();
+        d.setID("preloader");
+        d.add(new Div());
+        d.addAttribute(AngularAttributes.ngShow, "jw.pageLoading");
+        return d;
+    }
 }

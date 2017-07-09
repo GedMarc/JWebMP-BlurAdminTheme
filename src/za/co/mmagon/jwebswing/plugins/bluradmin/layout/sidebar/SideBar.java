@@ -1,15 +1,13 @@
 package za.co.mmagon.jwebswing.plugins.bluradmin.layout.sidebar;
 
 import com.armineasy.injection.GuiceContext;
-import com.google.inject.Inject;
 import com.google.inject.Key;
 import com.google.inject.name.Names;
-import com.google.inject.servlet.RequestParameters;
 import com.google.inject.servlet.RequestScoped;
-import java.util.ArrayList;
-import java.util.Set;
+import java.util.*;
 import java.util.logging.Logger;
 import za.co.mmagon.jwebswing.base.angular.AngularAttributes;
+import za.co.mmagon.jwebswing.base.html.List;
 import za.co.mmagon.jwebswing.base.html.*;
 import za.co.mmagon.jwebswing.htmlbuilder.css.colours.ColourCSSImpl;
 import za.co.mmagon.jwebswing.plugins.angularslimscroll.SlimScrollFeature;
@@ -30,10 +28,6 @@ public class SideBar extends Div
     private static final long serialVersionUID = 1L;
 
     private final List menuList;
-
-    @Inject
-    @RequestParameters
-    private java.util.Map<String, String[]> params;
 
     /*
      * Constructs a new SideBar
@@ -62,12 +56,12 @@ public class SideBar extends Div
         slimFeat.getOptions().setHeight("auto");
         slimFeat.getOptions().setWidth("180px");
 
-        java.util.Map<String, String[]> queryParameters = params;
         java.util.Map<String, String> localStorage = GuiceContext.inject().getInstance(Key.get(java.util.Map.class, Names.named("LocalStorage")));
         java.util.Map<String, String> sessionStorage = GuiceContext.inject().getInstance(Key.get(java.util.Map.class, Names.named("SessionStorage")));
 
         //Calling all sidebar builders
         Set<Class<? extends BlurAdminSideBar>> sideBarInjections = GuiceContext.reflect().getSubTypesOf(BlurAdminSideBar.class);
+
         if (sideBarInjections.isEmpty())
         {
             log.severe("Sidebar will be empty, there are no classes that extend BlurAdminSideBar");;
@@ -82,7 +76,7 @@ public class SideBar extends Div
 
             for (BlurAdminSideBar blur : blurs)
             {
-                blur.buildSideBar(this, queryParameters, localStorage, sessionStorage);
+                blur.buildSideBar(this, new HashMap<>(), localStorage, sessionStorage);
             }
         }
 

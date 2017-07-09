@@ -34,9 +34,10 @@ public class DefaultMessage extends JavaScriptPart
         return id;
     }
 
-    public void setId(String id)
+    public DefaultMessage setId(String id)
     {
         this.id = id;
+        return this;
     }
 
     public String getImage()
@@ -44,9 +45,10 @@ public class DefaultMessage extends JavaScriptPart
         return image;
     }
 
-    public void setImage(String image)
+    public DefaultMessage setImage(String image)
     {
         this.image = image;
+        return this;
     }
 
     public String getName()
@@ -54,9 +56,10 @@ public class DefaultMessage extends JavaScriptPart
         return name;
     }
 
-    public void setName(String name)
+    public DefaultMessage setName(String name)
     {
         this.name = name;
+        return this;
     }
 
     public Date getDate()
@@ -64,9 +67,10 @@ public class DefaultMessage extends JavaScriptPart
         return date;
     }
 
-    public void setDate(Date date)
+    public DefaultMessage setDate(Date date)
     {
         this.date = date;
+        return this;
     }
 
     public String getMessage()
@@ -74,9 +78,10 @@ public class DefaultMessage extends JavaScriptPart
         return message;
     }
 
-    public void setMessage(String message)
+    public DefaultMessage setMessage(String message)
     {
         this.message = message;
+        return this;
     }
 
     @Override
