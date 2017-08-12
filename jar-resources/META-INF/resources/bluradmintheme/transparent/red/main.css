@@ -1111,7 +1111,7 @@ ul.btn-list li {
     opacity: 0.7; }
 .form-control:focus {
     box-shadow: none;
-    border-color: #4db1a7;
+    border-color: #dfb81c;
     background: #ffffff; }
 
 select.form-control {
@@ -1309,7 +1309,7 @@ label.custom-checkbox > span:before, label.custom-radio > span:before {
     margin-left: -22px;
     float: left; }
 label.custom-checkbox > span:hover:before, label.custom-radio > span:hover:before {
-    border-color: #4db1a7; }
+    border-color: #dfb81c; }
 
 .nowrap {
     white-space: nowrap; }
@@ -4494,7 +4494,8 @@ h1.al-title {
     display: block;
     font-size: 11px; }
 .top-dropdown-menu .msg-list > a:hover {
-    background: #E2F0FF; }
+    background: #e85656;
+    color:white;}
 .top-dropdown-menu > a {
     border-top: 1px solid #ffffff;
     display: block;
@@ -4519,7 +4520,9 @@ h1.al-title {
 .top-dropdown-menu.profile-dropdown a i {
     margin-right: 10px; }
 .top-dropdown-menu.profile-dropdown a:hover {
-    background: #f4fcff; }
+    background: #e85656;
+    color:white;
+    cursor: pointer;}
 .top-dropdown-menu.profile-dropdown i.dropdown-arr {
     right: 25px; }
 .top-dropdown-menu i.dropdown-arr {

@@ -76,7 +76,6 @@ public class BlurUtilities
         try
         {
             AtmosphereResource resource = GuiceContext.getInstance(AtmosphereResource.class);
-
             AjaxResponse response = new AjaxResponse();
             for (Feature componentHierarchyBase : comp)
             {

@@ -66,7 +66,7 @@ public class MessageCenterDropDown extends BSDropDown<MessageCenterDropDown>
             dm.setDate(new Date());
             dm.setMessage("A test Message");
             dm.setName("Test User");
-            dm.setImage("TestImage");
+            dm.setImage("images/default/profile_default.png");
             getMessages().add(dm);
             getMessages().add(dm);
             getMessages().add(dm);

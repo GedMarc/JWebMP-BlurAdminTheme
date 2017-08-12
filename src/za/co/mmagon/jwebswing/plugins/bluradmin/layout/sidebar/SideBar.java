@@ -79,8 +79,6 @@ public class SideBar extends Div
                 blur.buildSideBar(this, new HashMap<>(), localStorage, sessionStorage);
             }
         }
-
-        add("<div><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>.....<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>.....<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>.</div>");
     }
 
     public Div buildListItem(String icon, String name, boolean selected, boolean submenu, final Class<? extends DisplayScreen> screen)
@@ -125,6 +123,9 @@ public class SideBar extends Div
             b.addAttribute("ui-sref-active", "fa-angle-up");
             link.add(b);
         }
+
+        li.addClass("hvr-curl-bottom-left");
+        link.addClass("hvr-bounce-to-right");
 
         return li;
     }
