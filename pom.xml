@@ -102,7 +102,6 @@
                                 </goals>
                                 <configuration>
                                     <failOnError>false</failOnError>
-                                    <stripVersion>true</stripVersion>
                                 </configuration>
                             </execution>
                         </executions>
@@ -204,6 +203,10 @@
             <scope>test</scope>
             <type>test-jar</type>
         </dependency>
+
+
+
+
     </dependencies>
 
     <organization>
