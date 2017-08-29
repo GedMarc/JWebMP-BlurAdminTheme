@@ -4,15 +4,17 @@ import com.armineasy.injection.GuiceContext;
 import com.google.inject.Key;
 import com.google.inject.name.Names;
 import com.google.inject.servlet.RequestScoped;
-import java.util.*;
-import java.util.logging.Logger;
 import za.co.mmagon.jwebswing.base.angular.AngularAttributes;
-import za.co.mmagon.jwebswing.base.html.List;
 import za.co.mmagon.jwebswing.base.html.*;
 import za.co.mmagon.jwebswing.htmlbuilder.css.colours.ColourCSSImpl;
 import za.co.mmagon.jwebswing.plugins.angularslimscroll.SlimScrollFeature;
 import za.co.mmagon.jwebswing.plugins.bluradmin.layout.display.DisplayScreen;
 import za.co.mmagon.logger.LogFactory;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Set;
+import java.util.logging.Logger;
 
 /**
  *

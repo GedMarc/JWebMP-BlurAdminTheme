@@ -1,8 +1,6 @@
 package za.co.mmagon.jwebswing.plugins.bluradmin.util;
 
 import com.armineasy.injection.GuiceContext;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.atmosphere.cpr.AtmosphereResource;
 import za.co.mmagon.jwebswing.Event;
 import za.co.mmagon.jwebswing.Feature;
@@ -11,6 +9,9 @@ import za.co.mmagon.jwebswing.base.ajax.AjaxResponse;
 import za.co.mmagon.jwebswing.plugins.toastr.ToastrFeature;
 import za.co.mmagon.jwebswing.plugins.toastr.ToastrType;
 import za.co.mmagon.logger.LogFactory;
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *

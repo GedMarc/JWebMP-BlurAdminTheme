@@ -54,5 +54,17 @@
     <orderEntry type="module" module-name="jwebswing-interception" />
     <orderEntry type="library" name="Maven: javax:javaee-web-api:7.0" level="project" />
     <orderEntry type="module" module-name="jwebswing" scope="TEST" production-on-test="" />
+    <orderEntry type="module" module-name="jwebswing-bootstrap" />
+    <orderEntry type="module" module-name="jwebswing-momentjs" />
+    <orderEntry type="module" module-name="jwebswing-plus-as-tab" />
+    <orderEntry type="module" module-name="jwebswing-jquery-ui-layout" />
+    <orderEntry type="module" module-name="jwebswing-jquery-ui" />
+    <orderEntry type="module" module-name="jwebswing-easing-effects" />
+    <orderEntry type="module" module-name="jwebswing-globalize" />
+    <orderEntry type="module" module-name="jwebswing-angular-SlimScroll" />
+    <orderEntry type="module" module-name="jwebswing-web-log-appender" />
+    <orderEntry type="module" module-name="jwebswing-atmosphere" />
+    <orderEntry type="library" name="Maven: org.atmosphere:atmosphere-runtime:2.4.13" level="project" />
+    <orderEntry type="module" module-name="jwebswing-toastr" />
   </component>
 </module>

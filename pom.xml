@@ -203,8 +203,41 @@
             <scope>test</scope>
             <type>test-jar</type>
         </dependency>
-
-
+        <dependency>
+            <groupId>za.co.mmagon</groupId>
+            <artifactId>jwebswing-bootstrap</artifactId>
+            <version>0.0.0_0</version>
+        </dependency>
+        <dependency>
+            <groupId>za.co.mmagon</groupId>
+            <artifactId>jwebswing-momentjs</artifactId>
+            <version>0.0.0_0</version>
+        </dependency>
+        <dependency>
+            <groupId>za.co.mmagon</groupId>
+            <artifactId>jwebswing-plus-as-tab</artifactId>
+            <version>0.0.0_0</version>
+        </dependency>
+        <dependency>
+            <groupId>za.co.mmagon</groupId>
+            <artifactId>jwebswing-jquery-ui-layout</artifactId>
+            <version>0.0.0_0</version>
+        </dependency>
+        <dependency>
+            <groupId>za.co.mmagon</groupId>
+            <artifactId>jwebswing-angular-slim-scroll</artifactId>
+            <version>0.0.0_0</version>
+        </dependency>
+        <dependency>
+            <groupId>za.co.mmagon</groupId>
+            <artifactId>jwebswing-web-log-appender</artifactId>
+            <version>0.0.0_0</version>
+        </dependency>
+        <dependency>
+            <groupId>za.co.mmagon</groupId>
+            <artifactId>jwebswing-toastr</artifactId>
+            <version>0.0.0_0</version>
+        </dependency>
 
 
     </dependencies>
