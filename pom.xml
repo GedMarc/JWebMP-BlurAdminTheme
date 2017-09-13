@@ -16,12 +16,7 @@
         <url>https://github.com/GedMarc/JWebSwing-BlurAdminTheme/issues</url>
     </issueManagement>
 
-    <repositories>
-        <repository>
-            <id>oss.sonatype.org</id>
-            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
-        </repository>
-    </repositories>
+    <repositories>        <repository>            <id>oss.sonatype.org</id>            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>        </repository>        <repository>            <id>armin-release</id>            <name>ArminSoftwareArtifactory-releases</name>            <url>https://www.armin.software/artifactory/libs-release</url>        </repository>        <repository>            <id>armin-snapshot</id>            <name>ArminSoftwareArtifactory-releases</name>            <url>https://www.armin.software/artifactory/libs-snapshot</url>        </repository>    </repositories>
 
     <profiles>
         <profile>
@@ -34,7 +29,7 @@
             <id>unittest-profile</id>
             <properties>
             </properties>
-			<build>
+            <build>
                 <plugins>
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
@@ -206,42 +201,54 @@
         <dependency>
             <groupId>za.co.mmagon</groupId>
             <artifactId>jwebswing-bootstrap</artifactId>
-            <version>0.0.0_0</version>
+            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>za.co.mmagon</groupId>
             <artifactId>jwebswing-momentjs</artifactId>
-            <version>0.0.0_0</version>
+            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>za.co.mmagon</groupId>
             <artifactId>jwebswing-plus-as-tab</artifactId>
-            <version>0.0.0_0</version>
+            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>za.co.mmagon</groupId>
             <artifactId>jwebswing-jquery-ui-layout</artifactId>
-            <version>0.0.0_0</version>
+            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>za.co.mmagon</groupId>
             <artifactId>jwebswing-angular-slim-scroll</artifactId>
-            <version>0.0.0_0</version>
+            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>za.co.mmagon</groupId>
             <artifactId>jwebswing-web-log-appender</artifactId>
-            <version>0.0.0_0</version>
+            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>za.co.mmagon</groupId>
             <artifactId>jwebswing-toastr</artifactId>
-            <version>0.0.0_0</version>
+            <version>${project.version}</version>
         </dependency>
 
 
     </dependencies>
-<distributionManagement>        <snapshotRepository>            <id>snapshots</id>            <name>ArminSoftwareArtifactory-snapshots</name>            <url>https://www.armin.software/artifactory/libs-snapshot-local</url>        </snapshotRepository>        <repository>            <id>central</id>            <name>ArminSoftwareArtifactory-releases</name>            <url>https://www.armin.software/artifactory/libs-release-local</url>        </repository>    </distributionManagement><organization>
+    <distributionManagement>
+        <snapshotRepository>
+            <id>snapshot</id>
+            <name>ArminSoftwareArtifactory-snapshots</name>
+            <url>https://www.armin.software/artifactory/libs-snapshot-local</url>
+        </snapshotRepository>
+        <repository>
+            <id>central</id>
+            <name>ArminSoftwareArtifactory-releases</name>
+            <url>https://www.armin.software/artifactory/libs-release-local</url>
+        </repository>
+    </distributionManagement>
+    <organization>
         <name>Armin Software</name>
         <url>http://www.armin.software</url>
     </organization>
