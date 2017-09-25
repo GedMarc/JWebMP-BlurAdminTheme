@@ -6,7 +6,9 @@ import za.co.mmagon.jwebswing.plugins.bluradmin.layout.display.DisplayScreen;
 import za.co.mmagon.jwebswing.plugins.bootstrap.buttons.BSButton;
 import za.co.mmagon.jwebswing.plugins.bootstrap.componentoptions.BSComponentWidthOptions;
 import za.co.mmagon.jwebswing.plugins.bootstrap.forms.BSForm;
-import za.co.mmagon.jwebswing.plugins.bootstrap.forms.controls.*;
+import za.co.mmagon.jwebswing.plugins.bootstrap.forms.controls.BSFormEmailInput;
+import za.co.mmagon.jwebswing.plugins.bootstrap.forms.controls.BSFormPasswordInput;
+import za.co.mmagon.jwebswing.plugins.bootstrap.forms.controls.BSFormTextInput;
 import za.co.mmagon.jwebswing.plugins.bootstrap.forms.groups.BSFormGroup;
 
 /**
@@ -75,9 +77,9 @@ public class BlurAdminLoginScreen extends DisplayScreen
         registerButton.addClass("btn-default btn-auth");
         return registerButton;
     }
-
-    protected BSFormGroup<BSFormEmailInput, ? extends BSFormGroup> buildEmailInput()
-    {
+	
+	protected BSFormGroup<? extends BSFormGroup> buildEmailInput()
+	{
         BSFormEmailInput emailLogin = new BSFormEmailInput();
         emailLogin.setPlaceholder("Email Input");
         emailLogin.setRequired();
@@ -86,9 +88,9 @@ public class BlurAdminLoginScreen extends DisplayScreen
         loginGroup.setAngularValidation(true);
         return loginGroup;
     }
-
-    protected BSFormGroup<BSFormPasswordInput, ? extends BSFormGroup> buildPasswordInput()
-    {
+	
+	protected BSFormGroup<? extends BSFormGroup> buildPasswordInput()
+	{
         BSFormPasswordInput passwordInput = new BSFormPasswordInput();
         passwordInput.setMinimumLength(4);
         passwordInput.setRequired();
@@ -124,14 +126,14 @@ public class BlurAdminLoginScreen extends DisplayScreen
         newToApp.addClass(BSComponentWidthOptions.col_xs_12);
         return newToApp;
     }
-
-    protected BSFormGroup<BSFormTextInput, ? extends BSFormGroup> buildTextInput()
-    {
+	
+	protected BSFormGroup<? extends BSFormGroup> buildTextInput()
+	{
         BSFormTextInput textInput = new BSFormTextInput();
         textInput.setRequired();
         textInput.addClass("col-xs-12");
-        BSFormGroup<BSFormTextInput, ? extends BSFormGroup> enterpriseName = new BSFormGroup(null, textInput, null);
-        enterpriseName.setAngularValidation(true);
+	    BSFormGroup<? extends BSFormGroup> enterpriseName = new BSFormGroup(null, textInput, null);
+		enterpriseName.setAngularValidation(true);
         return enterpriseName;
     }
 
