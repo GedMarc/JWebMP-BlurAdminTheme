@@ -22,34 +22,25 @@ public enum BlurAdminReferencePool implements ReferencePool
      * Any sub data
      */
     private String data;
-
-    /**
-     * A new AngularSlimScrollReferencePool
-     */
-    private BlurAdminReferencePool()
-    {
-
-    }
-
-    /**
-     * A new AngularSlimScrollReferencePool with data
-     */
-    private BlurAdminReferencePool(String data)
-    {
-
-    }
-
-    private JavascriptReference javaScriptReference;
-    private CSSReference cssReference;
-
-    private BlurAdminReferencePool(JavascriptReference javaScriptReference, CSSReference cssReference, boolean transparent)
-    {
+	private JavascriptReference javaScriptReference;
+	private CSSReference cssReference;
+	
+	/**
+	 * A new AngularSlimScrollReferencePool
+	 */
+	BlurAdminReferencePool()
+	{
+	
+	}
+	
+	BlurAdminReferencePool(JavascriptReference javaScriptReference, CSSReference cssReference, boolean transparent)
+	{
         this(javaScriptReference, cssReference);
         this.transparent = transparent;
     }
-
-    private BlurAdminReferencePool(JavascriptReference javaScriptReference, CSSReference cssReference)
-    {
+	
+	BlurAdminReferencePool(JavascriptReference javaScriptReference, CSSReference cssReference)
+	{
         this.javaScriptReference = javaScriptReference;
         if (this.javaScriptReference != null)
         {

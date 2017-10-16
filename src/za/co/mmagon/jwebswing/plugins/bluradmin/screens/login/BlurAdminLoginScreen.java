@@ -49,14 +49,12 @@ public class BlurAdminLoginScreen extends DisplayScreen
         Div block = new Div();
         block.addClass("auth-block");
         div.add(block);
-
-        //block.add(new H1("Sign in to CPI"));
-        Link newToApp = new Link();
+	
+	    Link newToApp = new Link();
 
         newToApp.setText("New to the app? Register Today!");
         newToApp.addAttribute("href", "#");
         newToApp.addClass("auth-link");
-        //block.add(newToApp);
 
         BSForm form = new BSForm();
         form.addClass("form-horizontal");
@@ -83,8 +81,8 @@ public class BlurAdminLoginScreen extends DisplayScreen
         BSFormEmailInput emailLogin = new BSFormEmailInput();
         emailLogin.setPlaceholder("Email Input");
         emailLogin.setRequired();
-        emailLogin.addClass("col-xs-12");
-        BSFormGroup loginGroup = new BSFormGroup(null, emailLogin, null);
+		emailLogin.addClass(BSComponentWidthOptions.col_xs_12);
+		BSFormGroup loginGroup = new BSFormGroup(null, emailLogin, null);
         loginGroup.setAngularValidation(true);
         return loginGroup;
     }
@@ -95,8 +93,8 @@ public class BlurAdminLoginScreen extends DisplayScreen
         passwordInput.setMinimumLength(4);
         passwordInput.setRequired();
         passwordInput.setPlaceholder("Password");
-        passwordInput.addClass("col-xs-12");
-        BSFormGroup passwordGroup = new BSFormGroup(null, passwordInput, null);
+		passwordInput.addClass(BSComponentWidthOptions.col_xs_12);
+		BSFormGroup passwordGroup = new BSFormGroup(null, passwordInput, null);
         passwordGroup.setAngularValidation(true);
         return passwordGroup;
     }
@@ -131,20 +129,14 @@ public class BlurAdminLoginScreen extends DisplayScreen
 	{
         BSFormTextInput textInput = new BSFormTextInput();
         textInput.setRequired();
-        textInput.addClass("col-xs-12");
-	    BSFormGroup<? extends BSFormGroup> enterpriseName = new BSFormGroup(null, textInput, null);
+		textInput.addClass(BSComponentWidthOptions.col_xs_12);
+		BSFormGroup<? extends BSFormGroup> enterpriseName = new BSFormGroup(null, textInput, null);
 		enterpriseName.setAngularValidation(true);
         return enterpriseName;
     }
 
     public Div buildSeparator()
     {
-        Div div = new Div();
-        // div.addClass("auth-sep");
-        // Span span1;
-        //div.add(span1 = new Span());
-        // span1.add(new Span("Sign In with One Click"));
-
-        return div;
+	    return new Div();
     }
 }

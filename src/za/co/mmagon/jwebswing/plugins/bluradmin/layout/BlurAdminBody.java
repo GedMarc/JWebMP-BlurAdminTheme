@@ -3,7 +3,6 @@ package za.co.mmagon.jwebswing.plugins.bluradmin.layout;
 import com.armineasy.injection.GuiceContext;
 import za.co.mmagon.jwebswing.base.dto.RegularExpressionsDTO;
 import za.co.mmagon.jwebswing.base.html.Body;
-import za.co.mmagon.jwebswing.plugins.jquerylayout.layout.JQLayout;
 
 /**
  *
@@ -28,8 +27,8 @@ public class BlurAdminBody extends Body
     {
         if (!isInitialized())
         {
-            JQLayout layout = GuiceContext.getInstance(BlurAdminLayout.class);
-            addDto("regex", new RegularExpressionsDTO().addDefaults());
+	        GuiceContext.getInstance(BlurAdminLayout.class);
+	        addDto("regex", new RegularExpressionsDTO().addDefaults());
         }
         super.init();
     }

@@ -33,8 +33,6 @@ public class BlurAdminLayout extends JQLayout
         getNorth().getOptions().setTogglerLength_closed(0);
         getNorth().getOptions().setSpacing_closed(0);
         getNorth().getOptions().setSpacing_open(0);
-        // getNorth().getOptions().setResizable(false);
-        //getNorth().getOptions().setClosable(false);
         getNorth().getOptions().setMinSize(66);
 
         getWest().getOptions().setMaxSize(180);
@@ -44,14 +42,10 @@ public class BlurAdminLayout extends JQLayout
         getWest().getOptions().setTogglerLength_closed(0);
         getWest().getOptions().setSpacing_closed(0);
         getWest().getOptions().setSpacing_open(0);
-        //getWest().getOptions().setResizable(false);
-        //getWest().getOptions().setClosable(false);
         getWest().getOptions().setResponsiveWhen(LayoutResponsiveBootstrapSize.Medium);
 
         getSouth().getOptions().setMaxSize(80);
         getSouth().getOptions().setMinSize(80);
-        //getSouth().getOptions().setResizable(false);
-        //getSouth().getOptions().setClosable(false);
         getSouth().getOptions().setTogglerLength_open(0);
         getSouth().getOptions().setTogglerLength_closed(0);
         getSouth().getOptions().setSpacing_closed(0);
