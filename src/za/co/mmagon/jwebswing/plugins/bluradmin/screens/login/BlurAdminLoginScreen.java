@@ -76,7 +76,7 @@ public class BlurAdminLoginScreen extends DisplayScreen
         return registerButton;
     }
 	
-	protected BSFormGroup<? extends BSFormGroup> buildEmailInput()
+	protected BSFormGroup<?> buildEmailInput()
 	{
         BSFormEmailInput emailLogin = new BSFormEmailInput();
         emailLogin.setPlaceholder("Email Input");
@@ -87,7 +87,7 @@ public class BlurAdminLoginScreen extends DisplayScreen
         return loginGroup;
     }
 	
-	protected BSFormGroup<? extends BSFormGroup> buildPasswordInput()
+	protected BSFormGroup<?> buildPasswordInput()
 	{
         BSFormPasswordInput passwordInput = new BSFormPasswordInput();
         passwordInput.setMinimumLength(4);
@@ -125,7 +125,7 @@ public class BlurAdminLoginScreen extends DisplayScreen
         return newToApp;
     }
 	
-	protected BSFormGroup<? extends BSFormGroup> buildTextInput()
+	protected BSFormGroup<?> buildTextInput()
 	{
         BSFormTextInput textInput = new BSFormTextInput();
         textInput.setRequired();

@@ -44,13 +44,12 @@ public class BlurUtilities
         {
             AtmosphereResource resource = GuiceContext.getInstance(AtmosphereResource.class);
             AjaxResponse response = new AjaxResponse();
-            ToastrFeature toast;
-            response.getFeatures().add(toast = new ToastrFeature(type, title, message).setTiny(true));
-            resource.write(response.toString());
+	        response.getFeatures().add(new ToastrFeature(type, title, message).setTiny(true));
+	        resource.write(response.toString());
         }
         catch (NullPointerException e)
         {
-            log.log(Level.SEVERE, "Can't find atmosphere resource - {0}", e.getLocalizedMessage());
+	        log.log(Level.SEVERE, "Can't push toast find atmosphere resource", e);
         }
     }
 
@@ -68,7 +67,7 @@ public class BlurUtilities
         }
         catch (NullPointerException e)
         {
-            log.log(Level.SEVERE, "Can't find atmosphere resource - {0}", e.getLocalizedMessage());
+	        log.log(Level.SEVERE, "Can't find push update - atmosphere resource", e);
         }
     }
 
@@ -86,7 +85,7 @@ public class BlurUtilities
         }
         catch (NullPointerException e)
         {
-            log.log(Level.SEVERE, "Can't find atmosphere resource - {0}", e.getLocalizedMessage());
+	        log.log(Level.SEVERE, "Can't push update find atmosphere resource", e);
         }
     }
 
@@ -105,7 +104,7 @@ public class BlurUtilities
         }
         catch (NullPointerException e)
         {
-            log.log(Level.SEVERE, "Can't find atmosphere resource - {0}", e.getLocalizedMessage());
+	        log.log(Level.SEVERE, "Can't find push update for event atmosphere resource - {0}", e);
         }
     }
 
