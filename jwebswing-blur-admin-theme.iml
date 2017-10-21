@@ -74,8 +74,4 @@
     <orderEntry type="library" name="Maven: org.atmosphere:atmosphere-runtime:2.4.13" level="project" />
     <orderEntry type="module" module-name="jwebswing-toastr" />
   </component>
-  <component name="sonarModuleSettings">
-    <option name="localAnalysisScripName" value="&lt;PROJECT&gt;" />
-    <option name="serverName" value="&lt;PROJECT&gt;" />
-  </component>
 </module>

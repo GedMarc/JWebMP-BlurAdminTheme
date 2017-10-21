@@ -29,27 +29,27 @@ public class BlurAdminLayout extends JQLayout
         getWest().getContentDiv().add(new PlaceHolder("SideBar"));
         getSouth().getContentDiv().add(new PlaceHolder("PageFooter"));
 
-        getNorth().getOptions().setTogglerLength_open(0);
-        getNorth().getOptions().setTogglerLength_closed(0);
-        getNorth().getOptions().setSpacing_closed(0);
-        getNorth().getOptions().setSpacing_open(0);
-        getNorth().getOptions().setMinSize(66);
+	    getNorth().getOptions().setTogglerLengthOpen(0);
+	    getNorth().getOptions().setTogglerLengthClosed(0);
+	    getNorth().getOptions().setSpacingClosed(0);
+	    getNorth().getOptions().setSpacingOpen(0);
+	    getNorth().getOptions().setMinSize(66);
 
         getWest().getOptions().setMaxSize(180);
         getWest().getOptions().setMinSize(180);
         getWest().getOptions().setResponsive(true);
-        getWest().getOptions().setTogglerLength_open(0);
-        getWest().getOptions().setTogglerLength_closed(0);
-        getWest().getOptions().setSpacing_closed(0);
-        getWest().getOptions().setSpacing_open(0);
-        getWest().getOptions().setResponsiveWhen(LayoutResponsiveBootstrapSize.Medium);
+	    getWest().getOptions().setTogglerLengthOpen(0);
+	    getWest().getOptions().setTogglerLengthClosed(0);
+	    getWest().getOptions().setSpacingClosed(0);
+	    getWest().getOptions().setSpacingOpen(0);
+	    getWest().getOptions().setResponsiveWhen(LayoutResponsiveBootstrapSize.Medium);
 
         getSouth().getOptions().setMaxSize(80);
         getSouth().getOptions().setMinSize(80);
-        getSouth().getOptions().setTogglerLength_open(0);
-        getSouth().getOptions().setTogglerLength_closed(0);
-        getSouth().getOptions().setSpacing_closed(0);
-        getSouth().getOptions().setSpacing_open(0);
+	    getSouth().getOptions().setTogglerLengthOpen(0);
+	    getSouth().getOptions().setTogglerLengthClosed(0);
+	    getSouth().getOptions().setSpacingClosed(0);
+	    getSouth().getOptions().setSpacingOpen(0);
 
         Div mainContent = new Div();
         mainContent.addClass("al-main");

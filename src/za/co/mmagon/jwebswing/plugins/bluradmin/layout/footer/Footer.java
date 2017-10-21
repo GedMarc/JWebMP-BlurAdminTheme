@@ -1,87 +1,143 @@
 package za.co.mmagon.jwebswing.plugins.bluradmin.layout.footer;
 
-import com.armineasy.injection.GuiceContext;
-import java.util.Set;
 import za.co.mmagon.jwebswing.base.html.*;
 
+import javax.validation.constraints.NotNull;
+
 /**
- *
  * @author Marc Magon
  * @since 05 Apr 2017
  */
 public class Footer extends Div
 {
 
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
+	/**
+	 * The main footer div
+	 */
+	private Div footerMainDiv;
+	/**
+	 * The share list
+	 */
+	private List shareList;
 
-    /*
-     * Constructs a new Footer
-     */
-    public Footer()
-    {
-        //Nothing needed
-        setID("PageFooter");
-        setTag("footer");
-        addClass("al-footer clearfix");
-    }
+	/*
+	 * Constructs a new Footer
+	 */
+	public Footer()
+	{
+		setID("PageFooter");
+		setTag("footer");
+		addClass("al-footer clearfix");
+	}
 
-    public Div addFooterRight(String text, String iconClassName)
-    {
-        Div div = new Div();
-        div.addClass("al-footer-right");
-        div.setText(text + " <i class=\"" + iconClassName + "\"></i>");
-        return div;
-    }
+	/**
+	 * Adds a default footer to the right
+	 *
+	 * @param text
+	 * @param iconClassName
+	 *
+	 * @return
+	 */
+	public Div addFooterRight(String text, String iconClassName)
+	{
+		Div div = new Div();
+		div.addClass("al-footer-right");
+		div.setText(text + " <i class=\"" + iconClassName + "\"></i>");
+		return div;
+	}
 
-    private Div footerMainDiv;
+	/**
+	 * adds a list formatted as share
+	 *
+	 * @return
+	 */
+	@NotNull
+	public List addShareList()
+	{
+		if (footerMainDiv == null)
+		{
+			addFooterMain("");
+		}
+		shareList = new List(false);
+		shareList.addClass("al-share clearfix");
+		footerMainDiv.add(shareList);
+		return shareList;
+	}
 
-    public Div addFooterMain(String copyrightText)
-    {
-        footerMainDiv = new Div();
-        footerMainDiv.addClass("al-footer-main clearfix");
-        Div copyright = new Div();
-        copyright.addClass("al-copy");
-        copyright.setText("Armin Software 2017");
-        footerMainDiv.add(copyright);
-        return footerMainDiv;
-    }
+	/**
+	 * Returns the new div
+	 *
+	 * @param copyrightText
+	 *
+	 * @return
+	 */
+	@NotNull
+	public Div addFooterMain(String copyrightText)
+	{
+		footerMainDiv = new Div();
+		footerMainDiv.addClass("al-footer-main clearfix");
+		Div copyright = new Div();
+		copyright.addClass("al-copy");
+		copyright.setText(copyrightText);
+		footerMainDiv.add(copyright);
+		return footerMainDiv;
+	}
 
-    private List shareList;
+	/**
+	 * Adds a share item
+	 *
+	 * @param iconClass
+	 * @param url
+	 *
+	 * @return
+	 */
+	@NotNull
+	public ListItem addShareItem(String iconClass, String url)
+	{
+		ListItem li = new ListItem();
+		Link link = new Link(url, "_blank");
+		li.add(link);
 
-    public List addShareList()
-    {
-        if (footerMainDiv == null)
-        {
-            addFooterMain("");
-        }
-        shareList = new List(false);
-        shareList.addClass("al-share clearfix");
-        footerMainDiv.add(shareList);
-        return shareList;
-    }
+		Italic i = new Italic();
+		i.addClass(iconClass);
+		link.add(i);
 
-    public ListItem addShareItem(String iconClass, String url)
-    {
-        ListItem li = new ListItem();
-        Link link = new Link(url, "_blank");
-        li.add(link);
+		shareList.add(li);
+		return li;
+	}
 
-        Italic i = new Italic();
-        i.addClass(iconClass);
-        link.add(i);
+	@Override
+	public boolean equals(Object o)
+	{
+		if (this == o)
+		{
+			return true;
+		}
+		if (!(o instanceof Footer))
+		{
+			return false;
+		}
+		if (!super.equals(o))
+		{
+			return false;
+		}
 
-        shareList.add(li);
-        return li;
-    }
+		Footer footer = (Footer) o;
 
-    @Override
-    public void preConfigure()
-    {
-        if (!isConfigured())
-        {
-            Set<Class<? extends BlurAdminFooter>> footers = GuiceContext.reflect().getSubTypesOf(BlurAdminFooter.class);
+		if (footerMainDiv != null ? !footerMainDiv.equals(footer.footerMainDiv) : footer.footerMainDiv != null)
+		{
+			return false;
+		}
+		return shareList != null ? shareList.equals(footer.shareList) : footer.shareList == null;
+	}
 
-        }
-        super.preConfigure();
-    }
+	@Override
+	public int hashCode()
+	{
+		int result = super.hashCode();
+		result = 31 * result + (footerMainDiv != null ? footerMainDiv.hashCode() : 0);
+		result = 31 * result + (shareList != null ? shareList.hashCode() : 0);
+		return result;
+	}
 }
