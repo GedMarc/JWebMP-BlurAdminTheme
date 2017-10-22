@@ -8,249 +8,287 @@ import za.co.mmagon.jwebswing.plugins.bootstrap.dropdown.menu.BSDropDownMenuChil
 import za.co.mmagon.jwebswing.plugins.moment.Moment;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 /**
- *
  * @author Marc Magon
  * @since 19 Jun 2017
  */
 public class MessageCenterDropDown extends BSDropDown<MessageCenterDropDown>
 {
 
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-    private ShowAllLink showAllLink;
-    private Link settingsLink;
-    private Link markAllReadLink;
-    private Link markAllUnReadLink;
+	private ShowAllLink showAllLink;
+	private Link settingsLink;
+	private Link markAllReadLink;
+	private Link markAllUnReadLink;
 
-    private String header;
+	private String header;
 
-    private List<DefaultMessage> messages;
+	private List<DefaultMessage> messages;
 
-    private int messagesToShow = 6;
+	private int messagesToShow = 6;
 
-    /*
-     * Constructs a new MessageCenterDropDown
-     */
-    public MessageCenterDropDown()
-    {
+	/*
+	 * Constructs a new MessageCenterDropDown
+	 */
+	public MessageCenterDropDown()
+	{
+		//No configuration needed
+	}
 
-    }
+	@Override
+	public void preConfigure()
+	{
 
-    @Override
-    public void preConfigure()
-    {
-        // if (!isConfigured())
-        {
-            getChildren().clear();
-            Header headerDiv = new Header();
-            if (getHeader() != null)
-            {
-                headerDiv.add(new Strong(getHeader()));
-            }
+		getChildren().clear();
+		Header headerDiv = new Header();
+		if (getHeader() != null)
+		{
+			headerDiv.add(new Strong(getHeader()));
+		}
 
-            getDropdownMenu().add(new DropDownArrow());
+		getDropdownMenu().add(new DropDownArrow());
 
-            headerDiv.add(markAllReadLink);
-            headerDiv.add(markAllUnReadLink);
-            headerDiv.add(settingsLink);
+		headerDiv.add(markAllReadLink);
+		headerDiv.add(markAllUnReadLink);
+		headerDiv.add(settingsLink);
 
-            getDropdownMenu().add(headerDiv);
+		getDropdownMenu().add(headerDiv);
 
-            MessagesList messageList = new MessagesList();
-            messageList.addClass("msg-list");
-            //messageList.addAttribute("style", "overflow-y:auto;height:280px;");
+		MessagesList messageList = new MessagesList();
+		messageList.addClass("msg-list");
 
-            DefaultMessage dm = new DefaultMessage();
-            dm.setDate(new Date());
-            dm.setMessage("A test Message");
-            dm.setName("Test User");
-            dm.setImage("images/default/profile_default.png");
-            getMessages().add(dm);
-            getMessages().add(dm);
-            getMessages().add(dm);
-            getMessages().add(dm);
-            getMessages().add(dm);
-            getMessages().add(dm);
-            getMessages().add(dm);
-            getMessages().add(dm);
-            getMessages().add(dm);
-            getMessages().add(dm);
+		for (DefaultMessage message : getMessages())
+		{
+			messageList.add(buildMessage(message));
+		}
+		getDropdownMenu().add(messageList);
+		if (showAllLink != null)
+		{
+			getDropdownMenu().add(showAllLink);
+		}
 
-            for (DefaultMessage message : getMessages())
-            {
-                messageList.add(buildMessage(message));
-            }
-            getDropdownMenu().add(messageList);
-            if (showAllLink != null)
-            {
-                getDropdownMenu().add(showAllLink);
-            }
-        }
-        super.preConfigure();
-    }
+		super.preConfigure();
+	}
 
-    public String getHeader()
-    {
-        return header;
-    }
+	public String getHeader()
+	{
+		return header;
+	}
 
-    public void setHeader(String header)
-    {
-        this.header = header;
-    }
+	public void setHeader(String header)
+	{
+		this.header = header;
+	}
 
-    public Link getShowAllLink(String text)
-    {
-        if (showAllLink == null)
-        {
-            showAllLink = new ShowAllLink("#", null, text);
-        }
-        return showAllLink;
-    }
+	public List<DefaultMessage> getMessages()
+	{
+		if (messages == null)
+		{
+			messages = new ArrayList<>();
+		}
+		return messages;
+	}
 
-    public Link getSettingsLink(String text)
-    {
-        if (settingsLink == null)
-        {
-            settingsLink = new Link("#", null, text);
-        }
-        return settingsLink;
-    }
+	public void setMessages(List<DefaultMessage> messages)
+	{
+		this.messages = messages;
+	}
 
-    public Link getMarkAllReadLink(String text)
-    {
-        if (markAllReadLink == null)
-        {
-            markAllReadLink = new Link("#", null, text);
-        }
-        return markAllReadLink;
-    }
+	private Link buildMessage(DefaultMessage message)
+	{
+		Link link = new Link();
+		link.addClass("clearfix");
 
-    public Link getMarkAllUnReadLink(String text)
-    {
-        if (markAllUnReadLink == null)
-        {
-            markAllUnReadLink = new Link("", null, text);
-        }
-        return markAllUnReadLink;
-    }
+		if (message.getImage() != null)
+		{
+			Div imageArea = new Div<>().addClass("img-area");
+			Image image = new Image<>(message.getImage()).addClass("photo-msg-item");
+			link.add(imageArea);
+			imageArea.add(image);
+		}
 
-    public List<DefaultMessage> getMessages()
-    {
-        if (messages == null)
-        {
-            messages = new ArrayList<>();
-        }
-        return messages;
-    }
+		Div messageArea = new Div<>();
+		messageArea.addClass("msg-area");
+		Div messageDescription = new Div<>().setText(message.getMessage());
+		Moment messageTime = new Moment(message.getDate());
+		messageTime.setTag("span");
 
-    public void setMessages(List<DefaultMessage> messages)
-    {
-        this.messages = messages;
-    }
+		link.add(messageArea);
+		messageArea.add(messageDescription);
+		messageArea.add(messageTime);
 
-    public int getMessagesToShow()
-    {
-        return messagesToShow;
-    }
+		return link;
+	}
 
-    public void setMessagesToShow(int messagesToShow)
-    {
-        this.messagesToShow = messagesToShow;
-    }
+	@Override
+	public boolean equals(Object o)
+	{
+		if (this == o)
+		{
+			return true;
+		}
+		if (!(o instanceof MessageCenterDropDown))
+		{
+			return false;
+		}
+		if (!super.equals(o))
+		{
+			return false;
+		}
 
-    private Link buildMessage(DefaultMessage message)
-    {
-        Link link = new Link();
-        link.addClass("clearfix");
+		MessageCenterDropDown that = (MessageCenterDropDown) o;
 
-        if (message.getImage() != null)
-        {
-            Div imageArea = new Div<>().addClass("img-area");
-            Image image = new Image<>(message.getImage()).addClass("photo-msg-item");
-            link.add(imageArea);
-            imageArea.add(image);
-        }
+		if (getMessagesToShow() != that.getMessagesToShow())
+		{
+			return false;
+		}
+		if (!showAllLink.equals(that.showAllLink))
+		{
+			return false;
+		}
+		if (!settingsLink.equals(that.settingsLink))
+		{
+			return false;
+		}
+		if (!markAllReadLink.equals(that.markAllReadLink))
+		{
+			return false;
+		}
+		if (!markAllUnReadLink.equals(that.markAllUnReadLink))
+		{
+			return false;
+		}
+		if (getHeader() != null ? !getHeader().equals(that.getHeader()) : that.getHeader() != null)
+		{
+			return false;
+		}
+		return getMessages().equals(that.getMessages());
+	}
 
-        Div messageArea = new Div<>();
-        messageArea.addClass("msg-area");
-        Div messageDescription = new Div<>().setText(message.getMessage());
-        Moment messageTime = new Moment(message.getDate());
-        messageTime.setTag("span");
+	public int getMessagesToShow()
+	{
+		return messagesToShow;
+	}
 
-        link.add(messageArea);
-        messageArea.add(messageDescription);
-        messageArea.add(messageTime);
+	public void setMessagesToShow(int messagesToShow)
+	{
+		this.messagesToShow = messagesToShow;
+	}
 
-        return link;
-    }
+	@Override
+	public int hashCode()
+	{
+		int result = super.hashCode();
+		result = 31 * result + showAllLink.hashCode();
+		result = 31 * result + settingsLink.hashCode();
+		result = 31 * result + markAllReadLink.hashCode();
+		result = 31 * result + markAllUnReadLink.hashCode();
+		result = 31 * result + (getHeader() != null ? getHeader().hashCode() : 0);
+		result = 31 * result + getMessages().hashCode();
+		result = 31 * result + getMessagesToShow();
+		return result;
+	}
 
-    class Header extends Div implements BSDropDownMenuChildren
-    {
+	public Link getShowAllLink(String text)
+	{
+		if (showAllLink == null)
+		{
+			showAllLink = new ShowAllLink("#", null, text);
+		}
+		return showAllLink;
+	}
 
-        private static final long serialVersionUID = 1L;
+	public Link getSettingsLink(String text)
+	{
+		if (settingsLink == null)
+		{
+			settingsLink = new Link("#", null, text);
+		}
+		return settingsLink;
+	}
 
-        public Header()
-        {
-            addClass("header clearfix");
-        }
-    }
+	public Link getMarkAllReadLink(String text)
+	{
+		if (markAllReadLink == null)
+		{
+			markAllReadLink = new Link("#", null, text);
+		}
+		return markAllReadLink;
+	}
 
-    class MessagesList extends Div implements BSDropDownMenuChildren
-    {
+	public Link getMarkAllUnReadLink(String text)
+	{
+		if (markAllUnReadLink == null)
+		{
+			markAllUnReadLink = new Link("", null, text);
+		}
+		return markAllUnReadLink;
+	}
 
-        private static final long serialVersionUID = 1L;
+	class Header extends Div implements BSDropDownMenuChildren
+	{
 
-        public MessagesList()
-        {
-            addClass("msg-list");
-        }
-    }
+		private static final long serialVersionUID = 1L;
 
-    public class ShowAllLink extends Link implements BSDropDownMenuChildren
-    {
+		public Header()
+		{
+			addClass("header clearfix");
+		}
+	}
 
-        private static final long serialVersionUID = 1L;
+	class MessagesList extends Div implements BSDropDownMenuChildren
+	{
 
-        public ShowAllLink()
-        {
-        }
+		private static final long serialVersionUID = 1L;
 
-        public ShowAllLink(String directToAddress)
-        {
-            super(directToAddress);
-        }
+		public MessagesList()
+		{
+			addClass("msg-list");
+		}
+	}
 
-        public ShowAllLink(String directToAddress, String targetFrameName)
-        {
-            super(directToAddress, targetFrameName);
-        }
+	public class ShowAllLink extends Link implements BSDropDownMenuChildren
+	{
 
-        public ShowAllLink(String directToAddress, String targetFrameName, String text)
-        {
-            super(directToAddress, targetFrameName, text);
-        }
+		private static final long serialVersionUID = 1L;
 
-        public ShowAllLink(String directToAddress, String targetFrameName, ComponentHierarchyBase component)
-        {
-            super(directToAddress, targetFrameName, component);
-        }
+		public ShowAllLink()
+		{
+		}
 
-    }
+		public ShowAllLink(String directToAddress)
+		{
+			super(directToAddress);
+		}
 
-    class DropDownArrow extends Italic implements BSDropDownMenuChildren
-    {
+		public ShowAllLink(String directToAddress, String targetFrameName)
+		{
+			super(directToAddress, targetFrameName);
+		}
 
-        private static final long serialVersionUID = 1L;
+		public ShowAllLink(String directToAddress, String targetFrameName, String text)
+		{
+			super(directToAddress, targetFrameName, text);
+		}
 
-        public DropDownArrow()
-        {
-            addClass("dropdown-arr");
-        }
+		public ShowAllLink(String directToAddress, String targetFrameName, ComponentHierarchyBase component)
+		{
+			super(directToAddress, targetFrameName, component);
+		}
 
-    }
+	}
+
+	class DropDownArrow extends Italic implements BSDropDownMenuChildren
+	{
+		private static final long serialVersionUID = 1L;
+
+		public DropDownArrow()
+		{
+			addClass("dropdown-arr");
+		}
+
+	}
 }
