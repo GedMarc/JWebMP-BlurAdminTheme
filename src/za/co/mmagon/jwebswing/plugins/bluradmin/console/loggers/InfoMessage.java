@@ -36,17 +36,16 @@ public class InfoMessage extends WebLogInfoMessage
 		BSAlert alert = new BSAlertSuccess();
 		alert.getCss().getMargins().setMarginRight(new MeasurementCSSImpl(15));
 		alert.addAttribute("style", "color:black;");
+		alert.setText(record.getMessage());
+		if (record.getParameters() != null)
 		{
-			alert.setText(record.getMessage());
-			if (record.getParameters() != null)
+			for (int i = 0; i < record.getParameters().length; i++)
 			{
-				for (int i = 0; i < record.getParameters().length; i++)
-				{
-					Object parameter = record.getParameters()[i];
-					alert.setText(alert.getText(0).toString().replace("{" + i + "}", parameter.toString()));
-				}
+				Object parameter = record.getParameters()[i];
+				alert.setText(alert.getText(0).toString().replace("{" + i + "}", parameter.toString()));
 			}
 		}
+
 		add(alert);
 	}
 

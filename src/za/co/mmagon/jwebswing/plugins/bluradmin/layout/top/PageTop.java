@@ -5,9 +5,6 @@ import com.google.inject.Inject;
 import com.google.inject.Key;
 import com.google.inject.name.Names;
 import com.google.inject.servlet.RequestParameters;
-import java.util.ArrayList;
-import java.util.Set;
-import java.util.logging.Logger;
 import za.co.mmagon.jwebswing.base.ComponentHierarchyBase;
 import za.co.mmagon.jwebswing.base.html.*;
 import za.co.mmagon.jwebswing.generics.Pair;
@@ -16,272 +13,286 @@ import za.co.mmagon.jwebswing.plugins.bootstrap.dropdown.BSDropDown;
 import za.co.mmagon.jwebswing.plugins.bootstrap.dropdown.BSDropDownLink;
 import za.co.mmagon.jwebswing.plugins.bootstrap.dropdown.menu.*;
 
+import java.util.ArrayList;
+import java.util.Set;
+import java.util.logging.Logger;
+
 /**
- *
  * @author Marc Magon
  * @since 06 Apr 2017
  */
 public class PageTop extends Div
 {
 
-    private static final Logger log = Logger.getLogger(PageTop.class.getName());
+	private static final Logger log = Logger.getLogger(PageTop.class.getName());
 
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-    private Div rightSideDiv = new Div();
+	private Div rightSideDiv = new Div();
 
-    @Inject
-    @RequestParameters
-    private java.util.Map<String, String[]> params;
+	@Inject
+	@RequestParameters
+	private java.util.Map<String, String[]> params;
 
-    /*
-     * Constructs a new PageTop
-     */
-    @Inject
-    protected PageTop(@RequestParameters java.util.Map<String, String[]> params)
-    {
-        setID("PageTop");
-        addClass("page-top clearfix");
-        addAttribute("style", "position: static;");
-        rightSideDiv.addClass("user-profile clearfix");
+	/*
+	 * Constructs a new PageTop
+	 */
+	@Inject
+	protected PageTop(@RequestParameters java.util.Map<String, String[]> params)
+	{
+		setID("PageTop");
+		addClass("page-top clearfix");
+		addAttribute("style", "position: static;");
+		rightSideDiv.addClass("user-profile clearfix");
 
-        //Calling all sidebar builders
-        Set<Class<? extends BlurAdminPageTop>> sideBarInjections = GuiceContext.reflect().getSubTypesOf(BlurAdminPageTop.class);
-        if (sideBarInjections.isEmpty())
-        {
-            log.severe("Sidebar will be empty, there are no classes that extend BlurAdminSideBar");;
-        }
-        else
-        {
-            java.util.List<BlurAdminPageTop> blurs = new ArrayList<>();
-            for (Class<? extends BlurAdminPageTop> sideBarInjection : sideBarInjections)
-            {
-                blurs.add(GuiceContext.getInstance(sideBarInjection));
-            }
+		//Calling all sidebar builders
+		Set<Class<? extends BlurAdminPageTop>> sideBarInjections = GuiceContext.reflect().getSubTypesOf(BlurAdminPageTop.class);
+		if (sideBarInjections.isEmpty())
+		{
+			log.severe("Sidebar will be empty, there are no classes that extend BlurAdminSideBar");
+		}
+		else
+		{
+			java.util.List<BlurAdminPageTop> blurs = new ArrayList<>();
+			for (Class<? extends BlurAdminPageTop> sideBarInjection : sideBarInjections)
+			{
+				blurs.add(GuiceContext.getInstance(sideBarInjection));
+			}
 
-            java.util.Map<String, String[]> queryParameters = params;
-            java.util.Map<String, String> localStorage = GuiceContext.inject().getInstance(Key.get(java.util.Map.class, Names.named("LocalStorage")));
-            java.util.Map<String, String> sessionStorage = GuiceContext.inject().getInstance(Key.get(java.util.Map.class, Names.named("SessionStorage")));
+			java.util.Map<String, String[]> queryParameters = params;
+			java.util.Map<String, String> localStorage = GuiceContext.inject().getInstance(Key.get(java.util.Map.class, Names.named("LocalStorage")));
+			java.util.Map<String, String> sessionStorage = GuiceContext.inject().getInstance(Key.get(java.util.Map.class, Names.named("SessionStorage")));
 
-            for (BlurAdminPageTop blur : blurs)
-            {
-                blur.buildPageTop(this, queryParameters, localStorage, sessionStorage);
-            }
-        }
-    }
+			for (BlurAdminPageTop blur : blurs)
+			{
+				blur.buildPageTop(this, queryParameters, localStorage, sessionStorage);
+			}
+		}
+	}
 
-    @Override
-    public void init()
-    {
-        if (!isInitialized())
-        {
-            add(rightSideDiv);
-        }
-        super.init();
-    }
+	@Override
+	public void init()
+	{
+		if (!isInitialized())
+		{
+			add(rightSideDiv);
+		}
+		super.init();
+	}
 
-    /**
-     * Returns the portion displayed on the right hand side
-     *
-     * @return
-     */
-    public Div getRightSideDiv()
-    {
-        return rightSideDiv;
-    }
+	public Link addToggleButton(boolean leftSide)
+	{
+		Link link = GuiceContext.getInstance(NavToggleButton.class);
+		if (leftSide)
+		{
+			add(link);
+		}
+		else
+		{
+			getRightSideDiv().add(link);
+		}
+		return link;
+	}
 
-    /**
-     * Sets the portion displayed on the right hand side
-     *
-     * @param rightSideDiv
-     */
-    public void setRightSideDiv(Div rightSideDiv)
-    {
-        this.rightSideDiv = rightSideDiv;
-        if (this.rightSideDiv != null)
-        {
-            rightSideDiv.addClass("user-profile clearfix");
-        }
-    }
+	/**
+	 * Returns the portion displayed on the right hand side
+	 *
+	 * @return
+	 */
+	public Div getRightSideDiv()
+	{
+		return rightSideDiv;
+	}
 
-    public Link addBranding(String highlightedText, String hoverHighlightText, String icon)
-    {
-        Link homeLink = new Link("#");
+	/**
+	 * Sets the portion displayed on the right hand side
+	 *
+	 * @param rightSideDiv
+	 */
+	public void setRightSideDiv(Div rightSideDiv)
+	{
+		this.rightSideDiv = rightSideDiv;
+		if (this.rightSideDiv != null)
+		{
+			rightSideDiv.addClass("user-profile clearfix");
+		}
+	}
 
-        homeLink.addClass("al-logo clearfix");
-        homeLink.addClass("hidden-xs");
+	public Div addSearch(boolean leftSide)
+	{
+		Div div = new Div();
+		div.addClass("search");
 
-        Span highlightedSpan = new Span(highlightedText);
+		Italic i = new Italic();
+		i.addClass("fa fa-search fa-2x");
+		InputSearchType ist = new InputSearchType();
+		ist.setID("searchInput");
+		ist.setPlaceholder("Search for...");
 
-        homeLink.add(highlightedSpan);
-        homeLink.setText(hoverHighlightText);
-        homeLink.setRenderTextBeforeChildren(false);
+		div.add(i);
+		div.add(ist);
 
-        add(homeLink);
+		if (leftSide)
+		{
+			add(div);
+		}
+		else
+		{
+			getRightSideDiv().add(div);
+		}
 
-        return homeLink;
-    }
+		return div;
+	}
 
-    public Link addToggleButton(boolean leftSide)
-    {
-        Link link = GuiceContext.getInstance(NavToggleButton.class);
-        if (leftSide)
-        {
-            add(link);
-        }
-        else
-        {
-            getRightSideDiv().add(link);
-        }
-        return link;
-    }
+	public BSDropDown buildProfileButtonBar(String profileImage)
+	{
+		BSDropDown profileDropdown = new BSDropDown();
+		profileDropdown.addClass("al-user-profile clearfix");
 
-    public Div addSearch(boolean leftSide)
-    {
-        Div div = new Div();
-        div.addClass("search");
+		BSDropDownLink profileToggleLink = new BSDropDownLink();
+		profileToggleLink.addClass("profile-toggle-link");
+		profileDropdown.setDropdownButton(profileToggleLink);
 
-        Italic i = new Italic();
-        i.addClass("fa fa-search fa-2x");
-        InputSearchType ist = new InputSearchType();
-        ist.setID("searchInput");
-        ist.setPlaceholder("Search for...");
+		BSDropDownMenu dropdownList = new BSDropDownMenu();
+		dropdownList.addClass("top-dropdown-menu");
+		dropdownList.addClass("profile-dropdown");
+		profileDropdown.setMenu(dropdownList);
 
-        div.add(i);
-        div.add(ist);
+		Image profileImageImg = new Image(profileImage);
+		profileToggleLink.add(profileImageImg);
 
-        if (leftSide)
-        {
-            add(div);
-        }
-        else
-        {
-            getRightSideDiv().add(div);
-        }
+		dropdownList.add(new DropDownArrow());
 
-        return div;
-    }
+		return profileDropdown;
+	}
 
-    public BSDropDown buildProfileButtonBar(String profileImage)
-    {
-        BSDropDown profileDropdown = new BSDropDown();
-        profileDropdown.addClass("al-user-profile clearfix");
+	/**
+	 * @param leftSide
+	 *
+	 * @return Message center div parent and the list for child items
+	 */
+	public Pair<Div, List> addMessageCenter(boolean leftSide)
+	{
+		Pair<Div, List> output = new Pair<>();
 
-        BSDropDownLink profileToggleLink = new BSDropDownLink();
-        profileToggleLink.addClass("profile-toggle-link");
-        profileDropdown.setDropdownButton(profileToggleLink);
+		Div messageCenter = new Div();
+		messageCenter.setTag("msg-center");
 
-        BSDropDownMenu dropdownList = new BSDropDownMenu();
-        dropdownList.addClass("top-dropdown-menu");
-        dropdownList.addClass("profile-dropdown");
-        profileDropdown.setMenu(dropdownList);
+		if (leftSide)
+		{
+			add(messageCenter);
+		}
+		else
+		{
+			getRightSideDiv().add(messageCenter);
+		}
 
-        Image profileImageImg = new Image(profileImage);
-        profileToggleLink.add(profileImageImg);
+		List messageList = new List();
+		messageList.addClass("al-msg-center clearfix");
 
-        dropdownList.add(new DropDownArrow());
+		messageCenter.add(messageList);
 
-        return profileDropdown;
-    }
+		output.setLeft(messageCenter);
+		output.setRight(messageList);
 
-    /**
-     *
-     * @param leftSide
-     *
-     * @return Message center div parent and the list for child items
-     */
-    public Pair<Div, List> addMessageCenter(boolean leftSide)
-    {
-        Pair<Div, List> output = new Pair<>();
+		return output;
+	}
 
-        Div messageCenter = new Div();
-        messageCenter.setTag("msg-center");
+	public BSDropDownMenuItem buildDropDownItem(String icon, String name)
+	{
+		return new BSDropDownMenuItem(icon, name);
+	}
 
-        if (leftSide)
-        {
-            add(messageCenter);
-        }
-        else
-        {
-            getRightSideDiv().add(messageCenter);
-        }
+	public BSDropDownMenuItem buildDropDownArrow()
+	{
+		return new BSDropDownMenuItem("dropdown-arr", "");
+	}
 
-        List messageList = new List();
-        messageList.addClass("al-msg-center clearfix");
+	public BSDropDownMenuItem buildDropDownDivider()
+	{
+		return new BSDropDownMenuItemDivider();
+	}
 
-        messageCenter.add(messageList);
+	public BSDropDownMenuItemHeader buildDropDownMenuHeader(String icon, String name)
+	{
+		return new BSDropDownMenuItemHeader(icon, name);
+	}
 
-        output.setLeft(messageCenter);
-        output.setRight(messageList);
+	/**
+	 * @param icon
+	 * 		the full component text for the icon (e.g. includes i tag)
+	 * @param alertNoticeCount
+	 * 		The number of new notices to alert about
+	 *
+	 * @return The list item created and the div for the content
+	 */
+	public MessageCenterDropDown buildMessageCenterDropDown(ComponentHierarchyBase icon, int alertNoticeCount)
+	{
+		MessageCenterDropDown dropDown = new MessageCenterDropDown();
+		dropDown.setTag("li");
 
-        return output;
-    }
+		BSDropDownLink dropdownLink = new BSDropDownLink();
+		dropdownLink.add(icon);
 
-    public BSDropDownMenuItem buildDropDownItem(String icon, String name)
-    {
-        BSDropDownMenuItem item = new BSDropDownMenuItem(icon, name);
+		dropDown.setDropdownButton(dropdownLink);
 
-        return item;
-    }
+		if (alertNoticeCount > 0)
+		{
+			Span alertNotice = new Span<>(Integer.toString(alertNoticeCount));
+			dropdownLink.add(alertNotice);
+			Div notificationRing = new Div<>().addClass("notification-ring");
+			dropdownLink.add(notificationRing);
+		}
 
-    public BSDropDownMenuItem buildDropDownArrow()
-    {
-        BSDropDownMenuItem item = new BSDropDownMenuItem("dropdown-arr", "");
-        return item;
-    }
+		BSDropDownMenu menu = new BSDropDownMenu();
+		menu.addClass("top-dropdown-menu");
+		dropDown.setMenu(menu);
 
-    public BSDropDownMenuItem buildDropDownDivider()
-    {
-        BSDropDownMenuItem item = new BSDropDownMenuItemDivider();
-        return item;
-    }
+		return dropDown;
+	}
 
-    public BSDropDownMenuItemHeader buildDropDownMenuHeader(String icon, String name)
-    {
-        BSDropDownMenuItemHeader item = new BSDropDownMenuItemHeader(icon, name);
-        return item;
-    }
+	@Override
+	public boolean equals(Object o)
+	{
+		if (this == o)
+		{
+			return true;
+		}
+		if (!(o instanceof PageTop))
+		{
+			return false;
+		}
+		if (!super.equals(o))
+		{
+			return false;
+		}
 
-    /**
-     *
-     * @param icon             the full component text for the icon (e.g. includes i tag)
-     * @param alertNoticeCount The number of new notices to alert about
-     *
-     * @return The list item created and the div for the content
-     */
-    public MessageCenterDropDown buildMessageCenterDropDown(ComponentHierarchyBase icon, int alertNoticeCount)
-    {
-        MessageCenterDropDown dropDown = new MessageCenterDropDown();
-        dropDown.setTag("li");
+		PageTop pageTop = (PageTop) o;
 
-        BSDropDownLink dropdownLink = new BSDropDownLink();
-        dropdownLink.add(icon);
+		if (!getRightSideDiv().equals(pageTop.getRightSideDiv()))
+		{
+			return false;
+		}
+		return params != null ? params.equals(pageTop.params) : pageTop.params == null;
+	}
 
-        dropDown.setDropdownButton(dropdownLink);
+	@Override
+	public int hashCode()
+	{
+		int result = super.hashCode();
+		result = 31 * result + getRightSideDiv().hashCode();
+		result = 31 * result + (params != null ? params.hashCode() : 0);
+		return result;
+	}
 
-        if (alertNoticeCount > 0)
-        {
-            Span alertNotice = new Span<>(alertNoticeCount + "");
-            dropdownLink.add(alertNotice);
-            Div notificationRing = new Div<>().addClass("notification-ring");
-            dropdownLink.add(notificationRing);
-        }
+	class DropDownArrow extends Italic implements BSDropDownMenuChildren
+	{
 
-        BSDropDownMenu menu = new BSDropDownMenu();
-        menu.addClass("top-dropdown-menu");
-        dropDown.setMenu(menu);
+		private static final long serialVersionUID = 1L;
 
-        return dropDown;
-    }
-
-    class DropDownArrow extends Italic implements BSDropDownMenuChildren
-    {
-
-        private static final long serialVersionUID = 1L;
-
-        public DropDownArrow()
-        {
-            addClass("dropdown-arr");
-        }
-    }
+		public DropDownArrow()
+		{
+			addClass("dropdown-arr");
+		}
+	}
 }
