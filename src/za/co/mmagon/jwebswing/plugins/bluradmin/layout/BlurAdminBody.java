@@ -1,8 +1,8 @@
 package za.co.mmagon.jwebswing.plugins.bluradmin.layout;
 
 import com.armineasy.injection.GuiceContext;
-import za.co.mmagon.jwebswing.base.dto.RegularExpressionsDTO;
 import za.co.mmagon.jwebswing.base.html.Body;
+import za.co.mmagon.jwebswing.utilities.RegularExpressionsDTO;
 
 /**
  *

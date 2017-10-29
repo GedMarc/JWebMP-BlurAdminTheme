@@ -4,7 +4,6 @@ import za.co.mmagon.jwebswing.Page;
 import za.co.mmagon.jwebswing.PageConfigurator;
 import za.co.mmagon.jwebswing.base.angular.AngularAttributes;
 import za.co.mmagon.jwebswing.base.angular.AngularPageConfigurator;
-import za.co.mmagon.jwebswing.base.dto.RegularExpressionsDTO;
 import za.co.mmagon.jwebswing.base.html.Div;
 import za.co.mmagon.jwebswing.base.references.CSSReference;
 import za.co.mmagon.jwebswing.plugins.PluginInformation;
@@ -12,6 +11,7 @@ import za.co.mmagon.jwebswing.plugins.bluradmin.console.WebLogAppender;
 import za.co.mmagon.jwebswing.plugins.bootstrap.BootstrapPageConfigurator;
 import za.co.mmagon.jwebswing.plugins.jquery.JQueryPageConfigurator;
 import za.co.mmagon.jwebswing.plugins.plusastab.PlusAsTabFeature;
+import za.co.mmagon.jwebswing.utilities.RegularExpressionsDTO;
 import za.co.mmagon.logger.LogFactory;
 
 /**

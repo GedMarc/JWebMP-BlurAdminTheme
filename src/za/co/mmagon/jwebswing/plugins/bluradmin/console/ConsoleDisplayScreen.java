@@ -14,7 +14,7 @@ public class ConsoleDisplayScreen extends DisplayScreen
 
     private static final long serialVersionUID = 1L;
 
-    private WebLogAppenderDiv webLogger;
+	private final WebLogAppenderDiv webLogger;
 
     /*
      * Constructs a new ConsoleDisplayScreen
@@ -32,4 +32,32 @@ public class ConsoleDisplayScreen extends DisplayScreen
         getContentDiv().add(webLogger);
     }
 
+	@Override
+	public boolean equals(Object o)
+	{
+		if (this == o)
+		{
+			return true;
+		}
+		if (!(o instanceof ConsoleDisplayScreen))
+		{
+			return false;
+		}
+		if (!super.equals(o))
+		{
+			return false;
+		}
+
+		ConsoleDisplayScreen that = (ConsoleDisplayScreen) o;
+
+		return webLogger.equals(that.webLogger);
+	}
+
+	@Override
+	public int hashCode()
+	{
+		int result = super.hashCode();
+		result = 31 * result + webLogger.hashCode();
+		return result;
+	}
 }
