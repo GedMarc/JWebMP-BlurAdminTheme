@@ -10,6 +10,7 @@ import za.co.mmagon.jwebswing.plugins.bootstrap.forms.controls.BSFormEmailInput;
 import za.co.mmagon.jwebswing.plugins.bootstrap.forms.controls.BSFormPasswordInput;
 import za.co.mmagon.jwebswing.plugins.bootstrap.forms.controls.BSFormTextInput;
 import za.co.mmagon.jwebswing.plugins.bootstrap.forms.groups.BSFormGroup;
+import za.co.mmagon.jwebswing.utilities.StaticStrings;
 
 /**
  *
@@ -53,7 +54,7 @@ public class BlurAdminLoginScreen extends DisplayScreen
 	    Link newToApp = new Link();
 
         newToApp.setText("New to the app? Register Today!");
-        newToApp.addAttribute("href", "#");
+        newToApp.addAttribute("href", StaticStrings.STRING_HASH);
         newToApp.addClass("auth-link");
 
         BSForm form = new BSForm();

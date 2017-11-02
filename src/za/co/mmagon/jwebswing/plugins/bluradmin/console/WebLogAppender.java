@@ -2,6 +2,7 @@ package za.co.mmagon.jwebswing.plugins.bluradmin.console;
 
 import com.armineasy.injection.GuiceContext;
 import org.atmosphere.cpr.AtmosphereResource;
+import sun.util.logging.PlatformLogger;
 import za.co.mmagon.jwebswing.base.ajax.AjaxComponentInsertType;
 import za.co.mmagon.jwebswing.base.ajax.AjaxComponentUpdates;
 import za.co.mmagon.jwebswing.base.ajax.AjaxResponse;
@@ -10,6 +11,7 @@ import za.co.mmagon.plugins.weblogappender.WebLogAppenderAtmosphereAdapter;
 import za.co.mmagon.plugins.weblogappender.WebLogAppenderPageConfigurator;
 import za.co.mmagon.plugins.weblogappender.annotations.*;
 
+import java.util.Optional;
 import java.util.Set;
 import java.util.logging.Handler;
 import java.util.logging.Level;
@@ -22,101 +24,70 @@ import java.util.logging.Logger;
  */
 public class WebLogAppender extends Handler
 {
-
-	private static final Logger LOG = Logger.getLogger(WebLogAppender.class.getName());
+	private static final String CLASS_CAST_LOG_MESSAGE = "Old Log Entry Found, Removing";
 
 	@Override
 	public void publish(LogRecord record)
 	{
-		if (GuiceContext.isBuildingInjector())
+		if (GuiceContext.isBuildingInjector() || (record.getLevel().intValue() <= LogFactory.getDefaultLevel().intValue()))
 		{
 			return;
 		}
 
-		if (record.getLevel().intValue() <= LogFactory.getDefaultLevel().intValue())
-		{
-			return;
-		}
+		PlatformLogger.Level levelEnum = PlatformLogger.Level.valueOf(record.getLevel().getName());
+		processLogRecord(levelEnum, record);
+	}
 
-		AtmosphereResource resource;
-		try
+	private void processLogRecord(PlatformLogger.Level levelEnum,LogRecord record)
+	{
+		if (WebLogAppenderPageConfigurator.isEnabled() && GuiceContext.getInstance(AtmosphereResource.class) != null)
 		{
-			resource = GuiceContext.getInstance(AtmosphereResource.class);
-		}
-		catch (Exception e)
-		{
-			LOG.log(Level.SEVERE, "Can''t find atmosphere resource - {0}", e.getLocalizedMessage());
-			return;
-		}
-
-		if (WebLogAppenderPageConfigurator.isEnabled() && resource != null)
-		{
-			try
+			Optional<AjaxResponse> autoUpdate;
+			switch (levelEnum)
 			{
-				if (record.getLevel().equals(Level.INFO))
+				case INFO:
 				{
-					AjaxResponse autoUpdate = renderInfoMessage(record);
-					if (autoUpdate != null)
-					{
-						resource.write(autoUpdate.toString());
-					}
+					autoUpdate = Optional.ofNullable(renderInfoMessage(record));
+					break;
 				}
-				else if (record.getLevel().equals(Level.CONFIG))
+				case CONFIG:
 				{
-					AjaxResponse autoUpdate = renderConfigMessage(record);
-					if (autoUpdate != null)
-					{
-						resource.write(autoUpdate.toString());
-					}
+					autoUpdate = Optional.ofNullable(renderConfigMessage(record));
+					break;
 				}
-				else if (record.getLevel().equals(Level.WARNING))
+				case WARNING:
 				{
-					AjaxResponse autoUpdate = renderWarningMessage(record);
-					if (autoUpdate != null)
-					{
-						resource.write(autoUpdate.toString());
-					}
+					autoUpdate = Optional.ofNullable(renderWarningMessage(record));
+					break;
 				}
-				else if (record.getLevel().equals(Level.SEVERE))
+				case SEVERE:
 				{
-					AjaxResponse autoUpdate = renderSevereMessage(record);
-					if (autoUpdate != null)
-					{
-						resource.write(autoUpdate.toString());
-					}
+					autoUpdate = Optional.ofNullable(renderSevereMessage(record));
+					break;
 				}
-				else if (record.getLevel().equals(Level.FINE))
+				case FINE:
 				{
-					AjaxResponse autoUpdate = renderFineMessage(record);
-					if (autoUpdate != null)
-					{
-						resource.write(autoUpdate.toString());
-					}
+					autoUpdate = Optional.ofNullable(renderFineMessage(record));
+					break;
 				}
-				else if (record.getLevel().equals(Level.FINER))
+				case FINER:
 				{
-					AjaxResponse autoUpdate = renderFinerMessage(record);
-					if (autoUpdate != null)
-					{
-						resource.write(autoUpdate.toString());
-					}
+					autoUpdate = Optional.ofNullable(renderFinerMessage(record));
+					break;
 				}
-				else if (record.getLevel().equals(Level.FINEST))
+				case FINEST:
 				{
-					AjaxResponse autoUpdate = renderFinestMessage(record);
-					if (autoUpdate != null)
-					{
-						resource.write(autoUpdate.toString());
-					}
+					autoUpdate = Optional.ofNullable(renderFinestMessage(record));
+					break;
+				}
+				default:{
+					autoUpdate = Optional.ofNullable(renderInfoMessage(record));
+					break;
 				}
 			}
-			catch (ClassCastException cce)
+			if (autoUpdate.isPresent())
 			{
-				LOG.log(Level.SEVERE, "Old Log Entry Found, Removing");
-			}
-			catch (NullPointerException cce)
-			{
-				LOG.log(Level.SEVERE, "Null Pointer in sending web log update");
+				GuiceContext.getInstance(AtmosphereResource.class).write(autoUpdate.toString());
 			}
 		}
 	}
@@ -128,7 +99,7 @@ public class WebLogAppender extends Handler
 	}
 
 	@Override
-	public void close() throws SecurityException
+	public void close()
 	{
 		//Not needed
 	}
@@ -140,36 +111,40 @@ public class WebLogAppender extends Handler
 			Set<Class<? extends WebLogInfoMessage>> items = GuiceContext.reflect().getSubTypesOf(WebLogInfoMessage.class);
 			for (Class<? extends WebLogInfoMessage> item : items)
 			{
-				try
-				{
-					WebLogInfoMessage infoMessage = item.newInstance();
-					infoMessage.renderMessage(record);
-					AjaxResponse ar = new AjaxResponse();
-					AjaxComponentUpdates comp = ar.addComponent(infoMessage);
-					if (WebLogAppenderPageConfigurator.isInsertAtTop())
-					{
-						comp.setId(WebLogAppenderPageConfigurator.getWebLogDivDisplayName());
-						comp.setInsertType(AjaxComponentInsertType.Insert);
-					}
-					else
-					{
-						comp.setId(WebLogAppenderPageConfigurator.getWebLogDivDisplayName());
-						comp.setInsertType(AjaxComponentInsertType.Insert_Last);
-					}
-					return ar;
-				}
-				catch (InstantiationException | IllegalAccessException ex)
-				{
-					Logger.getLogger(WebLogAppenderAtmosphereAdapter.class.getName()).log(Level.SEVERE, null, ex);
-				}
-
+				return processMessage(item, record);
 			}
 		}
 		catch (ClassCastException cce)
 		{
-			Logger.getLogger(WebLogAppenderAtmosphereAdapter.class.getName()).log(Level.SEVERE, "Old Log Entry Found, Removing");
+			Logger.getLogger(WebLogAppenderAtmosphereAdapter.class.getName()).log(Level.SEVERE, CLASS_CAST_LOG_MESSAGE, cce);
 		}
 		return null;
+	}
+
+	private AjaxResponse processMessage(Class<? extends WebLogMessage> item, LogRecord record)
+	{
+		AjaxResponse ar = GuiceContext.getInstance(AjaxResponse.class);
+		try
+		{
+			WebLogMessage infoMessage = item.newInstance();
+			infoMessage.renderMessage(record);
+			AjaxComponentUpdates comp = ar.addComponent(infoMessage);
+			if (WebLogAppenderPageConfigurator.isInsertAtTop())
+			{
+				comp.setId(WebLogAppenderPageConfigurator.getWebLogDivDisplayName());
+				comp.setInsertType(AjaxComponentInsertType.Insert);
+			}
+			else
+			{
+				comp.setId(WebLogAppenderPageConfigurator.getWebLogDivDisplayName());
+				comp.setInsertType(AjaxComponentInsertType.Insert_Last);
+			}
+		}
+		catch (InstantiationException | IllegalAccessException ex)
+		{
+			Logger.getLogger(WebLogAppenderAtmosphereAdapter.class.getName()).log(Level.SEVERE, null, ex);
+		}
+		return ar;
 	}
 
 	public AjaxResponse renderConfigMessage(LogRecord record)
@@ -177,32 +152,7 @@ public class WebLogAppender extends Handler
 		Set<Class<? extends WebLogConfigMessage>> items = GuiceContext.reflect().getSubTypesOf(WebLogConfigMessage.class);
 		for (Class<? extends WebLogConfigMessage> item : items)
 		{
-			try
-			{
-				WebLogConfigMessage infoMessage = item.newInstance();
-				infoMessage.renderMessage(record);
-				AjaxResponse ar = new AjaxResponse();
-				AjaxComponentUpdates comp = ar.addComponent(infoMessage);
-				if (WebLogAppenderPageConfigurator.isInsertAtTop())
-				{
-					comp.setId(WebLogAppenderPageConfigurator.getWebLogDivDisplayName());
-					comp.setInsertType(AjaxComponentInsertType.Insert);
-				}
-				else
-				{
-					comp.setId(WebLogAppenderPageConfigurator.getWebLogDivDisplayName());
-					comp.setInsertType(AjaxComponentInsertType.Insert_Last);
-				}
-				return ar;
-			}
-			catch (InstantiationException | IllegalAccessException ex)
-			{
-				Logger.getLogger(WebLogAppenderAtmosphereAdapter.class.getName()).log(Level.SEVERE, null, ex);
-			}
-			catch (ClassCastException cce)
-			{
-				Logger.getLogger(WebLogAppenderAtmosphereAdapter.class.getName()).log(Level.SEVERE, "Old Log Entry Found, Removing");
-			}
+			return processMessage(item, record);
 		}
 		return null;
 	}
@@ -212,32 +162,7 @@ public class WebLogAppender extends Handler
 		Set<Class<? extends WebLogWarningMessage>> items = GuiceContext.reflect().getSubTypesOf(WebLogWarningMessage.class);
 		for (Class<? extends WebLogWarningMessage> item : items)
 		{
-			try
-			{
-				WebLogWarningMessage infoMessage = item.newInstance();
-				infoMessage.renderMessage(record);
-				AjaxResponse ar = new AjaxResponse();
-				AjaxComponentUpdates comp = ar.addComponent(infoMessage);
-				if (WebLogAppenderPageConfigurator.isInsertAtTop())
-				{
-					comp.setId(WebLogAppenderPageConfigurator.getWebLogDivDisplayName());
-					comp.setInsertType(AjaxComponentInsertType.Insert);
-				}
-				else
-				{
-					comp.setId(WebLogAppenderPageConfigurator.getWebLogDivDisplayName());
-					comp.setInsertType(AjaxComponentInsertType.Insert_Last);
-				}
-				return ar;
-			}
-			catch (InstantiationException | IllegalAccessException ex)
-			{
-				Logger.getLogger(WebLogAppenderAtmosphereAdapter.class.getName()).log(Level.SEVERE, null, ex);
-			}
-			catch (ClassCastException cce)
-			{
-				Logger.getLogger(WebLogAppenderAtmosphereAdapter.class.getName()).log(Level.SEVERE, "Old Log Entry Found, Removing");
-			}
+			return processMessage(item, record);
 		}
 		return null;
 	}
@@ -247,32 +172,7 @@ public class WebLogAppender extends Handler
 		Set<Class<? extends WebLogSevereMessage>> items = GuiceContext.reflect().getSubTypesOf(WebLogSevereMessage.class);
 		for (Class<? extends WebLogSevereMessage> item : items)
 		{
-			try
-			{
-				WebLogSevereMessage infoMessage = item.newInstance();
-				infoMessage.renderMessage(record);
-				AjaxResponse ar = new AjaxResponse();
-				AjaxComponentUpdates comp = ar.addComponent(infoMessage);
-				if (WebLogAppenderPageConfigurator.isInsertAtTop())
-				{
-					comp.setId(WebLogAppenderPageConfigurator.getWebLogDivDisplayName());
-					comp.setInsertType(AjaxComponentInsertType.Insert);
-				}
-				else
-				{
-					comp.setId(WebLogAppenderPageConfigurator.getWebLogDivDisplayName());
-					comp.setInsertType(AjaxComponentInsertType.Insert_Last);
-				}
-				return ar;
-			}
-			catch (InstantiationException | IllegalAccessException ex)
-			{
-				Logger.getLogger(WebLogAppenderAtmosphereAdapter.class.getName()).log(Level.SEVERE, null, ex);
-			}
-			catch (ClassCastException cce)
-			{
-				Logger.getLogger(WebLogAppenderAtmosphereAdapter.class.getName()).log(Level.SEVERE, "Old Log Entry Found, Removing");
-			}
+			return processMessage(item, record);
 		}
 		return null;
 	}
@@ -282,32 +182,7 @@ public class WebLogAppender extends Handler
 		Set<Class<? extends WebLogFineMessage>> items = GuiceContext.reflect().getSubTypesOf(WebLogFineMessage.class);
 		for (Class<? extends WebLogFineMessage> item : items)
 		{
-			try
-			{
-				WebLogFineMessage infoMessage = item.newInstance();
-				infoMessage.renderMessage(record);
-				AjaxResponse ar = new AjaxResponse();
-				AjaxComponentUpdates comp = ar.addComponent(infoMessage);
-				if (WebLogAppenderPageConfigurator.isInsertAtTop())
-				{
-					comp.setId(WebLogAppenderPageConfigurator.getWebLogDivDisplayName());
-					comp.setInsertType(AjaxComponentInsertType.Insert);
-				}
-				else
-				{
-					comp.setId(WebLogAppenderPageConfigurator.getWebLogDivDisplayName());
-					comp.setInsertType(AjaxComponentInsertType.Insert_Last);
-				}
-				return ar;
-			}
-			catch (InstantiationException | IllegalAccessException ex)
-			{
-				Logger.getLogger(WebLogAppenderAtmosphereAdapter.class.getName()).log(Level.SEVERE, null, ex);
-			}
-			catch (ClassCastException cce)
-			{
-				Logger.getLogger(WebLogAppenderAtmosphereAdapter.class.getName()).log(Level.SEVERE, "Old Log Entry Found, Removing");
-			}
+			return processMessage(item, record);
 		}
 		return null;
 	}
@@ -317,22 +192,7 @@ public class WebLogAppender extends Handler
 		Set<Class<? extends WebLogFinerMessage>> items = GuiceContext.reflect().getSubTypesOf(WebLogFinerMessage.class);
 		for (Class<? extends WebLogFinerMessage> item : items)
 		{
-			try
-			{
-				WebLogFinerMessage infoMessage = item.newInstance();
-				infoMessage.renderMessage(record);
-				AjaxResponse ar = new AjaxResponse();
-				ar.addComponent(infoMessage);
-				return ar;
-			}
-			catch (InstantiationException | IllegalAccessException ex)
-			{
-				Logger.getLogger(WebLogAppenderAtmosphereAdapter.class.getName()).log(Level.SEVERE, null, ex);
-			}
-			catch (ClassCastException cce)
-			{
-				Logger.getLogger(WebLogAppenderAtmosphereAdapter.class.getName()).log(Level.SEVERE, "Old Log Entry Found, Removing");
-			}
+			return processMessage(item, record);
 		}
 		return null;
 	}
@@ -342,32 +202,7 @@ public class WebLogAppender extends Handler
 		Set<Class<? extends WebLogFinestMessage>> items = GuiceContext.reflect().getSubTypesOf(WebLogFinestMessage.class);
 		for (Class<? extends WebLogFinestMessage> item : items)
 		{
-			try
-			{
-				WebLogFinestMessage infoMessage = item.newInstance();
-				infoMessage.renderMessage(record);
-				AjaxResponse ar = new AjaxResponse();
-				AjaxComponentUpdates comp = ar.addComponent(infoMessage);
-				if (WebLogAppenderPageConfigurator.isInsertAtTop())
-				{
-					comp.setId(WebLogAppenderPageConfigurator.getWebLogDivDisplayName());
-					comp.setInsertType(AjaxComponentInsertType.Insert);
-				}
-				else
-				{
-					comp.setId(WebLogAppenderPageConfigurator.getWebLogDivDisplayName());
-					comp.setInsertType(AjaxComponentInsertType.Insert_Last);
-				}
-				return ar;
-			}
-			catch (InstantiationException | IllegalAccessException ex)
-			{
-				Logger.getLogger(WebLogAppenderAtmosphereAdapter.class.getName()).log(Level.SEVERE, null, ex);
-			}
-			catch (ClassCastException cce)
-			{
-				Logger.getLogger(WebLogAppenderAtmosphereAdapter.class.getName()).log(Level.SEVERE, "Old Log Entry Found, Removing");
-			}
+			return processMessage(item, record);
 		}
 		return null;
 	}

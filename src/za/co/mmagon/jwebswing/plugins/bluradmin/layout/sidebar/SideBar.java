@@ -16,6 +16,8 @@ import java.util.HashMap;
 import java.util.Set;
 import java.util.logging.Logger;
 
+import static za.co.mmagon.jwebswing.utilities.StaticStrings.STRING_SELECTED;
+
 /**
  * @author Marc Magon
  * @since 05 Apr 2017
@@ -97,13 +99,13 @@ public class SideBar extends Div
 
 		if (selected)
 		{
-			li.addClass("selected");
+			li.addClass(STRING_SELECTED);
 		}
 		if (submenu)
 		{
 			li.addClass("with-sub-menu");
 		}
-		li.addAttribute("ui-sref-active", "selected");
+		li.addAttribute("ui-sref-active", STRING_SELECTED);
 
 		Link link = new Link();
 		link.addClass("al-sidebar-list-link");
@@ -138,7 +140,7 @@ public class SideBar extends Div
 		}
 		if (selected)
 		{
-			list.addClass("selected");
+			list.addClass(STRING_SELECTED);
 		}
 
 		for (ListItem listItem : children)

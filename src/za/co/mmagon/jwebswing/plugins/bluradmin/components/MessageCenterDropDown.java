@@ -6,6 +6,7 @@ import za.co.mmagon.jwebswing.plugins.bluradmin.components.dto.DefaultMessage;
 import za.co.mmagon.jwebswing.plugins.bootstrap.dropdown.BSDropDown;
 import za.co.mmagon.jwebswing.plugins.bootstrap.dropdown.menu.BSDropDownMenuChildren;
 import za.co.mmagon.jwebswing.plugins.moment.Moment;
+import za.co.mmagon.jwebswing.utilities.StaticStrings;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -196,7 +197,7 @@ public class MessageCenterDropDown extends BSDropDown<MessageCenterDropDown>
 	{
 		if (showAllLink == null)
 		{
-			showAllLink = new ShowAllLink("#", null, text);
+			showAllLink = new ShowAllLink(StaticStrings.STRING_HASH, null, text);
 		}
 		return showAllLink;
 	}
@@ -205,7 +206,7 @@ public class MessageCenterDropDown extends BSDropDown<MessageCenterDropDown>
 	{
 		if (settingsLink == null)
 		{
-			settingsLink = new Link("#", null, text);
+			settingsLink = new Link(StaticStrings.STRING_HASH, null, text);
 		}
 		return settingsLink;
 	}
@@ -214,7 +215,7 @@ public class MessageCenterDropDown extends BSDropDown<MessageCenterDropDown>
 	{
 		if (markAllReadLink == null)
 		{
-			markAllReadLink = new Link("#", null, text);
+			markAllReadLink = new Link(StaticStrings.STRING_HASH, null, text);
 		}
 		return markAllReadLink;
 	}
@@ -223,7 +224,7 @@ public class MessageCenterDropDown extends BSDropDown<MessageCenterDropDown>
 	{
 		if (markAllUnReadLink == null)
 		{
-			markAllUnReadLink = new Link("", null, text);
+			markAllUnReadLink = new Link(StaticStrings.STRING_HASH, null, text);
 		}
 		return markAllUnReadLink;
 	}

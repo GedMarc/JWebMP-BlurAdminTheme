@@ -4,6 +4,7 @@ import com.google.inject.servlet.SessionScoped;
 import za.co.mmagon.jwebswing.Event;
 import za.co.mmagon.jwebswing.base.html.*;
 import za.co.mmagon.jwebswing.base.html.attributes.LinkAttributes;
+import za.co.mmagon.jwebswing.utilities.StaticStrings;
 
 /**
  * @author Marc Magon
@@ -53,7 +54,7 @@ public class ContentTop extends Div
 			li.add(link);
 			link.setText(crumb);
 			link.addEvent(event);
-			link.addAttribute(LinkAttributes.HRef, "#");
+			link.addAttribute(LinkAttributes.HRef, StaticStrings.STRING_HASH);
 		}
 		else
 		{
