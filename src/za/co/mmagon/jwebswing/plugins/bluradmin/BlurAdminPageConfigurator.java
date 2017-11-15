@@ -14,6 +14,10 @@ import za.co.mmagon.jwebswing.plugins.plusastab.PlusAsTabFeature;
 import za.co.mmagon.jwebswing.utilities.RegularExpressionsDTO;
 import za.co.mmagon.logger.LogFactory;
 
+import java.util.ArrayList;
+import java.util.LinkedHashSet;
+import java.util.List;
+
 /**
  *
  * @author Marc Magon
@@ -66,13 +70,16 @@ public class BlurAdminPageConfigurator extends PageConfigurator
             PlusAsTabFeature.setFromComponent(page.getBody());
             page.getBody().addFeature(pat);
 
-            page.getBody().getChildren().add(0, new Div().addClass("body-bg"));
-            page.getBody().getChildren().add(0, buildPageLoader());
+	        List bodyChildren = new ArrayList<>(page.getBody().getChildren());
 
-            page.getBody().getCssReferences().add(theme.getCssReference());
-            if (theme.isTransparent())
-            {
-                page.getBody().addClass("blur-theme badmin-transparent");
+	        bodyChildren.add(new Div().addClass("body-bg"));
+	        bodyChildren.add(0, buildPageLoader());
+	        page.getBody().setChildren(new LinkedHashSet<>(bodyChildren));
+
+	        page.getBody().getCssReferences().add(theme.getCssReference());
+	        if (theme.isTransparent())
+	        {
+		        page.getBody().addClass("blur-theme badmin-transparent");
             }
 
             page.getBody().addDto("regex", new RegularExpressionsDTO().addDefaults());
