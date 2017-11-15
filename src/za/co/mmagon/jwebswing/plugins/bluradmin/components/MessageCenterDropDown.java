@@ -40,6 +40,7 @@ public class MessageCenterDropDown extends BSDropDown<MessageCenterDropDown>
 	}
 
 	@Override
+	@SuppressWarnings("unchecked")
 	public void preConfigure()
 	{
 
@@ -98,6 +99,7 @@ public class MessageCenterDropDown extends BSDropDown<MessageCenterDropDown>
 		this.messages = messages;
 	}
 
+	@SuppressWarnings("unchecked")
 	private Link buildMessage(DefaultMessage message)
 	{
 		Link link = new Link();
@@ -182,15 +184,7 @@ public class MessageCenterDropDown extends BSDropDown<MessageCenterDropDown>
 	@Override
 	public int hashCode()
 	{
-		int result = super.hashCode();
-		result = 31 * result + showAllLink.hashCode();
-		result = 31 * result + settingsLink.hashCode();
-		result = 31 * result + markAllReadLink.hashCode();
-		result = 31 * result + markAllUnReadLink.hashCode();
-		result = 31 * result + (getHeader() != null ? getHeader().hashCode() : 0);
-		result = 31 * result + getMessages().hashCode();
-		result = 31 * result + getMessagesToShow();
-		return result;
+		return super.hashCode();
 	}
 
 	public Link getShowAllLink(String text)
