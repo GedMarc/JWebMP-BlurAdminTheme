@@ -1,4 +1,4 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
@@ -32,7 +32,6 @@
             <url>https://jwebswing.com/artifactory/libs-snapshot</url>
         </repository>
     </repositories>
-
 
 
     <properties>
@@ -174,4 +173,21 @@
     <ciManagement>
         <system>TeamCity</system>
         <url>http://jwebswing.com/teamcity</url>
-    </ciManagement>    <reporting>        <plugins>            <plugin>                <groupId>org.jacoco</groupId>                <artifactId>jacoco-maven-plugin</artifactId>     <version>0.7.9</version>           <reportSets>                    <reportSet>                        <reports>                            <!-- select non-aggregate reports -->                            <report>report</report>                        </reports>                    </reportSet>                </reportSets>            </plugin>        </plugins>    </reporting></project>
+    </ciManagement>
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.7.9</version>
+                <reportSets>
+                    <reportSet>
+                        <reports>                            <!-- select non-aggregate reports -->
+                            <report>report</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+            </plugin>
+        </plugins>
+    </reporting>
+</project>
