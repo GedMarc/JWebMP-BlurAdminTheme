@@ -182,7 +182,7 @@
                 <version>0.7.9</version>
                 <reportSets>
                     <reportSet>
-                        <reports>                            <!-- select non-aggregate reports -->
+                        <reports>
                             <report>report</report>
                         </reports>
                     </reportSet>
