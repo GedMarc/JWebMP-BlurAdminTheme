@@ -4,7 +4,7 @@ import za.co.mmagon.jwebswing.base.html.Div;
 import za.co.mmagon.jwebswing.base.html.Link;
 import za.co.mmagon.jwebswing.plugins.bluradmin.layout.display.DisplayScreen;
 import za.co.mmagon.jwebswing.plugins.bootstrap.buttons.BSButton;
-import za.co.mmagon.jwebswing.plugins.bootstrap.componentoptions.BSComponentWidthOptions;
+import za.co.mmagon.jwebswing.plugins.bootstrap.componentoptions.BSWidthOptions;
 import za.co.mmagon.jwebswing.plugins.bootstrap.forms.BSForm;
 import za.co.mmagon.jwebswing.plugins.bootstrap.forms.controls.BSFormEmailInput;
 import za.co.mmagon.jwebswing.plugins.bootstrap.forms.controls.BSFormPasswordInput;
@@ -35,8 +35,8 @@ public class BlurAdminLoginScreen extends DisplayScreen
         Div block = new Div();
         block.addClass("auth-block");
         block.addClass("col-offset-md-3");
-        block.addClass(BSComponentWidthOptions.col_md_6);
-        block.addClass(BSComponentWidthOptions.col_xs_12);
+	    block.addClass(BSWidthOptions.col_md_6);
+	    block.addClass(BSWidthOptions.col_xs_12);
 
         return block;
     }
@@ -50,7 +50,7 @@ public class BlurAdminLoginScreen extends DisplayScreen
         Div block = new Div();
         block.addClass("auth-block");
         div.add(block);
-	
+
 	    Link newToApp = new Link();
 
         newToApp.setText("New to the app? Register Today!");
@@ -76,25 +76,25 @@ public class BlurAdminLoginScreen extends DisplayScreen
         registerButton.addClass("btn-default btn-auth");
         return registerButton;
     }
-	
+
 	protected BSFormGroup<?> buildEmailInput()
 	{
         BSFormEmailInput emailLogin = new BSFormEmailInput();
         emailLogin.setPlaceholder("Email Input");
         emailLogin.setRequired();
-		emailLogin.addClass(BSComponentWidthOptions.col_xs_12);
+		emailLogin.addClass(BSWidthOptions.col_xs_12);
 		BSFormGroup loginGroup = new BSFormGroup(null, emailLogin, null);
         loginGroup.setAngularValidation(true);
         return loginGroup;
     }
-	
+
 	protected BSFormGroup<?> buildPasswordInput()
 	{
         BSFormPasswordInput passwordInput = new BSFormPasswordInput();
         passwordInput.setMinimumLength(4);
         passwordInput.setRequired();
         passwordInput.setPlaceholder("Password");
-		passwordInput.addClass(BSComponentWidthOptions.col_xs_12);
+		passwordInput.addClass(BSWidthOptions.col_xs_12);
 		BSFormGroup passwordGroup = new BSFormGroup(null, passwordInput, null);
         passwordGroup.setAngularValidation(true);
         return passwordGroup;
@@ -104,7 +104,7 @@ public class BlurAdminLoginScreen extends DisplayScreen
     {
         BSFormGroup buttonGroup = new BSFormGroup();
         buttonGroup.addAttribute("style", "margin-top:5px;");
-        buttonGroup.addClass(BSComponentWidthOptions.col_xs_12);
+	    buttonGroup.addClass(BSWidthOptions.col_xs_12);
         return buttonGroup;
     }
 
@@ -113,7 +113,7 @@ public class BlurAdminLoginScreen extends DisplayScreen
         Link newToApp = new Link();
         newToApp.setText(text);
         newToApp.addClass("auth-link");
-        newToApp.addClass(BSComponentWidthOptions.col_xs_12);
+	    newToApp.addClass(BSWidthOptions.col_xs_12);
         return newToApp;
     }
 
@@ -122,15 +122,15 @@ public class BlurAdminLoginScreen extends DisplayScreen
         Link newToApp = new Link();
         newToApp.setText(text);
         newToApp.addClass("auth-link text-muted");
-        newToApp.addClass(BSComponentWidthOptions.col_xs_12);
+	    newToApp.addClass(BSWidthOptions.col_xs_12);
         return newToApp;
     }
-	
+
 	protected BSFormGroup<?> buildTextInput()
 	{
         BSFormTextInput textInput = new BSFormTextInput();
         textInput.setRequired();
-		textInput.addClass(BSComponentWidthOptions.col_xs_12);
+		textInput.addClass(BSWidthOptions.col_xs_12);
 		BSFormGroup<? extends BSFormGroup> enterpriseName = new BSFormGroup(null, textInput, null);
 		enterpriseName.setAngularValidation(true);
         return enterpriseName;

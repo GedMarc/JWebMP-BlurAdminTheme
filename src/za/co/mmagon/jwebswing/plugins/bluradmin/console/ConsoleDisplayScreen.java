@@ -1,7 +1,7 @@
 package za.co.mmagon.jwebswing.plugins.bluradmin.console;
 
 import za.co.mmagon.jwebswing.plugins.bluradmin.layout.display.DisplayScreen;
-import za.co.mmagon.jwebswing.plugins.bootstrap.componentoptions.BSComponentWidthOptions;
+import za.co.mmagon.jwebswing.plugins.bootstrap.componentoptions.BSWidthOptions;
 import za.co.mmagon.plugins.weblogappender.WebLogAppenderDiv;
 
 /**
@@ -24,8 +24,8 @@ public class ConsoleDisplayScreen extends DisplayScreen
         webLogger = new ConsoleLogger();
         webLogger.addClass("auth-block");
         webLogger.addClass("col-offset-md-3");
-        webLogger.addClass(BSComponentWidthOptions.col_md_6);
-        webLogger.addClass(BSComponentWidthOptions.col_xs_12);
+	    webLogger.addClass(BSWidthOptions.col_md_6);
+	    webLogger.addClass(BSWidthOptions.col_xs_12);
         webLogger.addAttribute("style", "overflow-y:auto;height:380px;");
 
         getContentTop().getHeader().setText(title);
