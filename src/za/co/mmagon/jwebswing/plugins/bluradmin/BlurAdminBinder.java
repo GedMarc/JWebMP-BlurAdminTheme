@@ -1,9 +1,9 @@
 package za.co.mmagon.jwebswing.plugins.bluradmin;
 
-import com.armineasy.injection.abstractions.GuiceInjectorModule;
-import com.armineasy.injection.interfaces.GuiceDefaultBinder;
 import com.google.inject.Singleton;
 import com.google.inject.servlet.SessionScoped;
+import za.co.mmagon.guiceinjection.abstractions.GuiceInjectorModule;
+import za.co.mmagon.guiceinjection.interfaces.GuiceDefaultBinder;
 import za.co.mmagon.jwebswing.plugins.bluradmin.components.LongRunningProgressBar;
 import za.co.mmagon.jwebswing.plugins.bluradmin.console.WebLogAppender;
 

@@ -1,9 +1,9 @@
 package za.co.mmagon.jwebswing.plugins.bluradmin.layout;
 
-import com.armineasy.injection.GuiceContext;
-import com.armineasy.injection.abstractions.GuiceSiteInjectorModule;
-import com.armineasy.injection.interfaces.GuiceSiteBinder;
 import com.google.inject.servlet.SessionScoped;
+import za.co.mmagon.guiceinjection.GuiceContext;
+import za.co.mmagon.guiceinjection.abstractions.GuiceSiteInjectorModule;
+import za.co.mmagon.guiceinjection.interfaces.GuiceSiteBinder;
 import za.co.mmagon.jwebswing.plugins.bluradmin.layout.display.ContentTop;
 import za.co.mmagon.jwebswing.plugins.bluradmin.layout.display.DisplayScreen;
 import za.co.mmagon.jwebswing.plugins.bluradmin.layout.top.NavToggleButton;
@@ -19,7 +19,7 @@ import java.util.logging.Logger;
 public class BlurAdminBinder extends GuiceSiteBinder
 {
 	private static final Logger log = LogFactory.getLog("BlurAdminBinder");
-	
+
 	/*
      * Constructs a new BlurAdminBinder
      */
@@ -38,7 +38,7 @@ public class BlurAdminBinder extends GuiceSiteBinder
 
         module.bind(ContentTop.class).in(SessionScoped.class);
         module.bind(BlurAdminSessionProperties.class).in(SessionScoped.class);
-	
+
 	    module.bind(DisplayScreen.class).toProvider(() ->
 	                                                {
             if (!GuiceContext.isBuildingInjector())

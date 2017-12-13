@@ -1,9 +1,9 @@
 package za.co.mmagon.jwebswing.plugins.bluradmin.layout.sidebar;
 
-import com.armineasy.injection.GuiceContext;
 import com.google.inject.Key;
 import com.google.inject.name.Names;
 import com.google.inject.servlet.RequestScoped;
+import za.co.mmagon.guiceinjection.GuiceContext;
 import za.co.mmagon.jwebswing.base.angular.AngularAttributes;
 import za.co.mmagon.jwebswing.base.html.*;
 import za.co.mmagon.jwebswing.htmlbuilder.css.colours.ColourCSSImpl;

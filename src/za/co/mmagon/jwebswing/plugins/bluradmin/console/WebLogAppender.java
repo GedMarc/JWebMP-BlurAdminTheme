@@ -1,8 +1,8 @@
 package za.co.mmagon.jwebswing.plugins.bluradmin.console;
 
-import com.armineasy.injection.GuiceContext;
 import org.atmosphere.cpr.AtmosphereResource;
 import sun.util.logging.PlatformLogger;
+import za.co.mmagon.guiceinjection.GuiceContext;
 import za.co.mmagon.jwebswing.base.ajax.AjaxComponentInsertType;
 import za.co.mmagon.jwebswing.base.ajax.AjaxComponentUpdates;
 import za.co.mmagon.jwebswing.base.ajax.AjaxResponse;

@@ -1,7 +1,7 @@
 package za.co.mmagon.jwebswing.plugins.bluradmin.util;
 
-import com.armineasy.injection.GuiceContext;
 import org.atmosphere.cpr.AtmosphereResource;
+import za.co.mmagon.guiceinjection.GuiceContext;
 import za.co.mmagon.jwebswing.Event;
 import za.co.mmagon.jwebswing.Feature;
 import za.co.mmagon.jwebswing.base.ComponentHierarchyBase;
