@@ -1,7 +1,6 @@
 package za.co.mmagon.jwebswing.plugins.bluradmin.console;
 
 import org.atmosphere.cpr.AtmosphereResource;
-import sun.util.logging.PlatformLogger;
 import za.co.mmagon.guiceinjection.GuiceContext;
 import za.co.mmagon.jwebswing.base.ajax.AjaxComponentInsertType;
 import za.co.mmagon.jwebswing.base.ajax.AjaxComponentUpdates;
@@ -34,53 +33,54 @@ public class WebLogAppender extends Handler
 			return;
 		}
 
-		PlatformLogger.Level levelEnum = PlatformLogger.Level.valueOf(record.getLevel().getName());
+		Level levelEnum = record.getLevel();
 		processLogRecord(levelEnum, record);
 	}
 
-	private void processLogRecord(PlatformLogger.Level levelEnum,LogRecord record)
+	private void processLogRecord(Level levelEnum, LogRecord record)
 	{
 		if (WebLogAppenderPageConfigurator.isEnabled() && GuiceContext.getInstance(AtmosphereResource.class) != null)
 		{
 			Optional<AjaxResponse> autoUpdate;
-			switch (levelEnum)
+			switch (levelEnum.getName())
 			{
-				case INFO:
+				case "INFO":
 				{
 					autoUpdate = Optional.ofNullable(renderInfoMessage(record));
 					break;
 				}
-				case CONFIG:
+				case "CONFIG":
 				{
 					autoUpdate = Optional.ofNullable(renderConfigMessage(record));
 					break;
 				}
-				case WARNING:
+				case "WARNING":
 				{
 					autoUpdate = Optional.ofNullable(renderWarningMessage(record));
 					break;
 				}
-				case SEVERE:
+				case "SEVERE":
 				{
 					autoUpdate = Optional.ofNullable(renderSevereMessage(record));
 					break;
 				}
-				case FINE:
+				case "FINE":
 				{
 					autoUpdate = Optional.ofNullable(renderFineMessage(record));
 					break;
 				}
-				case FINER:
+				case "FINER":
 				{
 					autoUpdate = Optional.ofNullable(renderFinerMessage(record));
 					break;
 				}
-				case FINEST:
+				case "FINEST":
 				{
 					autoUpdate = Optional.ofNullable(renderFinestMessage(record));
 					break;
 				}
-				default:{
+				default:
+				{
 					autoUpdate = Optional.ofNullable(renderInfoMessage(record));
 					break;
 				}
