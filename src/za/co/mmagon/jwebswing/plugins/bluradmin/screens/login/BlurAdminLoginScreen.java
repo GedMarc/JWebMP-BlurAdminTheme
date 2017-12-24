@@ -4,12 +4,12 @@ import za.co.mmagon.jwebswing.base.html.Div;
 import za.co.mmagon.jwebswing.base.html.Link;
 import za.co.mmagon.jwebswing.plugins.bluradmin.layout.display.DisplayScreen;
 import za.co.mmagon.jwebswing.plugins.bootstrap.buttons.BSButton;
-import za.co.mmagon.jwebswing.plugins.bootstrap.componentoptions.BSWidthOptions;
 import za.co.mmagon.jwebswing.plugins.bootstrap.forms.BSForm;
 import za.co.mmagon.jwebswing.plugins.bootstrap.forms.controls.BSFormEmailInput;
 import za.co.mmagon.jwebswing.plugins.bootstrap.forms.controls.BSFormPasswordInput;
 import za.co.mmagon.jwebswing.plugins.bootstrap.forms.controls.BSFormTextInput;
 import za.co.mmagon.jwebswing.plugins.bootstrap.forms.groups.BSFormGroup;
+import za.co.mmagon.jwebswing.plugins.bootstrap.options.BSWidthOptions;
 import za.co.mmagon.jwebswing.utilities.StaticStrings;
 
 /**

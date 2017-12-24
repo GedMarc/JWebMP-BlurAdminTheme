@@ -1,7 +1,7 @@
 package za.co.mmagon.jwebswing.plugins.bluradmin.console;
 
 import za.co.mmagon.jwebswing.plugins.bluradmin.layout.display.DisplayScreen;
-import za.co.mmagon.jwebswing.plugins.bootstrap.componentoptions.BSWidthOptions;
+import za.co.mmagon.jwebswing.plugins.bootstrap.options.BSWidthOptions;
 import za.co.mmagon.plugins.weblogappender.WebLogAppenderDiv;
 
 /**
