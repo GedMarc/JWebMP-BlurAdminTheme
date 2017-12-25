@@ -38,6 +38,7 @@ public class PageTop extends Div
 	 * Constructs a new PageTop
 	 */
 	@Inject
+	@SuppressWarnings("unchecked")
 	protected PageTop(@RequestParameters java.util.Map<String, String[]> params)
 	{
 		setID("PageTop");

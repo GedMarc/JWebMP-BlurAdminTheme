@@ -19,92 +19,93 @@ import java.util.LinkedHashSet;
 import java.util.List;
 
 /**
- *
  * @author Marc Magon
  * @since 08 Jun 2017
  */
 @PluginInformation(pluginName = "Blur Admin Theme",
-        pluginDescription = "Bootstrap is the most popular HTML, CSS, and JS framework for developing responsive, mobile first projects on the web.<br/> We are bootstrap 4 ready!",
-        pluginUniqueName = "jwebswing-bootstrap",
-        pluginVersion = "3.3.7 / 4a6",
-        pluginCategories = "bootstrap,ui,web ui, framework",
-        pluginSubtitle = "Bootstrap makes front-end web development faster and easier.",
-        pluginSourceUrl = "http://getbootstrap.com/",
-        pluginWikiUrl = "https://github.com/GedMarc/JWebSwing-BootstrapPlugin/wiki",
-        pluginGitUrl = "https://github.com/GedMarc/JWebSwing-BootstrapPlugin",
-        pluginIconUrl = "bower_components/bootstrap/bootstrapicon.jpg",
-        pluginIconImageUrl = "bower_components/bootstrap/bootstraplogo.jpg",
-        pluginOriginalHomepage = "http://getbootstrap.com/",
-        pluginDownloadUrl = "https://sourceforge.net/projects/jwebswing/files/plugins/BootstrapPlugin.jar/download"
+		pluginDescription = "Bootstrap is the most popular HTML, CSS, and JS framework for developing responsive, mobile first projects on the web.<br/> We are bootstrap 4 ready!",
+		pluginUniqueName = "jwebswing-bootstrap",
+		pluginVersion = "3.3.7 / 4a6",
+		pluginCategories = "bootstrap,ui,web ui, framework",
+		pluginSubtitle = "Bootstrap makes front-end web development faster and easier.",
+		pluginSourceUrl = "http://getbootstrap.com/",
+		pluginWikiUrl = "https://github.com/GedMarc/JWebSwing-BootstrapPlugin/wiki",
+		pluginGitUrl = "https://github.com/GedMarc/JWebSwing-BootstrapPlugin",
+		pluginIconUrl = "bower_components/bootstrap/bootstrapicon.jpg",
+		pluginIconImageUrl = "bower_components/bootstrap/bootstraplogo.jpg",
+		pluginOriginalHomepage = "http://getbootstrap.com/",
+		pluginDownloadUrl = "https://sourceforge.net/projects/jwebswing/files/plugins/BootstrapPlugin.jar/download"
 )
 public class BlurAdminPageConfigurator extends PageConfigurator
 {
 
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-    private static BlurAdminReferencePool theme = BlurAdminReferencePool.BootstrapDefaultTheme;
+	private static BlurAdminReferencePool theme = BlurAdminReferencePool.BootstrapDefaultTheme;
 
-    static
-    {
-        LogFactory.getInstance().addLogHandler(new WebLogAppender());
-    }
+	static
+	{
+		LogFactory.getInstance().addLogHandler(new WebLogAppender());
+	}
 
-    /*
-     * Constructs a new BlurAdminPageConfigurator
-     */
-    public BlurAdminPageConfigurator()
-    {
-        //Nothing needed
-    }
+	/*
+	 * Constructs a new BlurAdminPageConfigurator
+	 */
+	public BlurAdminPageConfigurator()
+	{
+		//Nothing needed
+	}
 
-    @Override
-    public Page configure(Page page)
-    {
-        if (!page.isConfigured())
-        {
-            JQueryPageConfigurator.setRequired(page.getBody(), true);
-            AngularPageConfigurator.setRequired(page.getBody(), true);
-            BootstrapPageConfigurator.setRequired(page.getBody(), true);
+	public static BlurAdminReferencePool getTheme()
+	{
+		return theme;
+	}
 
-            PlusAsTabFeature pat = new PlusAsTabFeature().setKey(13);
-            PlusAsTabFeature.setFromComponent(page.getBody());
-            page.getBody().addFeature(pat);
+	public static void setTheme(BlurAdminReferencePool theme)
+	{
+		BlurAdminPageConfigurator.theme = theme;
+	}
 
-	        List bodyChildren = new ArrayList<>(page.getBody().getChildren());
+	@Override
+	@SuppressWarnings("unchecked")
+	public Page configure(Page page)
+	{
+		if (!page.isConfigured())
+		{
+			JQueryPageConfigurator.setRequired(page.getBody(), true);
+			AngularPageConfigurator.setRequired(page.getBody(), true);
+			BootstrapPageConfigurator.setRequired(page.getBody(), true);
 
-	        bodyChildren.add(new Div().addClass("body-bg"));
-	        bodyChildren.add(0, buildPageLoader());
-	        page.getBody().setChildren(new LinkedHashSet<>(bodyChildren));
+			PlusAsTabFeature pat = new PlusAsTabFeature().setKey(13);
+			PlusAsTabFeature.setFromComponent(page.getBody());
+			page.getBody().addFeature(pat);
 
-	        page.getBody().getCssReferences().add(theme.getCssReference());
-	        if (theme.isTransparent())
-	        {
-		        page.getBody().addClass("blur-theme badmin-transparent");
-            }
+			List bodyChildren = new ArrayList<>(page.getBody().getChildren());
 
-            page.getBody().addDto("regex", new RegularExpressionsDTO().addDefaults());
+			bodyChildren.add(new Div().addClass("body-bg"));
+			bodyChildren.add(0, buildPageLoader());
+			page.getBody().setChildren(new LinkedHashSet<>(bodyChildren));
 
-            page.getBody().addCssReference(new CSSReference("Blur Override CSS", 1.0, "bluradmintheme/overrides/bluroverrides.css"));
-        }
-        return page;
-    }
+			page.getBody().getCssReferences().add(theme.getCssReference());
+			if (theme.isTransparent())
+			{
+				page.getBody().addClass("blur-theme badmin-transparent");
+			}
 
-    public static BlurAdminReferencePool getTheme()
-    {
-        return theme;
-    }
+			page.getBody().addDto("regex", new RegularExpressionsDTO().addDefaults());
 
-    public static void setTheme(BlurAdminReferencePool theme)
-    {
-        BlurAdminPageConfigurator.theme = theme;
-    }
+			page.getBody().addCssReference(new CSSReference("Blur Override CSS", 1.0, "bluradmintheme/overrides/bluroverrides.css"));
+		}
+		return page;
+	}
 
-    private Div buildPageLoader()
-    {
-        Div d = new Div();
-        d.setID("preloader");
-        d.add(new Div());
-        d.addAttribute(AngularAttributes.ngShow, "jw.pageLoading");
-        return d;
-    }
+	private Div buildPageLoader()
+	{
+		Div d = new Div();
+		d.setID("preloader");
+		d.add(new Div());
+		d.addAttribute(AngularAttributes.ngShow, "jw.pageLoading");
+		return d;
+	}
+
 }
