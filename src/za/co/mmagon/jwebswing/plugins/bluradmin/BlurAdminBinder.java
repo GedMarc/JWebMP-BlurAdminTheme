@@ -23,10 +23,12 @@ public class BlurAdminBinder extends GuiceDefaultBinder
         //Nothing needed
     }
 
-    @Override
-    public void onBind(GuiceInjectorModule module)
-    {
-        module.bind(WebLogAppender.class).in(Singleton.class);
-        module.bind(LongRunningProgressBar.class).in(SessionScoped.class);
-    }
+	@Override
+	public void onBind(GuiceInjectorModule module)
+	{
+		module.bind(WebLogAppender.class)
+				.in(Singleton.class);
+		module.bind(LongRunningProgressBar.class)
+				.in(SessionScoped.class);
+	}
 }
