@@ -2,6 +2,7 @@ package za.co.mmagon.jwebswing.plugins.bluradmin.layout;
 
 import za.co.mmagon.guiceinjection.GuiceContext;
 import za.co.mmagon.jwebswing.Page;
+import za.co.mmagon.jwebswing.annotations.PageConfiguration;
 import za.co.mmagon.jwebswing.base.ajax.AjaxCall;
 import za.co.mmagon.jwebswing.base.ajax.AjaxResponse;
 import za.co.mmagon.jwebswing.generics.WebReference;
@@ -16,6 +17,7 @@ import za.co.mmagon.jwebswing.plugins.bluradmin.layout.top.PageTop;
  * @author Marc Magon
  * @since 07 Jun 2017
  */
+@PageConfiguration(url = "/blur")
 public class BlurAdminHome extends Page
 {
 
