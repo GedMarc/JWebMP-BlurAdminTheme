@@ -8,7 +8,6 @@ import za.co.mmagon.jwebswing.base.html.Div;
 import za.co.mmagon.jwebswing.base.references.CSSReference;
 import za.co.mmagon.jwebswing.plugins.PluginInformation;
 import za.co.mmagon.jwebswing.plugins.bluradmin.console.WebLogAppender;
-import za.co.mmagon.jwebswing.plugins.bootstrap.BootstrapPageConfigurator;
 import za.co.mmagon.jwebswing.plugins.jquery.JQueryPageConfigurator;
 import za.co.mmagon.jwebswing.plugins.plusastab.PlusAsTabFeature;
 import za.co.mmagon.jwebswing.utilities.RegularExpressionsDTO;
@@ -74,7 +73,6 @@ public class BlurAdminPageConfigurator extends PageConfigurator
 		{
 			JQueryPageConfigurator.setRequired(true);
 			AngularPageConfigurator.setRequired(true);
-			BootstrapPageConfigurator.setRequired(page.getBody(), true);
 
 			PlusAsTabFeature pat = new PlusAsTabFeature().setKey(13);
 			PlusAsTabFeature.setFromComponent(page.getBody());
