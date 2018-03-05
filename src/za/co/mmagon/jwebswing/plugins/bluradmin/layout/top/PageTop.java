@@ -7,6 +7,7 @@ import com.google.inject.servlet.RequestParameters;
 import za.co.mmagon.guiceinjection.GuiceContext;
 import za.co.mmagon.jwebswing.base.ComponentHierarchyBase;
 import za.co.mmagon.jwebswing.base.html.*;
+import za.co.mmagon.jwebswing.base.html.inputs.InputSearchType;
 import za.co.mmagon.jwebswing.generics.Pair;
 import za.co.mmagon.jwebswing.plugins.bluradmin.components.MessageCenterDropDown;
 import za.co.mmagon.jwebswing.plugins.bootstrap.dropdown.BSDropDown;
@@ -21,7 +22,8 @@ import java.util.logging.Logger;
  * @author Marc Magon
  * @since 06 Apr 2017
  */
-public class PageTop extends Div
+public class PageTop
+		extends Div
 {
 
 	private static final Logger log = Logger.getLogger(PageTop.class.getName());
@@ -47,7 +49,8 @@ public class PageTop extends Div
 		rightSideDiv.addClass("user-profile clearfix");
 
 		//Calling all sidebar builders
-		Set<Class<? extends BlurAdminPageTop>> sideBarInjections = GuiceContext.reflect().getSubTypesOf(BlurAdminPageTop.class);
+		Set<Class<? extends BlurAdminPageTop>> sideBarInjections = GuiceContext.reflect()
+		                                                                       .getSubTypesOf(BlurAdminPageTop.class);
 		if (sideBarInjections.isEmpty())
 		{
 			log.severe("Sidebar will be empty, there are no classes that extend BlurAdminSideBar");
@@ -61,8 +64,13 @@ public class PageTop extends Div
 			}
 
 			java.util.Map<String, String[]> queryParameters = params;
-			java.util.Map<String, String> localStorage = GuiceContext.inject().getInstance(Key.get(java.util.Map.class, Names.named("LocalStorage")));
-			java.util.Map<String, String> sessionStorage = GuiceContext.inject().getInstance(Key.get(java.util.Map.class, Names.named("SessionStorage")));
+			java.util.Map<String, String> localStorage = GuiceContext.inject()
+			                                                         .getInstance(
+					                                                         Key.get(java.util.Map.class, Names.named("LocalStorage")));
+			java.util.Map<String, String> sessionStorage = GuiceContext.inject()
+			                                                           .getInstance(
+					                                                           Key.get(java.util.Map.class, Names.named
+							                                                                                              ("SessionStorage")));
 
 			for (BlurAdminPageTop blur : blurs)
 			{
@@ -286,7 +294,9 @@ public class PageTop extends Div
 		return result;
 	}
 
-	class DropDownArrow extends Italic implements BSDropDownMenuChildren
+	class DropDownArrow
+			extends Italic
+			implements BSDropDownMenuChildren
 	{
 
 		private static final long serialVersionUID = 1L;
