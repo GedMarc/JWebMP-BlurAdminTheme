@@ -33,9 +33,9 @@ import java.util.List;
 		pluginIconUrl = "bower_components/bootstrap/bootstrapicon.jpg",
 		pluginIconImageUrl = "bower_components/bootstrap/bootstraplogo.jpg",
 		pluginOriginalHomepage = "http://getbootstrap.com/",
-		pluginDownloadUrl = "https://sourceforge.net/projects/jwebswing/files/plugins/BootstrapPlugin.jar/download"
-)
-public class BlurAdminPageConfigurator extends PageConfigurator
+		pluginDownloadUrl = "https://sourceforge.net/projects/jwebswing/files/plugins/BootstrapPlugin.jar/download")
+public class BlurAdminPageConfigurator
+		extends PageConfigurator
 {
 
 	private static final long serialVersionUID = 1L;
@@ -44,7 +44,8 @@ public class BlurAdminPageConfigurator extends PageConfigurator
 
 	static
 	{
-		LogFactory.getInstance().addLogHandler(new WebLogAppender());
+		LogFactory.getInstance()
+		          .addLogHandler(new WebLogAppender());
 	}
 
 	/*
@@ -74,25 +75,33 @@ public class BlurAdminPageConfigurator extends PageConfigurator
 			JQueryPageConfigurator.setRequired(true);
 			AngularPageConfigurator.setRequired(true);
 
-			PlusAsTabFeature pat = new PlusAsTabFeature().setKey(13);
+			PlusAsTabFeature pat = new PlusAsTabFeature(page.getBody()).setKey(13);
 			PlusAsTabFeature.setFromComponent(page.getBody());
-			page.getBody().addFeature(pat);
+			page.getBody()
+			    .addFeature(pat);
 
-			List bodyChildren = new ArrayList<>(page.getBody().getChildren());
+			List bodyChildren = new ArrayList<>(page.getBody()
+			                                        .getChildren());
 
 			bodyChildren.add(new Div().addClass("body-bg"));
 			bodyChildren.add(0, buildPageLoader());
-			page.getBody().setChildren(new LinkedHashSet<>(bodyChildren));
+			page.getBody()
+			    .setChildren(new LinkedHashSet<>(bodyChildren));
 
-			page.getBody().getCssReferences().add(theme.getCssReference());
+			page.getBody()
+			    .getCssReferences()
+			    .add(theme.getCssReference());
 			if (theme.isTransparent())
 			{
-				page.getBody().addClass("blur-theme badmin-transparent");
+				page.getBody()
+				    .addClass("blur-theme badmin-transparent");
 			}
 
-			page.getBody().addDto("regex", new RegularExpressionsDTO().addDefaults());
+			page.getBody()
+			    .addDto("regex", new RegularExpressionsDTO().addDefaults());
 
-			page.getBody().addCssReference(new CSSReference("Blur Override CSS", 1.0, "bluradmintheme/overrides/bluroverrides.css"));
+			page.getBody()
+			    .addCssReference(new CSSReference("Blur Override CSS", 1.0, "bluradmintheme/overrides/bluroverrides.css"));
 		}
 		return page;
 	}
