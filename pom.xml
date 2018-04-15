@@ -2,8 +2,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>za.co.mmagon</groupId>
-    <artifactId>jwebswing-blur-admin-theme</artifactId>
+    <groupId>com.jwebmp</groupId>
+    <artifactId>jwebmp-blur-admin-theme</artifactId>
     <version>0.0.0_0</version>
     <packaging>jar</packaging>
 
@@ -144,50 +144,50 @@
 
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>jwebswing</artifactId>
+            <artifactId>jwebmp-core</artifactId>
             <version>${project.version}</version>
             <type>jar</type>
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>jwebswing</artifactId>
+            <artifactId>jwebmp-core</artifactId>
             <version>${project.version}</version>
             <scope>test</scope>
             <type>test-jar</type>
         </dependency>
         <dependency>
-            <groupId>za.co.mmagon</groupId>
-            <artifactId>jwebswing-bootstrap</artifactId>
+            <groupId>com.jwebmp</groupId>
+            <artifactId>jwebmp-bootstrap</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>za.co.mmagon</groupId>
-            <artifactId>jwebswing-momentjs</artifactId>
+            <groupId>com.jwebmp</groupId>
+            <artifactId>jwebmp-momentjs</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>za.co.mmagon</groupId>
-            <artifactId>jwebswing-plus-as-tab</artifactId>
+            <groupId>com.jwebmp</groupId>
+            <artifactId>jwebmp-plus-as-tab</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>za.co.mmagon</groupId>
-            <artifactId>jwebswing-jquery-ui-layout</artifactId>
+            <groupId>com.jwebmp</groupId>
+            <artifactId>jwebmp-jquery-ui-layout</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>za.co.mmagon</groupId>
-            <artifactId>jwebswing-angular-slim-scroll</artifactId>
+            <groupId>com.jwebmp</groupId>
+            <artifactId>jwebmp-angular-slim-scroll</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>za.co.mmagon</groupId>
-            <artifactId>jwebswing-web-log-appender</artifactId>
+            <groupId>com.jwebmp</groupId>
+            <artifactId>jwebmp-web-log-appender</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>za.co.mmagon</groupId>
-            <artifactId>jwebswing-toastr</artifactId>
+            <groupId>com.jwebmp</groupId>
+            <artifactId>jwebmp-toastr</artifactId>
             <version>${project.version}</version>
         </dependency>
 
