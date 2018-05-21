@@ -21,7 +21,7 @@ import com.google.inject.Inject;
 import com.jwebmp.PlaceHolder;
 import com.jwebmp.base.html.Div;
 import com.jwebmp.plugins.jquerylayout.layout.JQLayout;
-import com.jwebmp.plugins.jquerylayout.layout.options.LayoutResponsiveSize;
+import com.jwebmp.plugins.jquerylayout.layout.enumerations.LayoutResponsiveSize;
 
 /**
  * @author Marc Magon
