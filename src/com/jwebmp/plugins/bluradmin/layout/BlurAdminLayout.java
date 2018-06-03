@@ -20,7 +20,7 @@ package com.jwebmp.plugins.bluradmin.layout;
 import com.google.inject.Inject;
 import com.jwebmp.PlaceHolder;
 import com.jwebmp.base.html.Div;
-import com.jwebmp.plugins.jquerylayout.layout.JQLayout;
+import com.jwebmp.plugins.jquerylayout.layout.components.BorderLayout;
 import com.jwebmp.plugins.jquerylayout.layout.enumerations.LayoutResponsiveSize;
 
 /**
@@ -29,7 +29,7 @@ import com.jwebmp.plugins.jquerylayout.layout.enumerations.LayoutResponsiveSize;
  */
 @com.google.inject.Singleton
 public class BlurAdminLayout
-		extends JQLayout
+		extends BorderLayout
 {
 
 	private static final long serialVersionUID = 1L;
@@ -41,7 +41,7 @@ public class BlurAdminLayout
 	@SuppressWarnings("")
 	public BlurAdminLayout(BlurAdminBody body)
 	{
-		super(body);
+		super();
 		getNorth().getContentDiv()
 		          .add(new PlaceHolder("PageTop"));
 		getWest().getContentDiv()

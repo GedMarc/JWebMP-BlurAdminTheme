@@ -18,7 +18,7 @@
 package com.jwebmp.plugins.bluradmin.layout;
 
 import com.jwebmp.base.html.Body;
-import com.jwebmp.utilities.RegularExpressionsDTO;
+import com.jwebmp.utilities.regex.RegularExpressionsDTO;
 import za.co.mmagon.guiceinjection.GuiceContext;
 
 /**
