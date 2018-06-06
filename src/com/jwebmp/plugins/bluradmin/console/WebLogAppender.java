@@ -20,12 +20,12 @@ package com.jwebmp.plugins.bluradmin.console;
 import com.jwebmp.base.ajax.AjaxComponentInsertType;
 import com.jwebmp.base.ajax.AjaxComponentUpdates;
 import com.jwebmp.base.ajax.AjaxResponse;
+import com.jwebmp.guiceinjection.GuiceContext;
+import com.jwebmp.logger.LogFactory;
+import com.jwebmp.plugins.weblogappender.WebLogAppenderAtmosphereAdapter;
+import com.jwebmp.plugins.weblogappender.WebLogAppenderPageConfigurator;
+import com.jwebmp.plugins.weblogappender.annotations.*;
 import org.atmosphere.cpr.AtmosphereResource;
-import za.co.mmagon.guiceinjection.GuiceContext;
-import za.co.mmagon.logger.LogFactory;
-import za.co.mmagon.plugins.weblogappender.WebLogAppenderAtmosphereAdapter;
-import za.co.mmagon.plugins.weblogappender.WebLogAppenderPageConfigurator;
-import za.co.mmagon.plugins.weblogappender.annotations.*;
 
 import java.util.Optional;
 import java.util.Set;

@@ -19,7 +19,7 @@ package com.jwebmp.plugins.bluradmin.console;
 
 import com.jwebmp.plugins.bluradmin.layout.display.DisplayScreen;
 import com.jwebmp.plugins.bootstrap.options.BSWidthOptions;
-import za.co.mmagon.plugins.weblogappender.WebLogAppenderDiv;
+import com.jwebmp.plugins.weblogappender.WebLogAppenderDiv;
 
 /**
  * @author Marc Magon

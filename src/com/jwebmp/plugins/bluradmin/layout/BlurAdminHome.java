@@ -22,11 +22,11 @@ import com.jwebmp.annotations.PageConfiguration;
 import com.jwebmp.base.ajax.AjaxCall;
 import com.jwebmp.base.ajax.AjaxResponse;
 import com.jwebmp.generics.WebReference;
+import com.jwebmp.guiceinjection.GuiceContext;
 import com.jwebmp.plugins.bluradmin.layout.display.DisplayScreen;
 import com.jwebmp.plugins.bluradmin.layout.footer.Footer;
 import com.jwebmp.plugins.bluradmin.layout.sidebar.SideBar;
 import com.jwebmp.plugins.bluradmin.layout.top.PageTop;
-import za.co.mmagon.guiceinjection.GuiceContext;
 
 /**
  * The default page for blur Admin theme

@@ -2,10 +2,10 @@ package com.jwebmp.plugins.bluradmin;
 
 import com.google.inject.Singleton;
 import com.google.inject.servlet.SessionScoped;
+import com.jwebmp.guiceinjection.abstractions.GuiceInjectorModule;
+import com.jwebmp.guiceinjection.interfaces.GuiceDefaultBinder;
 import com.jwebmp.plugins.bluradmin.components.LongRunningProgressBar;
 import com.jwebmp.plugins.bluradmin.console.WebLogAppender;
-import za.co.mmagon.guiceinjection.abstractions.GuiceInjectorModule;
-import za.co.mmagon.guiceinjection.interfaces.GuiceDefaultBinder;
 
 /**
  * @author Marc Magon

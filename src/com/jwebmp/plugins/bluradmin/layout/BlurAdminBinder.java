@@ -18,13 +18,13 @@
 package com.jwebmp.plugins.bluradmin.layout;
 
 import com.google.inject.servlet.SessionScoped;
+import com.jwebmp.guiceinjection.GuiceContext;
+import com.jwebmp.guiceinjection.abstractions.GuiceSiteInjectorModule;
+import com.jwebmp.guiceinjection.interfaces.GuiceSiteBinder;
+import com.jwebmp.logger.LogFactory;
 import com.jwebmp.plugins.bluradmin.layout.display.ContentTop;
 import com.jwebmp.plugins.bluradmin.layout.display.DisplayScreen;
 import com.jwebmp.plugins.bluradmin.layout.top.NavToggleButton;
-import za.co.mmagon.guiceinjection.GuiceContext;
-import za.co.mmagon.guiceinjection.abstractions.GuiceSiteInjectorModule;
-import za.co.mmagon.guiceinjection.interfaces.GuiceSiteBinder;
-import za.co.mmagon.logger.LogFactory;
 
 import java.util.logging.Logger;
 

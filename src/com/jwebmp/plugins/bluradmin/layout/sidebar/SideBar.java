@@ -22,18 +22,18 @@ import com.google.inject.name.Names;
 import com.google.inject.servlet.RequestScoped;
 import com.jwebmp.base.angular.AngularAttributes;
 import com.jwebmp.base.html.*;
+import com.jwebmp.guiceinjection.GuiceContext;
 import com.jwebmp.htmlbuilder.css.colours.ColourCSSImpl;
+import com.jwebmp.logger.LogFactory;
 import com.jwebmp.plugins.angularslimscroll.SlimScrollFeature;
 import com.jwebmp.plugins.bluradmin.layout.display.DisplayScreen;
-import za.co.mmagon.guiceinjection.GuiceContext;
-import za.co.mmagon.logger.LogFactory;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Set;
 import java.util.logging.Logger;
 
-import static com.jwebmp.utilities.StaticStrings.STRING_SELECTED;
+import static com.jwebmp.utilities.StaticStrings.*;
 
 /**
  * @author Marc Magon
@@ -110,7 +110,7 @@ public class SideBar
 		}
 	}
 
-	public Div buildListItem(String icon, String name, boolean selected, boolean submenu, final Class<? extends DisplayScreen> screen)
+	public Div buildListItem(String icon, String name, boolean selected, boolean submenu, Class<? extends DisplayScreen> screen)
 	{
 		Div li = new Div();
 		li.setTag("li");

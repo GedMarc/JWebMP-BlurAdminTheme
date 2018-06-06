@@ -1,6 +1,6 @@
 package com.jwebmp.plugins.bluradmin.console;
 
-import za.co.mmagon.plugins.weblogappender.WebLogAppenderDiv;
+import com.jwebmp.plugins.weblogappender.WebLogAppenderDiv;
 
 /**
  * @author Marc Magon

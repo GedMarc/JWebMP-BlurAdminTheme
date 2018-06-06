@@ -8,7 +8,7 @@ package com.jwebmp.plugins.bluradmin.console.loggers;
 import com.jwebmp.htmlbuilder.css.measurement.MeasurementCSSImpl;
 import com.jwebmp.plugins.bootstrap.alerts.BSAlert;
 import com.jwebmp.plugins.bootstrap.alerts.BSAlertWarning;
-import za.co.mmagon.plugins.weblogappender.annotations.WebLogConfigMessage;
+import com.jwebmp.plugins.weblogappender.annotations.WebLogConfigMessage;
 
 import java.util.logging.LogRecord;
 

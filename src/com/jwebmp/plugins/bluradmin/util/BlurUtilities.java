@@ -4,11 +4,11 @@ import com.jwebmp.Event;
 import com.jwebmp.Feature;
 import com.jwebmp.base.ComponentHierarchyBase;
 import com.jwebmp.base.ajax.AjaxResponse;
+import com.jwebmp.guiceinjection.GuiceContext;
+import com.jwebmp.logger.LogFactory;
 import com.jwebmp.plugins.toastr.ToastrFeature;
 import com.jwebmp.plugins.toastr.ToastrType;
 import org.atmosphere.cpr.AtmosphereResource;
-import za.co.mmagon.guiceinjection.GuiceContext;
-import za.co.mmagon.logger.LogFactory;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
