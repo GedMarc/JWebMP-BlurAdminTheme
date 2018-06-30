@@ -20,7 +20,7 @@ package com.jwebmp.plugins.bluradmin.console;
 import com.jwebmp.base.ajax.AjaxComponentInsertType;
 import com.jwebmp.base.ajax.AjaxComponentUpdates;
 import com.jwebmp.base.ajax.AjaxResponse;
-import com.jwebmp.guiceinjection.GuiceContext;
+import com.jwebmp.guicedinjection.GuiceContext;
 import com.jwebmp.logger.LogFactory;
 import com.jwebmp.plugins.weblogappender.WebLogAppenderAtmosphereAdapter;
 import com.jwebmp.plugins.weblogappender.WebLogAppenderPageConfigurator;

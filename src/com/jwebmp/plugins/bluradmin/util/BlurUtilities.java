@@ -4,7 +4,7 @@ import com.jwebmp.Event;
 import com.jwebmp.Feature;
 import com.jwebmp.base.ComponentHierarchyBase;
 import com.jwebmp.base.ajax.AjaxResponse;
-import com.jwebmp.guiceinjection.GuiceContext;
+import com.jwebmp.guicedinjection.GuiceContext;
 import com.jwebmp.logger.LogFactory;
 import com.jwebmp.plugins.toastr.ToastrFeature;
 import com.jwebmp.plugins.toastr.ToastrType;

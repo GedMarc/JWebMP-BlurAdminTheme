@@ -22,7 +22,7 @@ import com.google.inject.name.Names;
 import com.google.inject.servlet.RequestScoped;
 import com.jwebmp.base.angular.AngularAttributes;
 import com.jwebmp.base.html.*;
-import com.jwebmp.guiceinjection.GuiceContext;
+import com.jwebmp.guicedinjection.GuiceContext;
 import com.jwebmp.htmlbuilder.css.colours.ColourCSSImpl;
 import com.jwebmp.logger.LogFactory;
 import com.jwebmp.plugins.angularslimscroll.SlimScrollFeature;

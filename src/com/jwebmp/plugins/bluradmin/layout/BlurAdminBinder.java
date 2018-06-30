@@ -18,9 +18,9 @@
 package com.jwebmp.plugins.bluradmin.layout;
 
 import com.google.inject.servlet.SessionScoped;
+import com.jwebmp.guicedinjection.GuiceContext;
 import com.jwebmp.guicedservlets.GuiceSiteBinder;
 import com.jwebmp.guicedservlets.GuiceSiteInjectorModule;
-import com.jwebmp.guiceinjection.GuiceContext;
 import com.jwebmp.logger.LogFactory;
 import com.jwebmp.plugins.bluradmin.layout.display.ContentTop;
 import com.jwebmp.plugins.bluradmin.layout.display.DisplayScreen;

@@ -25,7 +25,7 @@ import com.jwebmp.base.ComponentHierarchyBase;
 import com.jwebmp.base.html.*;
 import com.jwebmp.base.html.inputs.InputSearchType;
 import com.jwebmp.generics.Pair;
-import com.jwebmp.guiceinjection.GuiceContext;
+import com.jwebmp.guicedinjection.GuiceContext;
 import com.jwebmp.plugins.bluradmin.components.MessageCenterDropDown;
 import com.jwebmp.plugins.bootstrap.dropdown.BSDropDown;
 import com.jwebmp.plugins.bootstrap.dropdown.BSDropDownLink;
