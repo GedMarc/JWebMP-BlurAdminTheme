@@ -46,9 +46,9 @@ public class WebLogAppender
 	@Override
 	public void publish(LogRecord record)
 	{
-		if (GuiceContext.isBuildingInjector() || (record.getLevel()
-		                                                .intValue() <= LogFactory.getDefaultLevel()
-		                                                                         .intValue()))
+		if ((record.getLevel()
+		           .intValue() <= LogFactory.getDefaultLevel()
+		                                    .intValue()))
 		{
 			return;
 		}

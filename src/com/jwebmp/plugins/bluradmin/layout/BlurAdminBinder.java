@@ -65,19 +65,13 @@ public class BlurAdminBinder
 		module.bind(DisplayScreen.class)
 		      .toProvider(() ->
 		                  {
-			                  if (!GuiceContext.isBuildingInjector())
+			                  BlurAdminSessionProperties props = GuiceContext.getInstance(BlurAdminSessionProperties.class);
+			                  if (props.getCurrentScreen() == null)
 			                  {
-				                  BlurAdminSessionProperties props = GuiceContext.getInstance(BlurAdminSessionProperties.class);
-				                  if (props.getCurrentScreen() == null)
-				                  {
-					                  log.severe("Set display screen with GuiceContext.getInstance(BlurAdminSessionProperties.class)");
-				                  }
-				                  return props.getCurrentScreen();
+				                  log.severe("Set display screen with GuiceContext.getInstance(BlurAdminSessionProperties.class)");
 			                  }
-			                  else
-			                  {
-				                  return new DisplayScreen();
-			                  }
+			                  return props.getCurrentScreen();
+
 		                  });
 	}
 
