@@ -112,6 +112,30 @@ public class MessageCenterDropDown
 		this.messagesToShow = messagesToShow;
 	}
 
+	public String getHeader()
+	{
+		return header;
+	}
+
+	public void setHeader(String header)
+	{
+		this.header = header;
+	}
+
+	public List<DefaultMessage> getMessages()
+	{
+		if (messages == null)
+		{
+			messages = new ArrayList<>();
+		}
+		return messages;
+	}
+
+	public void setMessages(List<DefaultMessage> messages)
+	{
+		this.messages = messages;
+	}
+
 	@Override
 	public int hashCode()
 	{
@@ -152,30 +176,6 @@ public class MessageCenterDropDown
 		}
 
 		super.preConfigure();
-	}
-
-	public String getHeader()
-	{
-		return header;
-	}
-
-	public void setHeader(String header)
-	{
-		this.header = header;
-	}
-
-	public List<DefaultMessage> getMessages()
-	{
-		if (messages == null)
-		{
-			messages = new ArrayList<>();
-		}
-		return messages;
-	}
-
-	public void setMessages(List<DefaultMessage> messages)
-	{
-		this.messages = messages;
 	}
 
 	@SuppressWarnings("unchecked")

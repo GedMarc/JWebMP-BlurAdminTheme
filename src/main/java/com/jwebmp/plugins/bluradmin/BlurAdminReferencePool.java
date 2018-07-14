@@ -33,7 +33,8 @@ public enum BlurAdminReferencePool
 {
 	BootstrapDefaultTheme(null, new CSSReference("Blur Admin Mint Default", 2.3, "bluradmintheme/mint/default/main.css")),
 	BootstrapTransparentRed(null, new CSSReference("Blur Transparent Red", 2.3, "bluradmintheme/transparent/red/main.css"), true),
-	BootstrapDefaultAuthTheme(null, new CSSReference("Blur Admin Mint Default Auth", 2.3, "bluradmintheme/mint/default/auth.css")),;
+	BootstrapDefaultAuthTheme(null, new CSSReference("Blur Admin Mint Default Auth", 2.3, "bluradmintheme/mint/default/auth.css")),
+	;
 
 	private boolean transparent;
 	/**

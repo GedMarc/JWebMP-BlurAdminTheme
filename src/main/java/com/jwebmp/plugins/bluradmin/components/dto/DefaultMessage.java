@@ -28,7 +28,8 @@ import java.util.Objects;
  * @author Marc Magon
  * @since 19 Jun 2017
  */
-public class DefaultMessage extends JavaScriptPart
+public class DefaultMessage
+		extends JavaScriptPart
 {
 
 	private static final long serialVersionUID = 1L;

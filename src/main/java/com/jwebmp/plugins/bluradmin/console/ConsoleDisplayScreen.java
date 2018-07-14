@@ -51,14 +51,6 @@ public class ConsoleDisplayScreen
 	}
 
 	@Override
-	public int hashCode()
-	{
-		int result = super.hashCode();
-		result = 31 * result + webLogger.hashCode();
-		return result;
-	}
-
-	@Override
 	public boolean equals(Object o)
 	{
 		if (this == o)
@@ -77,5 +69,13 @@ public class ConsoleDisplayScreen
 		ConsoleDisplayScreen that = (ConsoleDisplayScreen) o;
 
 		return webLogger.equals(that.webLogger);
+	}
+
+	@Override
+	public int hashCode()
+	{
+		int result = super.hashCode();
+		result = 31 * result + webLogger.hashCode();
+		return result;
 	}
 }
