@@ -17,18 +17,18 @@
 
 package com.jwebmp.plugins.bluradmin;
 
-import com.jwebmp.Page;
-import com.jwebmp.PageConfigurator;
-import com.jwebmp.base.angular.AngularAttributes;
-import com.jwebmp.base.angular.AngularPageConfigurator;
-import com.jwebmp.base.html.Div;
-import com.jwebmp.base.references.CSSReference;
+import com.jwebmp.core.Page;
+import com.jwebmp.core.PageConfigurator;
+import com.jwebmp.core.base.angular.AngularAttributes;
+import com.jwebmp.core.base.angular.AngularPageConfigurator;
+import com.jwebmp.core.base.html.Div;
+import com.jwebmp.core.base.references.CSSReference;
+import com.jwebmp.core.plugins.PluginInformation;
+import com.jwebmp.core.plugins.jquery.JQueryPageConfigurator;
+import com.jwebmp.core.utilities.regex.RegularExpressionsDTO;
 import com.jwebmp.logger.LogFactory;
-import com.jwebmp.plugins.PluginInformation;
 import com.jwebmp.plugins.bluradmin.console.WebLogAppender;
-import com.jwebmp.plugins.jquery.JQueryPageConfigurator;
 import com.jwebmp.plugins.plusastab.PlusAsTabFeature;
-import com.jwebmp.utilities.regex.RegularExpressionsDTO;
 
 import java.util.ArrayList;
 import java.util.LinkedHashSet;

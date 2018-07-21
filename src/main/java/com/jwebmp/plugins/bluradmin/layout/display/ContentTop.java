@@ -18,10 +18,10 @@
 package com.jwebmp.plugins.bluradmin.layout.display;
 
 import com.google.inject.servlet.SessionScoped;
-import com.jwebmp.Event;
-import com.jwebmp.base.html.*;
-import com.jwebmp.base.html.attributes.LinkAttributes;
-import com.jwebmp.utilities.StaticStrings;
+import com.jwebmp.core.Event;
+import com.jwebmp.core.base.html.*;
+import com.jwebmp.core.base.html.attributes.LinkAttributes;
+import com.jwebmp.core.utilities.StaticStrings;
 
 /**
  * @author Marc Magon

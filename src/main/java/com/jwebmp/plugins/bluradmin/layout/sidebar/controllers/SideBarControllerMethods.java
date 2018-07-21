@@ -17,8 +17,8 @@
 
 package com.jwebmp.plugins.bluradmin.layout.sidebar.controllers;
 
-import com.jwebmp.FileTemplates;
-import com.jwebmp.base.angular.controllers.AngularControllerScopeStatement;
+import com.jwebmp.core.FileTemplates;
+import com.jwebmp.core.base.angular.controllers.AngularControllerScopeStatement;
 
 /**
  * @author Marc Magon

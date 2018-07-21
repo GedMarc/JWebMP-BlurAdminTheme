@@ -17,13 +17,13 @@
 
 package com.jwebmp.plugins.bluradmin.components;
 
-import com.jwebmp.base.ComponentHierarchyBase;
-import com.jwebmp.base.html.*;
+import com.jwebmp.core.base.ComponentHierarchyBase;
+import com.jwebmp.core.base.html.*;
+import com.jwebmp.core.utilities.StaticStrings;
 import com.jwebmp.plugins.bluradmin.components.dto.DefaultMessage;
 import com.jwebmp.plugins.bootstrap.dropdown.BSDropDown;
 import com.jwebmp.plugins.bootstrap.dropdown.menu.BSDropDownMenuChildren;
 import com.jwebmp.plugins.moment.Moment;
-import com.jwebmp.utilities.StaticStrings;
 
 import java.util.ArrayList;
 import java.util.List;

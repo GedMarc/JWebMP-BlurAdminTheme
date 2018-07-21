@@ -17,7 +17,7 @@
 
 package com.jwebmp.plugins.bluradmin.components.dto;
 
-import com.jwebmp.htmlbuilder.javascript.JavaScriptPart;
+import com.jwebmp.core.htmlbuilder.javascript.JavaScriptPart;
 
 import java.util.Date;
 import java.util.Objects;

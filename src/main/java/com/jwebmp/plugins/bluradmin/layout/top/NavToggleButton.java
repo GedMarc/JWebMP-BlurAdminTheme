@@ -18,7 +18,7 @@
 package com.jwebmp.plugins.bluradmin.layout.top;
 
 import com.google.inject.Inject;
-import com.jwebmp.base.html.Link;
+import com.jwebmp.core.base.html.Link;
 import com.jwebmp.plugins.bluradmin.layout.BlurAdminLayout;
 import com.jwebmp.plugins.jqlayout.events.JQLayoutAddToggleButtonFeature;
 

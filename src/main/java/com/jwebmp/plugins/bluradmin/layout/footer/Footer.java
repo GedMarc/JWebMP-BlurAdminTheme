@@ -1,6 +1,6 @@
 package com.jwebmp.plugins.bluradmin.layout.footer;
 
-import com.jwebmp.base.html.*;
+import com.jwebmp.core.base.html.*;
 
 import javax.validation.constraints.NotNull;
 

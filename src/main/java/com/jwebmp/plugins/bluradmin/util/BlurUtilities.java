@@ -1,9 +1,9 @@
 package com.jwebmp.plugins.bluradmin.util;
 
-import com.jwebmp.Event;
-import com.jwebmp.Feature;
-import com.jwebmp.base.ComponentHierarchyBase;
-import com.jwebmp.base.ajax.AjaxResponse;
+import com.jwebmp.core.Event;
+import com.jwebmp.core.Feature;
+import com.jwebmp.core.base.ComponentHierarchyBase;
+import com.jwebmp.core.base.ajax.AjaxResponse;
 import com.jwebmp.guicedinjection.GuiceContext;
 import com.jwebmp.logger.LogFactory;
 import com.jwebmp.plugins.toastr.ToastrFeature;

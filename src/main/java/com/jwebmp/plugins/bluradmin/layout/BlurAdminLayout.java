@@ -18,8 +18,8 @@
 package com.jwebmp.plugins.bluradmin.layout;
 
 import com.google.inject.Inject;
-import com.jwebmp.PlaceHolder;
-import com.jwebmp.base.html.Div;
+import com.jwebmp.core.PlaceHolder;
+import com.jwebmp.core.base.html.Div;
 import com.jwebmp.plugins.jqlayout.components.BorderLayout;
 import com.jwebmp.plugins.jqlayout.enumerations.LayoutResponsiveSize;
 

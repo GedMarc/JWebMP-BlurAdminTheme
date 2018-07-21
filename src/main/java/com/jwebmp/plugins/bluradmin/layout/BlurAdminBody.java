@@ -17,9 +17,9 @@
 
 package com.jwebmp.plugins.bluradmin.layout;
 
-import com.jwebmp.base.html.Body;
+import com.jwebmp.core.base.html.Body;
+import com.jwebmp.core.utilities.regex.RegularExpressionsDTO;
 import com.jwebmp.guicedinjection.GuiceContext;
-import com.jwebmp.utilities.regex.RegularExpressionsDTO;
 
 /**
  * @author Marc Magon

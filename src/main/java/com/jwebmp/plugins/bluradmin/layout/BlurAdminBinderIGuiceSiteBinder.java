@@ -19,8 +19,8 @@ package com.jwebmp.plugins.bluradmin.layout;
 
 import com.google.inject.servlet.SessionScoped;
 import com.jwebmp.guicedinjection.GuiceContext;
-import com.jwebmp.guicedservlets.GuiceSiteBinder;
 import com.jwebmp.guicedservlets.GuiceSiteInjectorModule;
+import com.jwebmp.guicedservlets.services.IGuiceSiteBinder;
 import com.jwebmp.logger.LogFactory;
 import com.jwebmp.plugins.bluradmin.layout.display.ContentTop;
 import com.jwebmp.plugins.bluradmin.layout.display.DisplayScreen;
@@ -32,15 +32,15 @@ import java.util.logging.Logger;
  * @author Marc Magon
  * @since 07 Jun 2017
  */
-public class BlurAdminBinder
-		extends GuiceSiteBinder
+public class BlurAdminBinderIGuiceSiteBinder
+		implements IGuiceSiteBinder<GuiceSiteInjectorModule>
 {
-	private static final Logger log = LogFactory.getLog("BlurAdminBinder");
+	private static final Logger log = LogFactory.getLog("BlurAdminBinderIGuice");
 
 	/*
-	 * Constructs a new BlurAdminBinder
+	 * Constructs a new BlurAdminBinderIGuice
 	 */
-	public BlurAdminBinder()
+	public BlurAdminBinderIGuiceSiteBinder()
 	{
 		//Nothing needed
 	}

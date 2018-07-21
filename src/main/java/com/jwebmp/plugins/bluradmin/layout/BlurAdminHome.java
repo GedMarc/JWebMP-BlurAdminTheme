@@ -17,11 +17,11 @@
 
 package com.jwebmp.plugins.bluradmin.layout;
 
-import com.jwebmp.Page;
-import com.jwebmp.annotations.PageConfiguration;
-import com.jwebmp.base.ajax.AjaxCall;
-import com.jwebmp.base.ajax.AjaxResponse;
-import com.jwebmp.generics.WebReference;
+import com.jwebmp.core.Page;
+import com.jwebmp.core.annotations.PageConfiguration;
+import com.jwebmp.core.base.ajax.AjaxCall;
+import com.jwebmp.core.base.ajax.AjaxResponse;
+import com.jwebmp.core.generics.WebReference;
 import com.jwebmp.guicedinjection.GuiceContext;
 import com.jwebmp.plugins.bluradmin.layout.display.DisplayScreen;
 import com.jwebmp.plugins.bluradmin.layout.footer.Footer;

@@ -20,10 +20,10 @@ package com.jwebmp.plugins.bluradmin.layout.sidebar;
 import com.google.inject.Key;
 import com.google.inject.name.Names;
 import com.google.inject.servlet.RequestScoped;
-import com.jwebmp.base.angular.AngularAttributes;
-import com.jwebmp.base.html.*;
+import com.jwebmp.core.base.angular.AngularAttributes;
+import com.jwebmp.core.base.html.*;
+import com.jwebmp.core.htmlbuilder.css.colours.ColourCSSImpl;
 import com.jwebmp.guicedinjection.GuiceContext;
-import com.jwebmp.htmlbuilder.css.colours.ColourCSSImpl;
 import com.jwebmp.logger.LogFactory;
 import com.jwebmp.plugins.angularslimscroll.SlimScrollFeature;
 import com.jwebmp.plugins.bluradmin.layout.display.DisplayScreen;
@@ -33,7 +33,7 @@ import java.util.HashMap;
 import java.util.Set;
 import java.util.logging.Logger;
 
-import static com.jwebmp.utilities.StaticStrings.*;
+import static com.jwebmp.core.utilities.StaticStrings.*;
 
 /**
  * @author Marc Magon

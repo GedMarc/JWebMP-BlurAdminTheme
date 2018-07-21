@@ -17,8 +17,9 @@
 
 package com.jwebmp.plugins.bluradmin.screens.login;
 
-import com.jwebmp.base.html.Div;
-import com.jwebmp.base.html.Link;
+import com.jwebmp.core.base.html.Div;
+import com.jwebmp.core.base.html.Link;
+import com.jwebmp.core.utilities.StaticStrings;
 import com.jwebmp.plugins.bluradmin.layout.display.DisplayScreen;
 import com.jwebmp.plugins.bootstrap.buttons.BSButton;
 import com.jwebmp.plugins.bootstrap.forms.BSForm;
@@ -27,7 +28,6 @@ import com.jwebmp.plugins.bootstrap.forms.controls.BSFormPasswordInput;
 import com.jwebmp.plugins.bootstrap.forms.controls.BSFormTextInput;
 import com.jwebmp.plugins.bootstrap.forms.groups.BSFormGroup;
 import com.jwebmp.plugins.bootstrap.options.BSWidthOptions;
-import com.jwebmp.utilities.StaticStrings;
 
 /**
  * @author Marc Magon

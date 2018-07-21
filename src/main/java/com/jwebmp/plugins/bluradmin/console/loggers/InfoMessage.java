@@ -5,7 +5,7 @@
  */
 package com.jwebmp.plugins.bluradmin.console.loggers;
 
-import com.jwebmp.htmlbuilder.css.measurement.MeasurementCSSImpl;
+import com.jwebmp.core.htmlbuilder.css.measurement.MeasurementCSSImpl;
 import com.jwebmp.plugins.bootstrap.alerts.BSAlert;
 import com.jwebmp.plugins.bootstrap.alerts.BSAlertSuccess;
 import com.jwebmp.plugins.weblogappender.annotations.WebLogInfoMessage;

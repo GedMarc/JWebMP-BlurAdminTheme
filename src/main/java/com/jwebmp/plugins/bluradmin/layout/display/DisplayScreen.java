@@ -17,7 +17,7 @@
 
 package com.jwebmp.plugins.bluradmin.layout.display;
 
-import com.jwebmp.base.html.Div;
+import com.jwebmp.core.base.html.Div;
 
 /**
  * @author Marc Magon
