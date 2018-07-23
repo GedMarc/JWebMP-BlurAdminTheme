@@ -18,13 +18,13 @@
 package com.jwebmp.plugins.bluradmin;
 
 import com.jwebmp.core.Page;
-import com.jwebmp.core.PageConfigurator;
 import com.jwebmp.core.base.angular.AngularAttributes;
 import com.jwebmp.core.base.angular.AngularPageConfigurator;
 import com.jwebmp.core.base.html.Div;
 import com.jwebmp.core.base.references.CSSReference;
 import com.jwebmp.core.plugins.PluginInformation;
 import com.jwebmp.core.plugins.jquery.JQueryPageConfigurator;
+import com.jwebmp.core.services.IPageConfigurator;
 import com.jwebmp.core.utilities.regex.RegularExpressionsDTO;
 import com.jwebmp.logger.LogFactory;
 import com.jwebmp.plugins.bluradmin.console.WebLogAppender;
@@ -52,7 +52,7 @@ import java.util.List;
 		pluginOriginalHomepage = "http://getbootstrap.com/",
 		pluginDownloadUrl = "https://sourceforge.net/projects/jwebswing/files/plugins/BootstrapPlugin.jar/download")
 public class BlurAdminPageConfigurator
-		extends PageConfigurator
+		implements IPageConfigurator
 {
 
 	private static final long serialVersionUID = 1L;

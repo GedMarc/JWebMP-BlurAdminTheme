@@ -18,14 +18,14 @@
 package com.jwebmp.plugins.bluradmin.layout.sidebar.controllers;
 
 import com.jwebmp.core.FileTemplates;
-import com.jwebmp.core.base.angular.controllers.AngularControllerScopeStatement;
+import com.jwebmp.core.base.angular.services.IAngularControllerScopeStatement;
 
 /**
  * @author Marc Magon
  * @since 13 Jun 2017
  */
 public class SideBarControllerMethods
-		extends AngularControllerScopeStatement
+		implements IAngularControllerScopeStatement<SideBarControllerMethods>
 {
 
 	/*
@@ -40,5 +40,17 @@ public class SideBarControllerMethods
 	public StringBuilder getStatement()
 	{
 		return FileTemplates.getFileTemplate(SideBarControllerMethods.class, "sidebarservicecontroller");
+	}
+
+	@Override
+	public String getReferenceName()
+	{
+		return "SideBarControllerMethods";
+	}
+
+	@Override
+	public String renderFunction()
+	{
+		return null;
 	}
 }

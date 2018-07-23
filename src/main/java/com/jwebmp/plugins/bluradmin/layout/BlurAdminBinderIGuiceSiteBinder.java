@@ -35,10 +35,10 @@ import java.util.logging.Logger;
 public class BlurAdminBinderIGuiceSiteBinder
 		implements IGuiceSiteBinder<GuiceSiteInjectorModule>
 {
-	private static final Logger log = LogFactory.getLog("BlurAdminBinderIGuice");
+	private static final Logger log = LogFactory.getLog("BlurAdminBinder");
 
 	/*
-	 * Constructs a new BlurAdminBinderIGuice
+	 * Constructs a new BlurAdminBinder
 	 */
 	public BlurAdminBinderIGuiceSiteBinder()
 	{
