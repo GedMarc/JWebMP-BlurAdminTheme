@@ -37,7 +37,6 @@ public class DisplayScreen
 	 */
 	public DisplayScreen()
 	{
-		addAttribute("style", "width:100%;height:100%;");
 		setID("DisplayScreen");
 		addClass("al-content");
 		addAttribute("style", "overflow-y:auto;");
