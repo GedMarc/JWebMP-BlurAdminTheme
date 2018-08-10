@@ -30,6 +30,7 @@ import com.jwebmp.logger.LogFactory;
 import com.jwebmp.plugins.bluradmin.console.WebLogAppender;
 import com.jwebmp.plugins.plusastab.PlusAsTabFeature;
 
+import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -83,6 +84,7 @@ public class BlurAdminPageConfigurator
 		BlurAdminPageConfigurator.theme = theme;
 	}
 
+	@NotNull
 	@Override
 	@SuppressWarnings("unchecked")
 	public Page configure(Page page)
