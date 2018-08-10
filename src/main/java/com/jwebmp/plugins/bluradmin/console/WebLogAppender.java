@@ -22,10 +22,8 @@ import com.jwebmp.core.base.ajax.AjaxComponentUpdates;
 import com.jwebmp.core.base.ajax.AjaxResponse;
 import com.jwebmp.guicedinjection.GuiceContext;
 import com.jwebmp.logger.LogFactory;
-import com.jwebmp.plugins.weblogappender.WebLogAppenderAtmosphereAdapter;
 import com.jwebmp.plugins.weblogappender.WebLogAppenderPageConfigurator;
 import com.jwebmp.plugins.weblogappender.annotations.*;
-import org.atmosphere.cpr.AtmosphereResource;
 
 import java.util.Optional;
 import java.util.Set;
@@ -59,7 +57,7 @@ public class WebLogAppender
 
 	private void processLogRecord(Level levelEnum, LogRecord record)
 	{
-		if (WebLogAppenderPageConfigurator.isEnabled() && GuiceContext.getInstance(AtmosphereResource.class) != null)
+		if (WebLogAppenderPageConfigurator.isEnabled())
 		{
 			Optional<AjaxResponse> autoUpdate;
 			switch (levelEnum.getName())
@@ -107,8 +105,8 @@ public class WebLogAppender
 			}
 			if (autoUpdate.isPresent())
 			{
-				GuiceContext.getInstance(AtmosphereResource.class)
-				            .write(autoUpdate.toString());
+				//	GuiceContext.getInstance(AtmosphereResource.class)
+				//	            .write(autoUpdate.toString());
 			}
 		}
 	}
@@ -126,7 +124,7 @@ public class WebLogAppender
 		}
 		catch (ClassCastException cce)
 		{
-			Logger.getLogger(WebLogAppenderAtmosphereAdapter.class.getName())
+			Logger.getLogger(getClass().getName())
 			      .log(Level.SEVERE, CLASS_CAST_LOG_MESSAGE, cce);
 		}
 		return null;
@@ -219,8 +217,8 @@ public class WebLogAppender
 		}
 		catch (InstantiationException | IllegalAccessException ex)
 		{
-			Logger.getLogger(WebLogAppenderAtmosphereAdapter.class.getName())
-			      .log(Level.SEVERE, null, ex);
+			Logger.getLogger(getClass().getName())
+			      .log(Level.SEVERE, "asd", ex);
 		}
 		return ar;
 	}

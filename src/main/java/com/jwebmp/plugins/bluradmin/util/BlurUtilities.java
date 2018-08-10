@@ -3,12 +3,8 @@ package com.jwebmp.plugins.bluradmin.util;
 import com.jwebmp.core.Event;
 import com.jwebmp.core.Feature;
 import com.jwebmp.core.base.ComponentHierarchyBase;
-import com.jwebmp.core.base.ajax.AjaxResponse;
-import com.jwebmp.guicedinjection.GuiceContext;
 import com.jwebmp.logger.LogFactory;
-import com.jwebmp.plugins.toastr.ToastrFeature;
 import com.jwebmp.plugins.toastr.ToastrType;
-import org.atmosphere.cpr.AtmosphereResource;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -41,11 +37,11 @@ public class BlurUtilities
 	{
 		try
 		{
-			AtmosphereResource resource = GuiceContext.getInstance(AtmosphereResource.class);
+		/*	AtmosphereResource resource = GuiceContext.getInstance(AtmosphereResource.class);
 			AjaxResponse response = new AjaxResponse();
 			response.getFeatures()
 			        .add(new ToastrFeature(type, title, message).setTiny(true));
-			resource.write(response.toString());
+			resource.write(response.toString());*/
 		}
 		catch (NullPointerException e)
 		{
@@ -57,13 +53,13 @@ public class BlurUtilities
 	{
 		try
 		{
-			AtmosphereResource resource = GuiceContext.getInstance(AtmosphereResource.class);
+		/*	AtmosphereResource resource = GuiceContext.getInstance(AtmosphereResource.class);
 			AjaxResponse response = new AjaxResponse();
 			for (ComponentHierarchyBase componentHierarchyBase : comp)
 			{
 				response.addComponent(componentHierarchyBase);
 			}
-			resource.write(response.toString());
+			resource.write(response.toString());*/
 		}
 		catch (NullPointerException e)
 		{
@@ -73,7 +69,7 @@ public class BlurUtilities
 
 	public void pushUpdate(Feature... comp)
 	{
-		try
+	/*	try
 		{
 			AtmosphereResource resource = GuiceContext.getInstance(AtmosphereResource.class);
 			AjaxResponse response = new AjaxResponse();
@@ -87,13 +83,13 @@ public class BlurUtilities
 		catch (NullPointerException e)
 		{
 			log.log(Level.SEVERE, "Can't push update find atmosphere resource", e);
-		}
+		}*/
 	}
 
 	public void pushUpdate(Event... comp)
 	{
 		try
-		{
+		{/*
 			AtmosphereResource resource = GuiceContext.getInstance(AtmosphereResource.class);
 
 			AjaxResponse response = new AjaxResponse();
@@ -102,7 +98,7 @@ public class BlurUtilities
 				response.getEvents()
 				        .add(componentHierarchyBase);
 			}
-			resource.write(response.toString());
+			resource.write(response.toString());*/
 		}
 		catch (NullPointerException e)
 		{

@@ -16,7 +16,6 @@ module com.jwebmp.plugins.bluradmin {
 	requires com.jwebmp.plugins.weblogappender;
 	requires com.jwebmp.plugins.angularslimscroll;
 	requires com.jwebmp.plugins.toastr;
-	requires atmosphere.runtime;
 	requires java.validation;
 	exports com.jwebmp.plugins.bluradmin;
 
