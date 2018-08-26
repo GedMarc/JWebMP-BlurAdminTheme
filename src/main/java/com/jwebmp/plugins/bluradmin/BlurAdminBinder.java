@@ -12,7 +12,7 @@ import com.jwebmp.plugins.bluradmin.console.WebLogAppender;
  * @since 02 Jul 2017
  */
 public class BlurAdminBinder
-		implements IGuiceDefaultBinder<GuiceInjectorModule>
+		implements IGuiceDefaultBinder<BlurAdminBinder, GuiceInjectorModule>
 {
 
 	/*
