@@ -26,8 +26,6 @@ import com.jwebmp.core.plugins.PluginInformation;
 import com.jwebmp.core.plugins.jquery.JQueryPageConfigurator;
 import com.jwebmp.core.services.IPageConfigurator;
 import com.jwebmp.core.utilities.regex.RegularExpressionsDTO;
-import com.jwebmp.logger.LogFactory;
-import com.jwebmp.plugins.bluradmin.console.WebLogAppender;
 import com.jwebmp.plugins.plusastab.PlusAsTabFeature;
 
 import javax.validation.constraints.NotNull;
@@ -60,12 +58,6 @@ public class BlurAdminPageConfigurator
 
 	private static BlurAdminReferencePool theme = BlurAdminReferencePool.BootstrapDefaultTheme;
 
-	static
-	{
-		LogFactory.getInstance()
-		          .addLogHandler(new WebLogAppender());
-	}
-
 	/*
 	 * Constructs a new BlurAdminPageConfigurator
 	 */
@@ -76,7 +68,7 @@ public class BlurAdminPageConfigurator
 
 	public static BlurAdminReferencePool getTheme()
 	{
-		return theme;
+		return BlurAdminPageConfigurator.theme;
 	}
 
 	public static void setTheme(BlurAdminReferencePool theme)
@@ -109,8 +101,8 @@ public class BlurAdminPageConfigurator
 
 			page.getBody()
 			    .getCssReferences()
-			    .add(theme.getCssReference());
-			if (theme.isTransparent())
+			    .add(BlurAdminPageConfigurator.theme.getCssReference());
+			if (BlurAdminPageConfigurator.theme.isTransparent())
 			{
 				page.getBody()
 				    .addClass("blur-theme badmin-transparent");
