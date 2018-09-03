@@ -53,9 +53,11 @@ import java.util.List;
 public class BlurAdminPageConfigurator
 		implements IPageConfigurator
 {
-
 	private static final long serialVersionUID = 1L;
-
+	/**
+	 * If this configurator is enabled
+	 */
+	private static boolean enabled = true;
 	private static BlurAdminReferencePool theme = BlurAdminReferencePool.BootstrapDefaultTheme;
 
 	/*
@@ -64,6 +66,31 @@ public class BlurAdminPageConfigurator
 	public BlurAdminPageConfigurator()
 	{
 		//Nothing needed
+	}
+
+	/**
+	 * Method isEnabled returns the enabled of this AngularAnimatedChangePageConfigurator object.
+	 * <p>
+	 * If this configurator is enabled
+	 *
+	 * @return the enabled (type boolean) of this AngularAnimatedChangePageConfigurator object.
+	 */
+	public static boolean isEnabled()
+	{
+		return BlurAdminPageConfigurator.enabled;
+	}
+
+	/**
+	 * Method setEnabled sets the enabled of this AngularAnimatedChangePageConfigurator object.
+	 * <p>
+	 * If this configurator is enabled
+	 *
+	 * @param mustEnable
+	 * 		the enabled of this AngularAnimatedChangePageConfigurator object.
+	 */
+	public static void setEnabled(boolean mustEnable)
+	{
+		BlurAdminPageConfigurator.enabled = mustEnable;
 	}
 
 	public static BlurAdminReferencePool getTheme()
@@ -115,6 +142,12 @@ public class BlurAdminPageConfigurator
 			    .addCssReference(new CSSReference("Blur Override CSS", 1.0, "bluradmintheme/overrides/bluroverrides.css"));
 		}
 		return page;
+	}
+
+	@Override
+	public boolean enabled()
+	{
+		return BlurAdminPageConfigurator.enabled;
 	}
 
 	private Div buildPageLoader()
