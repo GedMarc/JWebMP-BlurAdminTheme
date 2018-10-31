@@ -36,7 +36,6 @@ public class MessageCenterDropDown
 		extends BSDropDown<MessageCenterDropDown>
 {
 
-	private static final long serialVersionUID = 1L;
 
 	private ShowAllLink showAllLink;
 	private Link settingsLink;
@@ -55,6 +54,12 @@ public class MessageCenterDropDown
 	public MessageCenterDropDown()
 	{
 		//No configuration needed
+	}
+
+	@Override
+	public int hashCode()
+	{
+		return super.hashCode();
 	}
 
 	@Override
@@ -134,12 +139,6 @@ public class MessageCenterDropDown
 	public void setMessages(List<DefaultMessage> messages)
 	{
 		this.messages = messages;
-	}
-
-	@Override
-	public int hashCode()
-	{
-		return super.hashCode();
 	}
 
 	@Override
@@ -246,7 +245,6 @@ public class MessageCenterDropDown
 			implements BSDropDownMenuChildren
 	{
 
-		private static final long serialVersionUID = 1L;
 
 		public Header()
 		{
@@ -259,7 +257,6 @@ public class MessageCenterDropDown
 			implements BSDropDownMenuChildren
 	{
 
-		private static final long serialVersionUID = 1L;
 
 		public MessagesList()
 		{
@@ -272,7 +269,6 @@ public class MessageCenterDropDown
 			implements BSDropDownMenuChildren
 	{
 
-		private static final long serialVersionUID = 1L;
 
 		public ShowAllLink()
 		{
@@ -304,7 +300,7 @@ public class MessageCenterDropDown
 			extends Italic
 			implements BSDropDownMenuChildren
 	{
-		private static final long serialVersionUID = 1L;
+
 
 		public DropDownArrow()
 		{

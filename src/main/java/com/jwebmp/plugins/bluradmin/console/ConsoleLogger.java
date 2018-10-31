@@ -10,7 +10,6 @@ public class ConsoleLogger
 		extends WebLogAppenderDiv
 {
 
-	private static final long serialVersionUID = 1L;
 
 	/*
 	 * Constructs a new ConsoleLogger

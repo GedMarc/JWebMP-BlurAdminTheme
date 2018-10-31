@@ -12,7 +12,7 @@ public class Footer
 		extends Div
 {
 
-	private static final long serialVersionUID = 1L;
+
 	/**
 	 * The main footer div
 	 */
@@ -109,6 +109,15 @@ public class Footer
 	}
 
 	@Override
+	public int hashCode()
+	{
+		int result = super.hashCode();
+		result = 31 * result + (footerMainDiv != null ? footerMainDiv.hashCode() : 0);
+		result = 31 * result + (shareList != null ? shareList.hashCode() : 0);
+		return result;
+	}
+
+	@Override
 	public boolean equals(Object o)
 	{
 		if (this == o)
@@ -131,14 +140,5 @@ public class Footer
 			return false;
 		}
 		return shareList != null ? shareList.equals(footer.shareList) : footer.shareList == null;
-	}
-
-	@Override
-	public int hashCode()
-	{
-		int result = super.hashCode();
-		result = 31 * result + (footerMainDiv != null ? footerMainDiv.hashCode() : 0);
-		result = 31 * result + (shareList != null ? shareList.hashCode() : 0);
-		return result;
 	}
 }

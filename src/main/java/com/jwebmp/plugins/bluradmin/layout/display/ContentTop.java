@@ -32,7 +32,6 @@ public class ContentTop
 		extends Div
 {
 
-	private static final long serialVersionUID = 1L;
 
 	private final H1 header;
 	private final List breadCrumblist;
@@ -89,6 +88,15 @@ public class ContentTop
 	}
 
 	@Override
+	public int hashCode()
+	{
+		int result = super.hashCode();
+		result = 31 * result + (getHeader() != null ? getHeader().hashCode() : 0);
+		result = 31 * result + (getBreadCrumblist() != null ? getBreadCrumblist().hashCode() : 0);
+		return result;
+	}
+
+	@Override
 	public boolean equals(Object o)
 	{
 		if (this == o)
@@ -111,15 +119,6 @@ public class ContentTop
 			return false;
 		}
 		return getBreadCrumblist() != null ? getBreadCrumblist().equals(that.getBreadCrumblist()) : that.getBreadCrumblist() == null;
-	}
-
-	@Override
-	public int hashCode()
-	{
-		int result = super.hashCode();
-		result = 31 * result + (getHeader() != null ? getHeader().hashCode() : 0);
-		result = 31 * result + (getBreadCrumblist() != null ? getBreadCrumblist().hashCode() : 0);
-		return result;
 	}
 
 	public H1 getHeader()

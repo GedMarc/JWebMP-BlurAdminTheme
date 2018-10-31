@@ -32,7 +32,6 @@ public class DefaultMessage
 		extends JavaScriptPart
 {
 
-	private static final long serialVersionUID = 1L;
 
 	private String id;
 	private String image;
@@ -107,7 +106,7 @@ public class DefaultMessage
 	public int hashCode()
 	{
 		int hash = 5;
-		hash = 79 * hash + Objects.hashCode(this.id);
+		hash = 79 * hash + Objects.hashCode(id);
 		return hash;
 	}
 
@@ -126,8 +125,8 @@ public class DefaultMessage
 		{
 			return false;
 		}
-		final DefaultMessage other = (DefaultMessage) obj;
-		return (Objects.equals(this.id, other.id));
+		DefaultMessage other = (DefaultMessage) obj;
+		return (Objects.equals(id, other.id));
 	}
 
 }

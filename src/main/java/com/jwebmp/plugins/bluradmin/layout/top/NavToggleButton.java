@@ -32,7 +32,6 @@ public class NavToggleButton
 		extends Link<NavToggleButton>
 {
 
-	private static final long serialVersionUID = 1L;
 
 	NavToggleButton()
 	{

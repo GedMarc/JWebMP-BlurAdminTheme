@@ -21,7 +21,6 @@ public class InfoMessage
 		extends WebLogInfoMessage
 {
 
-	private static final long serialVersionUID = 1L;
 
 	/*
 	 * Constructs a new InfoMessage

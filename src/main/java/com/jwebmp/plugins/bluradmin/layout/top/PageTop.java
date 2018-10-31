@@ -45,7 +45,6 @@ public class PageTop
 
 	private static final Logger log = Logger.getLogger(PageTop.class.getName());
 
-	private static final long serialVersionUID = 1L;
 
 	private Div rightSideDiv = new Div();
 
@@ -275,6 +274,15 @@ public class PageTop
 	}
 
 	@Override
+	public int hashCode()
+	{
+		int result = super.hashCode();
+		result = 31 * result + getRightSideDiv().hashCode();
+		result = 31 * result + (params != null ? params.hashCode() : 0);
+		return result;
+	}
+
+	@Override
 	public boolean equals(Object o)
 	{
 		if (this == o)
@@ -299,21 +307,11 @@ public class PageTop
 		return params != null ? params.equals(pageTop.params) : pageTop.params == null;
 	}
 
-	@Override
-	public int hashCode()
-	{
-		int result = super.hashCode();
-		result = 31 * result + getRightSideDiv().hashCode();
-		result = 31 * result + (params != null ? params.hashCode() : 0);
-		return result;
-	}
-
 	class DropDownArrow
 			extends Italic
 			implements BSDropDownMenuChildren
 	{
 
-		private static final long serialVersionUID = 1L;
 
 		public DropDownArrow()
 		{

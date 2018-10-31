@@ -37,7 +37,6 @@ public class BlurAdminLoginScreen
 		extends DisplayScreen
 {
 
-	private static final long serialVersionUID = 1L;
 
 	/*
 	 * Constructs a new BlurAdminLoginScreen

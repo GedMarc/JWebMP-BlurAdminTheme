@@ -27,7 +27,6 @@ public class DisplayScreen
 		extends Div
 {
 
-	private static final long serialVersionUID = 1L;
 
 	private final ContentTop contentTop;
 	private final Div contentDiv;
@@ -53,6 +52,15 @@ public class DisplayScreen
 	}
 
 	@Override
+	public int hashCode()
+	{
+		int result = super.hashCode();
+		result = 31 * result + (getContentTop() != null ? getContentTop().hashCode() : 0);
+		result = 31 * result + (getContentDiv() != null ? getContentDiv().hashCode() : 0);
+		return result;
+	}
+
+	@Override
 	public boolean equals(Object o)
 	{
 		if (this == o)
@@ -75,15 +83,6 @@ public class DisplayScreen
 			return false;
 		}
 		return getContentDiv() != null ? getContentDiv().equals(that.getContentDiv()) : that.getContentDiv() == null;
-	}
-
-	@Override
-	public int hashCode()
-	{
-		int result = super.hashCode();
-		result = 31 * result + (getContentTop() != null ? getContentTop().hashCode() : 0);
-		result = 31 * result + (getContentDiv() != null ? getContentDiv().hashCode() : 0);
-		return result;
 	}
 
 	public ContentTop getContentTop()

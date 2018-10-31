@@ -46,7 +46,6 @@ public class SideBar
 
 	private static final Logger log = LogFactory.getLog(SideBar.class.getName());
 
-	private static final long serialVersionUID = 1L;
 
 	private final List menuList;
 
@@ -178,6 +177,14 @@ public class SideBar
 	}
 
 	@Override
+	public int hashCode()
+	{
+		int result = super.hashCode();
+		result = 31 * result + getMenuList().hashCode();
+		return result;
+	}
+
+	@Override
 	public boolean equals(Object o)
 	{
 		if (this == o)
@@ -196,14 +203,6 @@ public class SideBar
 		SideBar sideBar = (SideBar) o;
 
 		return getMenuList().equals(sideBar.getMenuList());
-	}
-
-	@Override
-	public int hashCode()
-	{
-		int result = super.hashCode();
-		result = 31 * result + getMenuList().hashCode();
-		return result;
 	}
 
 	public List getMenuList()
