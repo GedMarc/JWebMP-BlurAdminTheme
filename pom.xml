@@ -40,12 +40,14 @@
             <artifactId>hamcrest-all</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.google.inject</groupId>
+            <groupId>com.jwebmp.inject</groupId>
             <artifactId>guice</artifactId>
+            <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.google.inject.extensions</groupId>
+            <groupId>com.jwebmp.inject.extensions</groupId>
             <artifactId>guice-servlet</artifactId>
+            <version>${project.version}</version>
         </dependency>
 
         <dependency>
