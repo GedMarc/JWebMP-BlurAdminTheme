@@ -17,6 +17,7 @@ module com.jwebmp.plugins.bluradmin {
 	requires com.jwebmp.plugins.angularslimscroll;
 	requires com.jwebmp.plugins.toastr;
 	requires java.validation;
+	requires com.jwebmp.core.angularjs;
 	exports com.jwebmp.plugins.bluradmin;
 
 	provides IPageConfigurator with BlurAdminPageConfigurator;
