@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2017 Marc Magon
+ * Copyright (C) 2017 GedMarc
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -29,7 +29,7 @@ import com.jwebmp.plugins.bluradmin.layout.top.NavToggleButton;
 import java.util.logging.Logger;
 
 /**
- * @author Marc Magon
+ * @author GedMarc
  * @since 07 Jun 2017
  */
 public class BlurAdminBinderIGuiceSiteBinder

@@ -4,7 +4,7 @@ import com.google.inject.servlet.SessionScoped;
 import com.jwebmp.plugins.bluradmin.layout.display.DisplayScreen;
 
 /**
- * @author Marc Magon
+ * @author GedMarc
  * @since 22 Jun 2017
  */
 @SessionScoped

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2017 Marc Magon
+ * Copyright (C) 2017 GedMarc
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -22,7 +22,7 @@ import java.io.Serializable;
 /**
  * Called when side bar is ready to be created or anytime that the page footer is sent back
  *
- * @author Marc Magon
+ * @author GedMarc
  * @since 13 Jun 2017
  */
 public interface BlurAdminFooter

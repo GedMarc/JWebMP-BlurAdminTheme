@@ -4,7 +4,7 @@ import com.jwebmp.core.Page;
 import org.junit.jupiter.api.Test;
 
 /**
- * @author Marc Magon
+ * @author GedMarc
  */
 public class BlurAdminPageConfiguratorTest
 

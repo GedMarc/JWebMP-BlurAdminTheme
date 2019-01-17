@@ -4,7 +4,7 @@ import com.jwebmp.plugins.bootstrap.progressbar.BSProgressBar;
 import com.jwebmp.plugins.bootstrap.progressbar.bar.BSProgressBarDisplay;
 
 /**
- * @author Marc Magon
+ * @author GedMarc
  * @since 04 Jul 2017
  */
 public class LongRunningProgressBar

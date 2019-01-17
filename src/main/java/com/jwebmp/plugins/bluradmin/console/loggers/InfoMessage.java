@@ -13,7 +13,7 @@ import com.jwebmp.plugins.weblogappender.annotations.WebLogInfoMessage;
 import java.util.logging.LogRecord;
 
 /**
- * @author Marc Magon
+ * @author GedMarc
  * @since 23 Apr 2017
  */
 @SuppressWarnings("unused")

@@ -3,7 +3,7 @@ package com.jwebmp.plugins.bluradmin.console;
 import com.jwebmp.plugins.weblogappender.WebLogAppenderDiv;
 
 /**
- * @author Marc Magon
+ * @author GedMarc
  * @since 23 Apr 2017
  */
 public class ConsoleLogger

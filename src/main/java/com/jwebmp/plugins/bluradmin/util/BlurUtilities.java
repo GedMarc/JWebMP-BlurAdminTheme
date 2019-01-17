@@ -10,7 +10,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * @author Marc Magon
+ * @author GedMarc
  * @since 28 Jun 2017
  */
 public class BlurUtilities

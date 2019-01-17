@@ -5,7 +5,7 @@ import com.jwebmp.core.base.html.*;
 import javax.validation.constraints.NotNull;
 
 /**
- * @author Marc Magon
+ * @author GedMarc
  * @since 05 Apr 2017
  */
 public class Footer

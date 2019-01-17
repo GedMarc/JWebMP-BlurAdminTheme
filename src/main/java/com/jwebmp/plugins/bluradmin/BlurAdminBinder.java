@@ -8,7 +8,7 @@ import com.jwebmp.plugins.bluradmin.components.LongRunningProgressBar;
 import com.jwebmp.plugins.bluradmin.console.WebLogAppender;
 
 /**
- * @author Marc Magon
+ * @author GedMarc
  * @since 02 Jul 2017
  */
 public class BlurAdminBinder
