@@ -1,6 +1,3 @@
-import com.jwebmp.core.services.IPageConfigurator;
-import com.jwebmp.plugins.bluradmin.BlurAdminPageConfigurator;
-
 module com.jwebmp.plugins.bluradmin {
 	requires com.google.guice;
 	requires com.google.guice.extensions.servlet;
@@ -20,6 +17,6 @@ module com.jwebmp.plugins.bluradmin {
 	requires com.jwebmp.core.angularjs;
 	exports com.jwebmp.plugins.bluradmin;
 
-	provides IPageConfigurator with BlurAdminPageConfigurator;
+	provides com.jwebmp.core.services.IPageConfigurator with com.jwebmp.plugins.bluradmin.BlurAdminPageConfigurator;
 
 }
