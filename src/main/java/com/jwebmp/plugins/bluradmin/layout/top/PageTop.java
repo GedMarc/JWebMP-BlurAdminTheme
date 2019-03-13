@@ -32,6 +32,7 @@ import com.jwebmp.plugins.bootstrap.dropdown.BSDropDownLink;
 import com.jwebmp.plugins.bootstrap.dropdown.menu.*;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Set;
 import java.util.logging.Logger;
 
@@ -65,8 +66,8 @@ public class PageTop
 		rightSideDiv.addClass("user-profile clearfix");
 
 		//Calling all sidebar builders
-		Set<Class<? extends BlurAdminPageTop>> sideBarInjections = GuiceContext.reflect()
-		                                                                       .getSubTypesOf(BlurAdminPageTop.class);
+		Set<Class<? extends BlurAdminPageTop>> sideBarInjections = new HashSet(GuiceContext.instance().getScanResult()
+		                                                                                   .getSubclasses(BlurAdminPageTop.class.getCanonicalName()).loadClasses());
 		if (sideBarInjections.isEmpty())
 		{
 			log.severe("Sidebar will be empty, there are no classes that extend BlurAdminSideBar");
@@ -76,7 +77,7 @@ public class PageTop
 			java.util.List<BlurAdminPageTop> blurs = new ArrayList<>();
 			for (Class<? extends BlurAdminPageTop> sideBarInjection : sideBarInjections)
 			{
-				blurs.add(GuiceContext.getInstance(sideBarInjection));
+				blurs.add(GuiceContext.get(sideBarInjection));
 			}
 
 			java.util.Map<String, String[]> queryParameters = params;
@@ -104,7 +105,7 @@ public class PageTop
 
 	public Link addToggleButton(boolean leftSide)
 	{
-		Link link = GuiceContext.getInstance(NavToggleButton.class);
+		Link link = GuiceContext.get(NavToggleButton.class);
 		if (leftSide)
 		{
 			add(link);

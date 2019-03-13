@@ -37,7 +37,7 @@ public class BlurUtilities
 	{
 		try
 		{
-		/*	AtmosphereResource resource = GuiceContext.getInstance(AtmosphereResource.class);
+		/*	AtmosphereResource resource = GuiceContext.get(AtmosphereResource.class);
 			AjaxResponse response = new AjaxResponse();
 			response.getFeatures()
 			        .add(new ToastrFeature(type, title, message).setTiny(true));
@@ -53,7 +53,7 @@ public class BlurUtilities
 	{
 		try
 		{
-		/*	AtmosphereResource resource = GuiceContext.getInstance(AtmosphereResource.class);
+		/*	AtmosphereResource resource = GuiceContext.get(AtmosphereResource.class);
 			AjaxResponse response = new AjaxResponse();
 			for (ComponentHierarchyBase componentHierarchyBase : comp)
 			{
@@ -71,7 +71,7 @@ public class BlurUtilities
 	{
 	/*	try
 		{
-			AtmosphereResource resource = GuiceContext.getInstance(AtmosphereResource.class);
+			AtmosphereResource resource = GuiceContext.get(AtmosphereResource.class);
 			AjaxResponse response = new AjaxResponse();
 			for (Feature componentHierarchyBase : comp)
 			{
@@ -90,7 +90,7 @@ public class BlurUtilities
 	{
 		try
 		{/*
-			AtmosphereResource resource = GuiceContext.getInstance(AtmosphereResource.class);
+			AtmosphereResource resource = GuiceContext.get(AtmosphereResource.class);
 
 			AjaxResponse response = new AjaxResponse();
 			for (Event componentHierarchyBase : comp)

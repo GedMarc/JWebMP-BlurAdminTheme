@@ -30,6 +30,7 @@ import com.jwebmp.plugins.bluradmin.layout.display.DisplayScreen;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Set;
 import java.util.logging.Logger;
 
@@ -87,8 +88,8 @@ public class SideBar
 		                                                           .getInstance(Key.get(java.util.Map.class, Names.named("SessionStorage")));
 
 		//Calling all sidebar builders
-		Set<Class<? extends BlurAdminSideBar>> sideBarInjections = GuiceContext.reflect()
-		                                                                       .getSubTypesOf(BlurAdminSideBar.class);
+		Set<Class<? extends BlurAdminSideBar>> sideBarInjections = new HashSet(GuiceContext.instance().getScanResult()
+		                                                                                   .getSubclasses(BlurAdminSideBar.class.getCanonicalName()).loadClasses());
 
 		if (sideBarInjections.isEmpty())
 		{
@@ -99,7 +100,7 @@ public class SideBar
 			java.util.List<BlurAdminSideBar> blurs = new ArrayList<>();
 			for (Class<? extends BlurAdminSideBar> sideBarInjection : sideBarInjections)
 			{
-				blurs.add(GuiceContext.getInstance(sideBarInjection));
+				blurs.add(GuiceContext.get(sideBarInjection));
 			}
 
 			for (BlurAdminSideBar blur : blurs)

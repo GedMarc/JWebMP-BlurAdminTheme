@@ -15,6 +15,8 @@ module com.jwebmp.plugins.bluradmin {
 	requires com.jwebmp.plugins.toastr;
 	requires java.validation;
 	requires com.jwebmp.core.angularjs;
+	requires io.github.classgraph;
+
 	exports com.jwebmp.plugins.bluradmin;
 
 	provides com.jwebmp.core.services.IPageConfigurator with com.jwebmp.plugins.bluradmin.BlurAdminPageConfigurator;

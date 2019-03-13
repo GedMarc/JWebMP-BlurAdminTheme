@@ -53,10 +53,10 @@ public class BlurAdminHome
 	@Override
 	public AjaxResponse onConnect(AjaxCall call, AjaxResponse response)
 	{
-		response.addComponent(GuiceContext.getInstance(SideBar.class));
-		response.addComponent(GuiceContext.getInstance(Footer.class));
-		response.addComponent(GuiceContext.getInstance(PageTop.class));
-		response.addComponent(GuiceContext.getInstance(DisplayScreen.class));
+		response.addComponent(GuiceContext.get(SideBar.class));
+		response.addComponent(GuiceContext.get(Footer.class));
+		response.addComponent(GuiceContext.get(PageTop.class));
+		response.addComponent(GuiceContext.get(DisplayScreen.class));
 
 		return super.onConnect(call, response);
 	}
@@ -66,7 +66,7 @@ public class BlurAdminHome
 	{
 		if (!isInitialized())
 		{
-			setBody(GuiceContext.getInstance(BlurAdminBody.class));
+			setBody(GuiceContext.get(BlurAdminBody.class));
 		}
 		super.init();
 	}

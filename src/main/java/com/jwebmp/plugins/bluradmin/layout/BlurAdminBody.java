@@ -43,7 +43,7 @@ public class BlurAdminBody
 	{
 		if (!isInitialized())
 		{
-			GuiceContext.getInstance(BlurAdminLayout.class);
+			GuiceContext.get(BlurAdminLayout.class);
 			addDto("regex", new RegularExpressionsDTO().addDefaults());
 		}
 		super.init();

@@ -25,6 +25,7 @@ import com.jwebmp.logger.LogFactory;
 import com.jwebmp.plugins.weblogappender.WebLogAppenderPageConfigurator;
 import com.jwebmp.plugins.weblogappender.annotations.*;
 
+import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
 import java.util.logging.Handler;
@@ -105,18 +106,22 @@ public class WebLogAppender
 			}
 			if (autoUpdate.isPresent())
 			{
-				//	GuiceContext.getInstance(AtmosphereResource.class)
+				//	GuiceContext.get(AtmosphereResource.class)
 				//	            .write(autoUpdate.toString());
 			}
 		}
+	}
+
+	private <T> Set<Class<? extends T>> getSubTypesOf(Class<T> type)
+	{
+		return new HashSet(GuiceContext.instance().getScanResult().getSubclasses(type.getCanonicalName()).loadClasses());
 	}
 
 	public AjaxResponse renderInfoMessage(LogRecord record)
 	{
 		try
 		{
-			Set<Class<? extends WebLogInfoMessage>> items = GuiceContext.reflect()
-			                                                            .getSubTypesOf(WebLogInfoMessage.class);
+			Set<Class<? extends WebLogInfoMessage>> items = getSubTypesOf(WebLogInfoMessage.class);
 			for (Class<? extends WebLogInfoMessage> item : items)
 			{
 				return processMessage(item, record);
@@ -132,8 +137,7 @@ public class WebLogAppender
 
 	public AjaxResponse renderConfigMessage(LogRecord record)
 	{
-		Set<Class<? extends WebLogConfigMessage>> items = GuiceContext.reflect()
-		                                                              .getSubTypesOf(WebLogConfigMessage.class);
+		Set<Class<? extends WebLogConfigMessage>> items = getSubTypesOf(WebLogConfigMessage.class);
 		for (Class<? extends WebLogConfigMessage> item : items)
 		{
 			return processMessage(item, record);
@@ -143,8 +147,7 @@ public class WebLogAppender
 
 	public AjaxResponse renderWarningMessage(LogRecord record)
 	{
-		Set<Class<? extends WebLogWarningMessage>> items = GuiceContext.reflect()
-		                                                               .getSubTypesOf(WebLogWarningMessage.class);
+		Set<Class<? extends WebLogWarningMessage>> items = getSubTypesOf(WebLogWarningMessage.class);
 		for (Class<? extends WebLogWarningMessage> item : items)
 		{
 			return processMessage(item, record);
@@ -154,8 +157,7 @@ public class WebLogAppender
 
 	public AjaxResponse renderSevereMessage(LogRecord record)
 	{
-		Set<Class<? extends WebLogSevereMessage>> items = GuiceContext.reflect()
-		                                                              .getSubTypesOf(WebLogSevereMessage.class);
+		Set<Class<? extends WebLogSevereMessage>> items = getSubTypesOf(WebLogSevereMessage.class);
 		for (Class<? extends WebLogSevereMessage> item : items)
 		{
 			return processMessage(item, record);
@@ -165,8 +167,7 @@ public class WebLogAppender
 
 	public AjaxResponse renderFineMessage(LogRecord record)
 	{
-		Set<Class<? extends WebLogFineMessage>> items = GuiceContext.reflect()
-		                                                            .getSubTypesOf(WebLogFineMessage.class);
+		Set<Class<? extends WebLogFineMessage>> items = getSubTypesOf(WebLogFineMessage.class);
 		for (Class<? extends WebLogFineMessage> item : items)
 		{
 			return processMessage(item, record);
@@ -176,8 +177,7 @@ public class WebLogAppender
 
 	public AjaxResponse renderFinerMessage(LogRecord record)
 	{
-		Set<Class<? extends WebLogFinerMessage>> items = GuiceContext.reflect()
-		                                                             .getSubTypesOf(WebLogFinerMessage.class);
+		Set<Class<? extends WebLogFinerMessage>> items = getSubTypesOf(WebLogFinerMessage.class);
 		for (Class<? extends WebLogFinerMessage> item : items)
 		{
 			return processMessage(item, record);
@@ -187,8 +187,7 @@ public class WebLogAppender
 
 	public AjaxResponse renderFinestMessage(LogRecord record)
 	{
-		Set<Class<? extends WebLogFinestMessage>> items = GuiceContext.reflect()
-		                                                              .getSubTypesOf(WebLogFinestMessage.class);
+		Set<Class<? extends WebLogFinestMessage>> items = getSubTypesOf(WebLogFinestMessage.class);
 		for (Class<? extends WebLogFinestMessage> item : items)
 		{
 			return processMessage(item, record);
@@ -198,7 +197,7 @@ public class WebLogAppender
 
 	private AjaxResponse processMessage(Class<? extends WebLogMessage> item, LogRecord record)
 	{
-		AjaxResponse ar = GuiceContext.getInstance(AjaxResponse.class);
+		AjaxResponse ar = GuiceContext.get(AjaxResponse.class);
 		try
 		{
 			WebLogMessage infoMessage = item.newInstance();
